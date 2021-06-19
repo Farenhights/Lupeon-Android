@@ -6,28 +6,6 @@ plugins {
 android {
     compileSdkVersion compile_version
     buildToolsVersion build_version
-
-    defaultConfig {
-        minSdkVersion min_version
-        targetSdkVersion target_version
-        versionCode version_code
-        versionName version_name
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
 }
 
 dependencies {
