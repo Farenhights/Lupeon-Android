@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Lupeon</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="enter">Entrar</string>
+    <string name="phone">telefone</string>
+    <string name="contacts"><![CDATA[ATENDIMENTO<br>(11) 3223 3223<br>Seg. à sex. das 8 às 17h.<br>contato@lupeon.com.br]]></string>
+    <string name="version">2021.1.1</string>
+    <string name="back">Voltar</string>
+    <string name="user">Usuário</string>
+    <string name="password">Senha</string>
+    <string name="loss_password">esqueci a senha</string>
+    <string name="loss_my_password"><![CDATA[Esqueci<br>minha senha]]></string>
+    <string name="your_email">Digite seu email</string>
+    <string name="my_code">Já possuo o código</string>
+</resources>

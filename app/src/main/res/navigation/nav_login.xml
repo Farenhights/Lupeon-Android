@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_login"
+    app:startDestination="@id/loginActivity">
+    <fragment
+        android:id="@+id/loginActivity"
+        android:name="br.com.henriktech.lupeon.ui.login.presentention.PresentationFragment"
+        android:label="fragment_presentation"
+        tools:layout="@layout/fragment_presentation" >
+        <action
+            android:id="@+id/action_loginActivity_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="br.com.henriktech.lupeon.ui.login.main.MainFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_mainFragment_to_lossPasswordFragment"
+            app:destination="@id/lossPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lossPasswordFragment"
+        android:name="br.com.henriktech.lupeon.ui.login.losspassword.LossPasswordFragment"
+        android:label="fragment_losspassword"
+        tools:layout="@layout/fragment_losspassword" />
+</navigation>
