@@ -2,7 +2,6 @@ package br.com.henriktech.lupeon.analytics.di
 
 import br.com.henriktech.lupeon.analytics.Analytics
 import br.com.henriktech.lupeon.analytics.provider.AppCenterAnalyticsProvider
-import com.google.firebase.analytics.FirebaseAnalytics
 import org.koin.core.context.loadKoinModules
 import org.koin.dsl.module
 
