@@ -18,8 +18,8 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         analytics.trackScreen(this)
         activityScope.launch {
-            delay(3000)
-            var intent = Intent(this@SplashActivity, LoginActivity::class.java)
+            delay(2500)
+            val intent = Intent(this@SplashActivity, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }
