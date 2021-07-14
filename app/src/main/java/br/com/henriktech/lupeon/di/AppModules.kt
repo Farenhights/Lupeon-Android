@@ -8,7 +8,10 @@ object AppModules {
             SplashModule.get(),
             PresentationModule.get(),
             LoginMainModule.get(),
-            LossPasswordModule.get()
+            LossPasswordModule.get(),
+            DriverModule.get(),
+            ShipperModule.get(),
+            TransporterModule.get()
         ))
     }
 }

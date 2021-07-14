@@ -20,6 +20,10 @@ class PresentationFragment : Fragment(R.layout.fragment_presentation) {
         super.onViewCreated(view, savedInstanceState)
         analytics.trackScreen(requireActivity())
         startViewModel(view)
+        startView(view)
+    }
+
+    private fun startView(view: View) {
         view.findViewById<Button>(R.id.presentationEnterButton).apply {
             setOnClickListener {
                 analytics.clickEnterButton()

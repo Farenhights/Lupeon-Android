@@ -12,6 +12,7 @@ import org.koin.android.ext.android.inject
 class MainFragment: Fragment(R.layout.fragment_login) {
 
     private val analytics: MainAnalytics by inject()
+    private val viewModel: MainViewModel by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -2,7 +2,7 @@ package br.com.henriktech.lupeon.ui.login.presentention
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import br.com.henriktech.lupeon.data.AppInfoService
+import br.com.henriktech.lupeon.data.service.AppInfoService
 
 class PresentationViewModel(private val service : AppInfoService): ViewModel() {
 
