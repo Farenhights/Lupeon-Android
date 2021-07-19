@@ -10,7 +10,7 @@ import org.koin.dsl.module
 object LoginMainModule {
     private val loginMainModule = module {
         single { MainAnalytics(get()) }
-        single { AuthenticationService() }
+        single { AuthenticationService(get()) }
         viewModel { MainViewModel(get()) }
     }
 

@@ -2,6 +2,8 @@ package br.com.henriktech.lupeon.ui.login.main
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -29,6 +31,15 @@ class MainFragment: Fragment(R.layout.fragment_login) {
             setOnClickListener {
                 analytics.clickLossPasswordButton()
                 it.findNavController().navigate(R.id.action_mainFragment_to_lossPasswordFragment)
+            }
+        }
+
+        view.findViewById<Button>(R.id.mainEnterButton).apply {
+            setOnClickListener {
+                analytics.clickEnterButton()
+                val user = view.findViewById<EditText>(R.id.textUserLoginView).text.toString()
+                val password = view.findViewById<EditText>(R.id.textPasswordLoginView).text.toString()
+                viewModel.validateLogin(user, password)
             }
         }
     }

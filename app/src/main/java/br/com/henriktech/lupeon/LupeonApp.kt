@@ -2,6 +2,7 @@ package br.com.henriktech.lupeon
 
 import android.app.Application
 import br.com.henriktech.lupeon.analytics.di.AnalyticsModules
+import br.com.henriktech.lupeon.api.ApiModules
 import br.com.henriktech.lupeon.di.AppModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -16,6 +17,7 @@ class LupeonApp : Application() {
             modules()
         }
         AnalyticsModules.loadModule()
+        ApiModules.loadModule()
         AppModules.loadModule()
     }
 }

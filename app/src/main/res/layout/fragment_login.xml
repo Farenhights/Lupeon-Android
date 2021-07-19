@@ -90,7 +90,10 @@
             app:layout_constraintBottom_toTopOf="@+id/labelPasswordTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/labelUserTextView" />
+            app:layout_constraintTop_toBottomOf="@id/labelUserTextView"
+            android:autofillHints="no"
+            android:inputType="text"
+            tools:ignore="LabelFor" />
 
 
         <TextView
@@ -121,7 +124,10 @@
             app:layout_constraintBottom_toTopOf="@+id/buttonLossPasswordView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/labelPasswordTextView" />
+            app:layout_constraintTop_toBottomOf="@id/labelPasswordTextView"
+            android:inputType="textPassword"
+            android:autofillHints="no"
+            tools:ignore="LabelFor" />
 
 
         <TextView

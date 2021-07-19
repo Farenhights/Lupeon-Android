@@ -20,4 +20,6 @@
     <string name="loss_my_password"><![CDATA[Esqueci<br>minha senha]]></string>
     <string name="your_email">Digite seu email</string>
     <string name="my_code">Já possuo o código</string>
+    <string name="send_email">Enviar e-mail</string>
+    <string name="text_loss_password">Para criar sua nova senha, enviaremos um novo código token para seu email.</string>
 </resources>

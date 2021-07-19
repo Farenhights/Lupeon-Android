@@ -21,13 +21,17 @@ class MainAnalytics(private val analytics: Analytics) {
         trackEvent("${PresentationAnalytics.FRAG_PRESENTATION}_Clique_Botao_Esqueci_Senha")
     }
 
+    fun clickEnterButton() {
+        trackEvent("${PresentationAnalytics.FRAG_PRESENTATION}_Clique_Botao_Entrar")
+    }
+
     private fun trackEvent(eventName: String) {
         analytics.trackEvent(eventName)
     }
 
     private companion object {
         private const val SCREEN_NAME = "Login"
-        internal const val FRAG_PRESENTATION = "${SCREEN_NAME}_Main"
+        const val FRAG_PRESENTATION = "${SCREEN_NAME}_Main"
         private const val EVENT_PRESENTATION = "${FRAG_PRESENTATION}_Tela_aberta"
     }
 }
