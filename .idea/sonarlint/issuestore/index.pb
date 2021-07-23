@@ -33,8 +33,6 @@ Papp/src/main/java/br/com/henriktech/lupeon/ui/transporter/TransporterActivity.k
 ,app/src/main/res/layout/activity_shipper.xml,0/7/07be976c2208862fa504d916dc17ac31480034f7
 m
 =app/src/main/java/br/com/henriktech/lupeon/di/DriverModule.kt,b/0/b0ed827328f1414beecc63186a82f2d726eef3a1
-n
->app/src/main/java/br/com/henriktech/lupeon/di/ShipperModule.kt,a/d/ada39c9fb579840ee7b10a40fbc9bf10ee1bb531
 r
 Bapp/src/main/java/br/com/henriktech/lupeon/di/TransporterModule.kt,2/a/2aea002a658c5f5e870a08ede2cf619d3b29bbd3
 y
@@ -67,8 +65,6 @@ R
 "app/src/main/res/values/themes.xml,e/b/eb7f0f821bde169dd21862705b2b042d2cea69a3
 S
 #app/src/main/res/values/strings.xml,d/2/d2281fbb3027de2722081a53408dd77628bf080e
-R
-"app/src/main/res/values/colors.xml,9/6/969faa2a5d9f5e8390e958d2c07f2cfd54676e6b
 b
 2app/src/main/res/values/ic_launcher_background.xml,1/8/18ccc38e5dffe10da3d8b454d3093a0a4ba78749
 Z
@@ -83,12 +79,8 @@ s
 Capp/src/main/java/br/com/henriktech/lupeon/di/PresentationModule.kt,5/f/5fdb6155286e502a8ab81c713897494a9c68b10d
 m
 =app/src/main/java/br/com/henriktech/lupeon/di/SplashModule.kt,c/8/c8635e2d90a2fef69fd6a19e9bcda31398db518c
-k
-;app/src/main/java/br/com/henriktech/lupeon/di/AppModules.kt,b/9/b99099aac35584c7ff29dc4b0a41c07fb34a67ce
 g
 7app/src/main/java/br/com/henriktech/lupeon/LupeonApp.kt,a/a/aa9d246861348bf757bf97ec19f771e0bf349bb7
-p
-@app/src/main/java/br/com/henriktech/lupeon/di/LoginMainModule.kt,9/f/9fc0c9cc34e7846b7676bc748e030b1e2011d987
 w
 Gapp/src/main/java/br/com/henriktech/lupeon/ui/splash/SplashAnalytics.kt,d/a/daf9732092e53d37745f07a99f91ead9fc126fa6
 ‰
