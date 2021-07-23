@@ -11,12 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lupeon"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.simulation.SimulationActivity"></activity>
+        <activity android:name=".ui.tracking.TrackingActivity" />
         <activity android:name=".ui.driver.DriverActivity" />
         <activity android:name=".ui.shipper.ShipperActivity" />
         <activity android:name=".ui.transporter.TransporterActivity" />
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
