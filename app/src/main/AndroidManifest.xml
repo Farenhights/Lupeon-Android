@@ -4,17 +4,19 @@
 
     <application
         android:name=".LupeonApp"
+        android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Lupeon">
-        <activity android:name=".ui.driver.DriverActivity"></activity>
+        android:theme="@style/Theme.Lupeon"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.driver.DriverActivity" />
         <activity android:name=".ui.shipper.ShipperActivity" />
         <activity android:name=".ui.transporter.TransporterActivity" />
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

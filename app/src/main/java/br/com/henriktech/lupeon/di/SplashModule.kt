@@ -7,7 +7,7 @@ import org.koin.dsl.module
 object SplashModule {
     private val splashModule = module {
         single {
-             SplashAnalytics(get())
+            SplashAnalytics(get())
         }
     }
 

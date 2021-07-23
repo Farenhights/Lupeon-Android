@@ -5,7 +5,7 @@ import org.koin.dsl.module
 
 object ShipperModule {
 
-    private val shipperModule = module {  }
+    private val shipperModule = module { }
 
     fun get(): Module {
         return shipperModule

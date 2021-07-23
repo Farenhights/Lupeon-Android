@@ -8,7 +8,7 @@
         android:id="@+id/loginActivity"
         android:name="br.com.henriktech.lupeon.ui.login.presentention.PresentationFragment"
         android:label="fragment_presentation"
-        tools:layout="@layout/fragment_presentation" >
+        tools:layout="@layout/fragment_presentation">
         <action
             android:id="@+id/action_loginActivity_to_mainFragment"
             app:destination="@id/mainFragment" />
@@ -17,7 +17,7 @@
         android:id="@+id/mainFragment"
         android:name="br.com.henriktech.lupeon.ui.login.main.MainFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_mainFragment_to_lossPasswordFragment"
             app:destination="@id/lossPasswordFragment" />

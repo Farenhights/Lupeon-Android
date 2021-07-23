@@ -1,7 +1,7 @@
 package br.com.henriktech.lupeon.ui.shipper
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import br.com.henriktech.lupeon.R
 
 class ShipperActivity : AppCompatActivity() {

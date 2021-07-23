@@ -4,20 +4,26 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.henriktech.lupeon.api.network.ApiResult
+import br.com.henriktech.lupeon.data.model.Profile
 import br.com.henriktech.lupeon.data.service.AuthenticationService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 
 class MainViewModel(private val authenticationService: AuthenticationService) : ViewModel() {
 
-    val token: MutableLiveData<String> by lazy {
+    private val token: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
-    val tokenType: MutableLiveData<String> by lazy {
+    private val tokenType: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
-    val userType: MutableLiveData<String> by lazy {
+    private val userType: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
+    }
+
+    val activityLiveData: MutableLiveData<Profile> by lazy {
+        MutableLiveData<Profile>()
     }
 
     fun validateLogin(user: String, password: String) {
@@ -35,4 +41,13 @@ class MainViewModel(private val authenticationService: AuthenticationService) : 
         }
     }
 
+    fun setProfile(user: String) {
+        val profile = user.toUpperCase(Locale.ROOT)
+
+        when (profile) {
+            "EMBARCADOR" -> activityLiveData.postValue(Profile.SHIPPER)
+            "TRASNPORTADOR" -> activityLiveData.postValue(Profile.TRANSPORTER)
+            else -> activityLiveData.postValue(Profile.DRIVER)
+        }
+    }
 }

@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import br.com.henriktech.lupeon.R
 import org.koin.android.ext.android.inject
 
-class LossPasswordFragment: Fragment(R.layout.fragment_losspassword) {
+class LossPasswordFragment : Fragment(R.layout.fragment_losspassword) {
 
     private val analytics: LossPasswordAnalytics by inject()
 

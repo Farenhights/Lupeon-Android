@@ -4,14 +4,16 @@ import org.koin.core.context.loadKoinModules
 
 object AppModules {
     fun loadModule() {
-        loadKoinModules(listOf(
-            SplashModule.get(),
-            PresentationModule.get(),
-            LoginMainModule.get(),
-            LossPasswordModule.get(),
-            DriverModule.get(),
-            ShipperModule.get(),
-            TransporterModule.get()
-        ))
+        loadKoinModules(
+            listOf(
+                SplashModule.get(),
+                PresentationModule.get(),
+                LoginMainModule.get(),
+                LossPasswordModule.get(),
+                DriverModule.get(),
+                ShipperModule.get(),
+                TransporterModule.get()
+            )
+        )
     }
 }

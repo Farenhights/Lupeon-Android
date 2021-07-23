@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import br.com.henriktech.lupeon.data.service.AppInfoService
 
-class PresentationViewModel(private val service : AppInfoService): ViewModel() {
+class PresentationViewModel(private val service: AppInfoService) : ViewModel() {
 
     val versionLiveData: MutableLiveData<String> by lazy {
         MutableLiveData<String>()

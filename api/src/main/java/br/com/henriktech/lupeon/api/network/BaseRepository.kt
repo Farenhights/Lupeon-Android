@@ -8,12 +8,12 @@ open class BaseRepository {
         return try {
             val response = call.invoke()
 
-            if (response.isSuccessful){
+            if (response.isSuccessful) {
                 ApiResult.Success(response.body())
             } else {
                 ApiResult.Error(response.message() ?: "Não foi possível fazer a chamada.")
             }
-        }catch (error:Exception){
+        } catch (error: Exception) {
             ApiResult.Error("Não foi possível fazer a chamada.")
         }
     }

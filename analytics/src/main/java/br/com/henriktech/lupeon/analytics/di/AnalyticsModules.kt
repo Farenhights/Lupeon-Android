@@ -7,15 +7,21 @@ import org.koin.dsl.module
 
 object AnalyticsModules {
     private val analyticsModule = module {
-        single { Analytics(listOf(
-            get<AppCenterAnalyticsProvider>()
-        )) }
+        single {
+            Analytics(
+                listOf(
+                    get<AppCenterAnalyticsProvider>()
+                )
+            )
+        }
         single { AppCenterAnalyticsProvider(get()) }
     }
+
     fun loadModule() {
         loadKoinModules(
             listOf(
                 analyticsModule
-            ))
+            )
+        )
     }
 }

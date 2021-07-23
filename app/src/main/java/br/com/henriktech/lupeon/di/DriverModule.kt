@@ -5,7 +5,7 @@ import org.koin.dsl.module
 
 object DriverModule {
 
-    private val driverModule = module {  }
+    private val driverModule = module { }
 
     fun get(): Module {
         return driverModule
