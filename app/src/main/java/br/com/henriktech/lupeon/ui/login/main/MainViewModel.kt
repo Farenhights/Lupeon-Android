@@ -15,12 +15,6 @@ class MainViewModel(private val authenticationService: AuthenticationService) : 
     private val token: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
-    private val tokenType: MutableLiveData<String> by lazy {
-        MutableLiveData<String>()
-    }
-    private val userType: MutableLiveData<String> by lazy {
-        MutableLiveData<String>()
-    }
 
     val activityLiveData: MutableLiveData<Profile> by lazy {
         MutableLiveData<Profile>()
@@ -30,9 +24,7 @@ class MainViewModel(private val authenticationService: AuthenticationService) : 
         viewModelScope.launch(Dispatchers.IO) {
             when (val response = authenticationService.validateLogin(user, password)) {
                 is ApiResult.Success -> {
-                    token.postValue(response.data!!.token)
-                    tokenType.postValue(response.data!!.tokenType)
-                    userType.postValue(response.data!!.userType)
+                    token.postValue(response.data!!.Token)
                 }
                 is ApiResult.Error -> {
                     token.postValue(null)

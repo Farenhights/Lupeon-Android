@@ -17,8 +17,6 @@ V
 &analytics/src/main/AndroidManifest.xml,2/5/25127fc180617642836fb5e47f3873c553c3e903
 @
 local.properties,0/7/0712df971a99ac4d2fccb8e0fb19f377f3374cca
-t
-Dapi/src/main/java/br/com/henriktech/lupeon/api/model/LoginRequest.kt,9/b/9b61acde4b259047e53149c2a91cec5c41e292c2
 P
  api/src/main/AndroidManifest.xml,0/2/0268b42e566c35aab8cf10dd82cf88d0a04f2e89
 <
@@ -35,10 +33,6 @@ m
 =app/src/main/java/br/com/henriktech/lupeon/di/DriverModule.kt,b/0/b0ed827328f1414beecc63186a82f2d726eef3a1
 r
 Bapp/src/main/java/br/com/henriktech/lupeon/di/TransporterModule.kt,2/a/2aea002a658c5f5e870a08ede2cf619d3b29bbd3
-y
-Iapp/src/main/java/br/com/henriktech/lupeon/ui/login/main/MainViewModel.kt,2/8/283c167bbe9b89f4b807b921b284b139a6efd8d2
-p
-@app/src/main/java/br/com/henriktech/lupeon/data/model/Profile.kt,6/0/60ce713393a303478c9df34ebce8787826672953
 F
 app/proguard-rules.pro,9/e/9e08934d811afe28fbc77aaa3c0d747b94348db9
 @
@@ -105,5 +99,3 @@ Zapp/src/main/java/br/com/henriktech/lupeon/ui/login/presentention/PresentationV
 Vapp/build/generated/source/buildConfig/debug/br/com/henriktech/lupeon/BuildConfig.java,0/b/0bd0cfa8fba4259f161cba1494cba6bc9d1bb796
 x
 Happ/src/main/java/br/com/henriktech/lupeon/ui/login/main/MainFragment.kt,a/d/ad4860e1beae1c009e4b47f1727da9942ba3c20b
-@
-api/build.gradle,9/a/9a557c682b145d376083b076557250a7b23bead3

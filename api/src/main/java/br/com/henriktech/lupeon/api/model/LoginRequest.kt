@@ -7,8 +7,4 @@ data class LoginRequest(
     var login: String,
     @SerializedName("Password")
     var password: String
-) {
-    override fun toString(): String {
-        return "{\"Login\":'$login', \"Password\":'$password'}"
-    }
-}
+)
