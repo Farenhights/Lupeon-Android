@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="br.com.henriktech.lupeon.ui.login.main.MainFragment"
+        android:name="br.com.henriktech.lupeon.ui.login.main.LoginMainFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action

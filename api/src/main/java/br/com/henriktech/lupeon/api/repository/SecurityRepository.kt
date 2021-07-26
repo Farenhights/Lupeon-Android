@@ -1,8 +1,8 @@
 package br.com.henriktech.lupeon.api.repository
 
 import android.content.Context
-import br.com.henriktech.lupeon.api.model.LoginRequest
 import br.com.henriktech.lupeon.api.network.BaseRepository
+import com.google.gson.annotations.SerializedName
 
 
 class SecurityRepository(val context: Context, private val securityApi: SecurityApi) :
@@ -12,3 +12,10 @@ class SecurityRepository(val context: Context, private val securityApi: Security
         securityApi.postLogin(LoginRequest(login = user, password = password))
     }
 }
+
+data class LoginRequest(
+    @SerializedName("Login")
+    var login: String,
+    @SerializedName("Password")
+    var password: String
+)

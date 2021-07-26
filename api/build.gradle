@@ -1,12 +1,14 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
 }
 
 android {
     compileSdkVersion compile_version
     buildToolsVersion build_version
 
+    androidExtensions { experimental = true }
 }
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

@@ -11,61 +11,57 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import br.com.henriktech.lupeon.R
-import br.com.henriktech.lupeon.data.model.Profile
 import br.com.henriktech.lupeon.ui.driver.DriverActivity
-import br.com.henriktech.lupeon.ui.shipper.ShipperActivity
-import br.com.henriktech.lupeon.ui.transporter.TransporterActivity
+import br.com.henriktech.lupeon.ui.profile.ProfileActivity
 import org.koin.android.ext.android.inject
 
-class MainFragment : Fragment(R.layout.fragment_login) {
+class LoginMainFragment : Fragment(R.layout.fragment_login) {
 
-    private val analytics: MainAnalytics by inject()
-    private val viewModel: MainViewModel by inject()
+    private val analyticsLogin: LoginMainAnalytics by inject()
+    private val viewModelLogin: LoginMainViewModel by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        analytics.trackScreen(requireActivity())
+        analyticsLogin.trackScreen(requireActivity())
 
         view.findViewById<ImageView>(R.id.leftArrowView).apply {
             setOnClickListener {
-                analytics.clickBackButton()
+                analyticsLogin.clickBackButton()
                 requireActivity().onBackPressed()
             }
         }
 
         view.findViewById<TextView>(R.id.buttonLossPasswordView).apply {
             setOnClickListener {
-                analytics.clickLossPasswordButton()
+                analyticsLogin.clickLossPasswordButton()
                 it.findNavController().navigate(R.id.action_mainFragment_to_lossPasswordFragment)
             }
         }
 
         view.findViewById<Button>(R.id.mainEnterButton).apply {
             setOnClickListener {
-                analytics.clickEnterButton()
+                analyticsLogin.clickEnterButton()
                 val user = view.findViewById<EditText>(R.id.textUserLoginView).text.toString()
                 val password =
                     view.findViewById<EditText>(R.id.textPasswordLoginView).text.toString()
-                viewModel.validateLogin(user, password)
-                viewModel.setProfile(user)
+                viewModelLogin.validateLogin(user, password)
             }
         }
         startViewModel()
     }
 
     private fun startViewModel() {
-        viewModel.activityLiveData.observe(viewLifecycleOwner, Observer {
-            startActivity(it)
-        })
-    }
-
-    private fun startActivity(profile: Profile) {
-        val intent =
-            when(profile) {
-                Profile.SHIPPER -> Intent(context, ShipperActivity::class.java)
-                Profile.TRANSPORTER -> Intent(context, TransporterActivity::class.java)
-                else -> Intent(context, DriverActivity::class.java)
+        viewModelLogin.login.observe(viewLifecycleOwner, Observer { login ->
+            analyticsLogin.typeLogin(login.TipoUsuario)
+            val intent =
+                when(login.TipoUsuario){
+                    "M" -> Intent(context, DriverActivity::class.java)
+                    else -> Intent(context, ProfileActivity::class.java)
             }
-        startActivity(intent)
+            val bundle = Bundle()
+            bundle.putParcelable("LOGIN", login)
+            intent.putExtra("BUNDLE",bundle)
+            startActivity(intent)
+        })
     }
 }
