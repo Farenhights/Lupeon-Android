@@ -2,9 +2,9 @@ package br.com.henriktech.lupeon.ui.login.losspassword
 
 import android.app.Activity
 import br.com.henriktech.lupeon.analytics.Analytics
-import br.com.henriktech.lupeon.ui.login.presentention.PresentationAnalytics
+import br.com.henriktech.lupeon.ui.login.presentention.LoginPresentationAnalytics
 
-class LossPasswordAnalytics(private val analytics: Analytics) {
+class LoginLossPasswordAnalytics(private val analytics: Analytics) {
 
     fun trackScreen(activity: Activity) {
         analytics.trackScreen(
@@ -14,7 +14,7 @@ class LossPasswordAnalytics(private val analytics: Analytics) {
     }
 
     fun clickBackButton() {
-        trackEvent("${PresentationAnalytics.FRAG_PRESENTATION}_Clique_Botao_Voltar")
+        trackEvent("${LoginPresentationAnalytics.FRAG_PRESENTATION}_Clique_Botao_Voltar")
     }
 
     private fun trackEvent(eventName: String) {

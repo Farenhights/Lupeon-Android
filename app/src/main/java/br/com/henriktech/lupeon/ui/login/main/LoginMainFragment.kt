@@ -11,11 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import br.com.henriktech.lupeon.R
+import br.com.henriktech.lupeon.ui.base.BaseFragment
 import br.com.henriktech.lupeon.ui.driver.DriverActivity
 import br.com.henriktech.lupeon.ui.profile.ProfileActivity
 import org.koin.android.ext.android.inject
 
-class LoginMainFragment : Fragment(R.layout.fragment_login) {
+class LoginMainFragment : BaseFragment(R.layout.fragment_login) {
 
     private val analyticsLogin: LoginMainAnalytics by inject()
     private val viewModelLogin: LoginMainViewModel by inject()
@@ -53,15 +54,7 @@ class LoginMainFragment : Fragment(R.layout.fragment_login) {
     private fun startViewModel() {
         viewModelLogin.login.observe(viewLifecycleOwner, Observer { login ->
             analyticsLogin.typeLogin(login.TipoUsuario)
-            val intent =
-                when(login.TipoUsuario){
-                    "M" -> Intent(context, DriverActivity::class.java)
-                    else -> Intent(context, ProfileActivity::class.java)
-            }
-            val bundle = Bundle()
-            bundle.putParcelable("LOGIN", login)
-            intent.putExtra("BUNDLE",bundle)
-            startActivity(intent)
+            loginApplication(login)
         })
     }
 }

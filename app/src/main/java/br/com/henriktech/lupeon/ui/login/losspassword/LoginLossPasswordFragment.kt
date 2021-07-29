@@ -7,11 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import br.com.henriktech.lupeon.R
+import br.com.henriktech.lupeon.ui.base.BaseFragment
 import org.koin.android.ext.android.inject
 
-class LossPasswordFragment : Fragment(R.layout.fragment_losspassword) {
+class LoginLossPasswordFragment : BaseFragment(R.layout.fragment_losspassword) {
 
-    private val analytics: LossPasswordAnalytics by inject()
+    private val analytics: LoginLossPasswordAnalytics by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

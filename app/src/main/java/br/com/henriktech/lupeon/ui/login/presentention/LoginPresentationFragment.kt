@@ -9,12 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import br.com.henriktech.lupeon.R
+import br.com.henriktech.lupeon.ui.base.BaseFragment
 import org.koin.android.ext.android.inject
 
-class PresentationFragment : Fragment(R.layout.fragment_presentation) {
+class LoginPresentationFragment : BaseFragment(R.layout.fragment_presentation) {
 
-    val analytics: PresentationAnalytics by inject()
-    private val viewModel: PresentationViewModel by inject()
+    val analytics: LoginPresentationAnalytics by inject()
+    private val viewModel: LoginPresentationViewModel by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

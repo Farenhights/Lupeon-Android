@@ -6,7 +6,7 @@
     app:startDestination="@id/loginActivity">
     <fragment
         android:id="@+id/loginActivity"
-        android:name="br.com.henriktech.lupeon.ui.login.presentention.PresentationFragment"
+        android:name="br.com.henriktech.lupeon.ui.login.presentention.LoginPresentationFragment"
         android:label="fragment_presentation"
         tools:layout="@layout/fragment_presentation">
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/lossPasswordFragment"
-        android:name="br.com.henriktech.lupeon.ui.login.losspassword.LossPasswordFragment"
+        android:name="br.com.henriktech.lupeon.ui.login.losspassword.LoginLossPasswordFragment"
         android:label="fragment_losspassword"
         tools:layout="@layout/fragment_losspassword" />
 </navigation>

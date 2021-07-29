@@ -21,10 +21,6 @@ P
 build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
 [
 +app/src/main/res/layout/activity_driver.xml,d/4/d4569f93870cc5e16d1cccff879609494b0bccac
-`
-0app/src/main/res/layout/activity_transporter.xml,c/a/ca3de725b1f9dc10022089d57977ab909d8332fa
-\
-,app/src/main/res/layout/activity_shipper.xml,0/7/07be976c2208862fa504d916dc17ac31480034f7
 m
 =app/src/main/java/br/com/henriktech/lupeon/di/DriverModule.kt,b/0/b0ed827328f1414beecc63186a82f2d726eef3a1
 F
@@ -47,14 +43,10 @@ V
 &app/src/main/res/drawable/ic_phone.xml,8/5/85587cdb8bb9a385b8184dc35b27da3397c18b46
 R
 "app/src/main/res/values/themes.xml,e/b/eb7f0f821bde169dd21862705b2b042d2cea69a3
-S
-#app/src/main/res/values/strings.xml,d/2/d2281fbb3027de2722081a53408dd77628bf080e
 b
 2app/src/main/res/values/ic_launcher_background.xml,1/8/18ccc38e5dffe10da3d8b454d3093a0a4ba78749
 Z
 *app/src/main/res/drawable/button_style.xml,9/6/96d8870ab0901a7121b7496c4c95f188421be3a5
-\
-,app/src/main/res/drawable/back_rectangle.xml,1/9/19c9d90bb500dd6552158fc1bb81ceaa3eab56bb
 b
 2app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml,8/e/8e27ba16c655f421171956147d0fde89b7d25d17
 s
@@ -75,8 +67,6 @@ y
 Iapp/src/main/java/br/com/henriktech/lupeon/data/service/AppInfoService.kt,2/0/20078985273509c77c752f2b4ffac017e6c0359e
 Š
 Zapp/src/main/java/br/com/henriktech/lupeon/ui/login/presentention/PresentationViewModel.kt,9/0/90cc27127c6b8d8d59e5e55de1f15ee96c6affb7
-†
-Vapp/build/generated/source/buildConfig/debug/br/com/henriktech/lupeon/BuildConfig.java,0/b/0bd0cfa8fba4259f161cba1494cba6bc9d1bb796
 t
 Dapp/src/main/java/br/com/henriktech/lupeon/ui/components/MenuView.kt,7/d/7d23fe9d6cba4b111be0587b337dbd8d6a8c870f
 l
@@ -89,7 +79,5 @@ x
 Hapi/src/main/java/br/com/henriktech/lupeon/api/network/BaseRepository.kt,3/e/3e129e59584d3e0d915e351d9a6ae12529b3f053
 x
 Hapi/src/main/java/br/com/henriktech/lupeon/api/repository/SecurityApi.kt,1/3/138ca3ac5d48f2e120867b09a878fd8598bb781d
-
-Oapi/src/main/java/br/com/henriktech/lupeon/api/repository/SecurityRepository.kt,9/7/972472c8c81edf9bbbed13787ccad59a1abfbca8
 ˆ
 Xapp/src/main/java/br/com/henriktech/lupeon/ui/login/losspassword/LossPasswordFragment.kt,e/4/e4faafb01b21c0d2129f67dd763f2c078cd30d4e

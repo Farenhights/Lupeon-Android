@@ -3,7 +3,7 @@ package br.com.henriktech.lupeon.ui.login.presentention
 import android.app.Activity
 import br.com.henriktech.lupeon.analytics.Analytics
 
-class PresentationAnalytics(private val analytics: Analytics) {
+class LoginPresentationAnalytics(private val analytics: Analytics) {
 
     fun trackScreen(activity: Activity) {
         analytics.trackScreen(

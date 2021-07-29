@@ -1,4 +1,4 @@
 package br.com.henriktech.lupeon.ui.login.newpassword
 
-class NewPasswordFragment {
+class LoginNewPasswordFragment {
 }

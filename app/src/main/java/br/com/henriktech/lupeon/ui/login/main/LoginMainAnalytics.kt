@@ -2,7 +2,7 @@ package br.com.henriktech.lupeon.ui.login.main
 
 import android.app.Activity
 import br.com.henriktech.lupeon.analytics.Analytics
-import br.com.henriktech.lupeon.ui.login.presentention.PresentationAnalytics
+import br.com.henriktech.lupeon.ui.login.presentention.LoginPresentationAnalytics
 
 class LoginMainAnalytics(private val analytics: Analytics) {
 
@@ -14,15 +14,15 @@ class LoginMainAnalytics(private val analytics: Analytics) {
     }
 
     fun clickBackButton() {
-        trackEvent("${PresentationAnalytics.FRAG_PRESENTATION}_Clique_Botao_Voltar")
+        trackEvent("${LoginPresentationAnalytics.FRAG_PRESENTATION}_Clique_Botao_Voltar")
     }
 
     fun clickLossPasswordButton() {
-        trackEvent("${PresentationAnalytics.FRAG_PRESENTATION}_Clique_Botao_Esqueci_Senha")
+        trackEvent("${LoginPresentationAnalytics.FRAG_PRESENTATION}_Clique_Botao_Esqueci_Senha")
     }
 
     fun clickEnterButton() {
-        trackEvent("${PresentationAnalytics.FRAG_PRESENTATION}_Clique_Botao_Entrar")
+        trackEvent("${LoginPresentationAnalytics.FRAG_PRESENTATION}_Clique_Botao_Entrar")
     }
 
     fun typeLogin(tipo: String) {
@@ -31,7 +31,7 @@ class LoginMainAnalytics(private val analytics: Analytics) {
             "T" -> "Transportador"
             else -> "Motorista"
         }
-        trackEvent("${PresentationAnalytics.FRAG_PRESENTATION}_Logou_$perfil")
+        trackEvent("${LoginPresentationAnalytics.FRAG_PRESENTATION}_Logou_$perfil")
     }
 
     private fun trackEvent(eventName: String) {
