@@ -7,5 +7,48 @@
     <fragment
         android:id="@+id/profileMenuFragment"
         android:name="br.com.henriktech.lupeon.ui.profile.menu.ProfileMenuFragment"
-        android:label="ProfileMenuFragment" />
+        android:label="ProfileMenuFragment" >
+        <action
+            android:id="@+id/action_profileMenuFragment_to_profileAllowanceFragment"
+            app:destination="@id/profileAllowanceFragment" />
+        <action
+            android:id="@+id/action_profileMenuFragment_to_profileIndicatorsFragment"
+            app:destination="@id/profileIndicatorsFragment" />
+        <action
+            android:id="@+id/action_profileMenuFragment_to_profileInvoicesFragment"
+            app:destination="@id/profileInvoicesFragment" />
+        <action
+            android:id="@+id/action_profileMenuFragment_to_profileSimulationFragment"
+            app:destination="@id/profileSimulationFragment" />
+        <action
+            android:id="@+id/action_profileMenuFragment_to_profileTrackingFragment"
+            app:destination="@id/profileTrackingFragment" />
+        <action
+            android:id="@+id/action_profileMenuFragment_to_profileTokenFragment"
+            app:destination="@id/profileTokenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileAllowanceFragment"
+        android:name="br.com.henriktech.lupeon.ui.profile.allowance.ProfileAllowanceFragment"
+        android:label="ProfileAllowanceFragment" />
+    <fragment
+        android:id="@+id/profileIndicatorsFragment"
+        android:name="br.com.henriktech.lupeon.ui.profile.indicators.ProfileIndicatorsFragment"
+        android:label="ProfileIndicatorsFragment" />
+    <fragment
+        android:id="@+id/profileInvoicesFragment"
+        android:name="br.com.henriktech.lupeon.ui.profile.invoices.ProfileInvoicesFragment"
+        android:label="ProfileInvoicesFragment" />
+    <fragment
+        android:id="@+id/profileSimulationFragment"
+        android:name="br.com.henriktech.lupeon.ui.profile.simulation.ProfileSimulationFragment"
+        android:label="ProfileSimulationFragment" />
+    <fragment
+        android:id="@+id/profileTrackingFragment"
+        android:name="br.com.henriktech.lupeon.ui.profile.tracking.ProfileTrackingFragment"
+        android:label="ProfileTrackingFragment" />
+    <fragment
+        android:id="@+id/profileTokenFragment"
+        android:name="br.com.henriktech.lupeon.ui.profile.token.ProfileTokenFragment"
+        android:label="ProfileTokenFragment" />
 </navigation>

@@ -55,20 +55,12 @@ m
 =app/src/main/java/br/com/henriktech/lupeon/di/SplashModule.kt,c/8/c8635e2d90a2fef69fd6a19e9bcda31398db518c
 g
 7app/src/main/java/br/com/henriktech/lupeon/LupeonApp.kt,a/a/aa9d246861348bf757bf97ec19f771e0bf349bb7
-‰
-Yapp/src/main/java/br/com/henriktech/lupeon/ui/login/presentention/PresentationFragment.kt,4/9/49f75d4c2eaee230832bd51b48426384443f952d
-‰
-Yapp/src/main/java/br/com/henriktech/lupeon/ui/login/losspassword/LossPasswordAnalytics.kt,a/d/ada8c369aaec9af5bb0e2f9664bc7f8c62a614bb
 m
 =app/src/test/java/br/com/henriktech/lupeon/ExampleUnitTest.kt,d/7/d7952f4b54700a77420b124d58a6d9c9a3e27306
 |
 Lapp/src/androidTest/java/br/com/henriktech/lupeon/ExampleInstrumentedTest.kt,5/4/544ad33bb05a89b08e9743d5fe90177c4f82fee5
 y
 Iapp/src/main/java/br/com/henriktech/lupeon/data/service/AppInfoService.kt,2/0/20078985273509c77c752f2b4ffac017e6c0359e
-Š
-Zapp/src/main/java/br/com/henriktech/lupeon/ui/login/presentention/PresentationViewModel.kt,9/0/90cc27127c6b8d8d59e5e55de1f15ee96c6affb7
-t
-Dapp/src/main/java/br/com/henriktech/lupeon/ui/components/MenuView.kt,7/d/7d23fe9d6cba4b111be0587b337dbd8d6a8c870f
 l
 <api/src/main/java/br/com/henriktech/lupeon/api/ApiModules.kt,5/3/536d29c66ad31e91e79b680948a6ca14c84ac763
 y
@@ -79,5 +71,3 @@ x
 Hapi/src/main/java/br/com/henriktech/lupeon/api/network/BaseRepository.kt,3/e/3e129e59584d3e0d915e351d9a6ae12529b3f053
 x
 Hapi/src/main/java/br/com/henriktech/lupeon/api/repository/SecurityApi.kt,1/3/138ca3ac5d48f2e120867b09a878fd8598bb781d
-ˆ
-Xapp/src/main/java/br/com/henriktech/lupeon/ui/login/losspassword/LossPasswordFragment.kt,e/4/e4faafb01b21c0d2129f67dd763f2c078cd30d4e

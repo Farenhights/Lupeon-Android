@@ -10,10 +10,8 @@ import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.api.model.Menu
 
 
-class ProfileMenuAdapter(private val mDataList: ArrayList<Menu>) :
+class ProfileMenuAdapter(private val menuList: ArrayList<Menu>, private val itemClickListener: OnItemClickListener) :
     RecyclerView.Adapter<ProfileMenuAdapter.ProfileMenuViewHolder>() {
-
-    private var mOnClickListener: ListItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileMenuViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.view_menu, parent, false)
@@ -21,24 +19,14 @@ class ProfileMenuAdapter(private val mDataList: ArrayList<Menu>) :
     }
 
     override fun onBindViewHolder(holder: ProfileMenuViewHolder, position: Int) {
-        holder.apply {
-            labelMenuView.text = mDataList[position].option
-            imageMenuView.setImageResource(setIcon(mDataList[position].option))
-            visibility = setVisibity(mDataList[position].visible)
-        }
+       val menu = menuList[position]
+        holder.bind(menu, itemClickListener)
     }
 
     override fun getItemCount(): Int {
-        return mDataList.size
+        return menuList.size
     }
 
-    private fun setVisibity(boolean: Boolean): Int {
-        return if (boolean) {
-            View.VISIBLE
-        } else {
-            View.GONE
-        }
-    }
 
     private fun setIcon(option: String): Int {
         return when (option) {
@@ -46,22 +34,37 @@ class ProfileMenuAdapter(private val mDataList: ArrayList<Menu>) :
             "Simulacao" -> R.drawable.ic_simulacao
             "Tracking" -> R.drawable.ic_tracking
             "Faturas" -> R.drawable.ic_fatura
+            "Abono" -> R.drawable.ic_abono
             else -> R.drawable.ic_token
         }
     }
 
-    inner class ProfileMenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val labelMenuView: TextView = itemView.findViewById(R.id.labelMenuView)
-        val imageMenuView: ImageView = itemView.findViewById(R.id.imageMenuView)
-        var visibility = itemView.visibility
 
-        fun onClick(v: View?) {
-            val position = adapterPosition
-            mOnClickListener!!.onListItemClick(position)
+    inner class ProfileMenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val labelMenuView: TextView = itemView.findViewById(R.id.labelMenuView)
+        private val imageMenuView: ImageView = itemView.findViewById(R.id.imageMenuView)
+        private var visibility = itemView.visibility
+
+        fun bind(menu: Menu, clickListener: OnItemClickListener) {
+            labelMenuView.text = menu.option
+            imageMenuView.setImageResource(setIcon(menu.option))
+            visibility = setVisibity(menu.visible)
+
+            itemView.setOnClickListener {
+                clickListener.onItemClicked(menu)
+            }
+        }
+
+        private fun setVisibity(boolean: Boolean): Int {
+            return if (boolean) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
         }
     }
+}
 
-    interface ListItemClickListener {
-        fun onListItemClick(position: Int)
-    }
+interface OnItemClickListener {
+    fun onItemClicked(menu: Menu)
 }
