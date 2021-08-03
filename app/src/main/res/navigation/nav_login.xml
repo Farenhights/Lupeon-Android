@@ -26,5 +26,14 @@
         android:id="@+id/lossPasswordFragment"
         android:name="br.com.henriktech.lupeon.ui.login.losspassword.LoginLossPasswordFragment"
         android:label="fragment_losspassword"
-        tools:layout="@layout/fragment_losspassword" />
+        tools:layout="@layout/fragment_losspassword" >
+        <action
+            android:id="@+id/action_lossPasswordFragment_to_loginNewPasswordFragment"
+            app:destination="@id/loginNewPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginNewPasswordFragment"
+        android:name="br.com.henriktech.lupeon.ui.login.newpassword.LoginNewPasswordFragment"
+        android:label="fragment_newpassword"
+        tools:layout="@layout/fragment_newpassword" />
 </navigation>

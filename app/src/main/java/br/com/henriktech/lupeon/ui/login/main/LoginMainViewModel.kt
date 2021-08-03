@@ -15,15 +15,23 @@ class LoginMainViewModel(private val authenticationService: AuthenticationServic
         MutableLiveData<Login>()
     }
 
+    val  errorMessage: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
     fun validateLogin(user: String, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            when (val response = authenticationService.validateLogin(user, password)) {
-                is ApiResult.Success -> {
-                    login.postValue(response.data)
+            if (user.isNotEmpty() && password.isNotEmpty()) {
+                when (val response = authenticationService.validateLogin(user, password)) {
+                    is ApiResult.Success -> {
+                        login.postValue(response.data)
+                    }
+                    is ApiResult.Error -> {
+                        errorMessage.postValue(response.message)
+                    }
                 }
-                is ApiResult.Error -> {
-                    login.postValue(null)
-                }
+            } else {
+                errorMessage.postValue("Erro ao realizar login!")
             }
         }
     }

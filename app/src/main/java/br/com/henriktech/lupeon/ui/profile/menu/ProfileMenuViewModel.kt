@@ -8,7 +8,7 @@ import br.com.henriktech.lupeon.api.model.Menu
 
 class ProfileMenuViewModel : ViewModel() {
 
-    val nome: MutableLiveData<String> by lazy {
+    val name: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
 
@@ -16,12 +16,19 @@ class ProfileMenuViewModel : ViewModel() {
         MutableLiveData<List<Menu>>()
     }
 
-    val alertas: MutableLiveData<List<Alerta>> by lazy {
+    val alerts: MutableLiveData<List<Alerta>> by lazy {
         MutableLiveData<List<Alerta>>()
     }
 
     fun setLogin(login: Login) {
         menus.postValue(login.Menus)
-        alertas.postValue(login.Alertas)
+        alerts.postValue(login.Alertas)
+
+        when(login.TipoUsuario) {
+            "E" -> name.postValue("Embarcador")
+            "T" -> name.postValue("Transportador")
+            else -> name.postValue("Motorista")
+        }
+
     }
 }

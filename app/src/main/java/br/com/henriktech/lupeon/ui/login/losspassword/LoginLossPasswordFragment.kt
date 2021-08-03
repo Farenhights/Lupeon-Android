@@ -22,6 +22,11 @@ class LoginLossPasswordFragment : BaseFragment(R.layout.fragment_losspassword) {
             text = Html.fromHtml(getString(R.string.loss_my_password), 0)
         }
 
+        view.findViewById<TextView>(R.id.textLossPassword).apply {
+            text = Html.fromHtml(getString(R.string.text_loss_password), 0)
+        }
+
+
         view.findViewById<ImageView>(R.id.leftArrowView).apply {
             setOnClickListener {
                 analytics.clickBackButton()

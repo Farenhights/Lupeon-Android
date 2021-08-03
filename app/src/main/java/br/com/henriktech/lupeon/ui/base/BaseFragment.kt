@@ -35,7 +35,11 @@ open class BaseFragment(id: Int) : Fragment(id) {
         val bundle = Bundle()
         bundle.putParcelable(LOGIN, null)
         intent.putExtra(BUNDLE, bundle)
-        startActivity(intent)
         requireActivity().finish()
+        startActivity(intent)
     }
+}
+
+interface IOnBackPressed {
+    fun onBackPressed(): Boolean
 }

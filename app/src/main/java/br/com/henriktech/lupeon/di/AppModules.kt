@@ -11,7 +11,8 @@ object AppModules {
                 LoginMainModule.get(),
                 LossPasswordModule.get(),
                 DriverModule.get(),
-                ProfileMenuModule.get()
+                ProfileMenuModule.get(),
+                ProfileIndicatorsModule.get()
             )
         )
     }

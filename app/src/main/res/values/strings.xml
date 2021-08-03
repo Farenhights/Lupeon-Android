@@ -16,11 +16,13 @@
     <string name="back">Voltar</string>
     <string name="user">Usuário</string>
     <string name="password">Senha</string>
-    <string name="loss_password">esqueci a senha</string>
+    <string name="loss_password">Esqueci minha senha</string>
     <string name="loss_my_password"><![CDATA[Esqueci<br>minha senha]]></string>
     <string name="your_email">Digite seu email</string>
     <string name="my_code">Já possuo o código</string>
     <string name="send_email">Enviar e-mail</string>
-    <string name="text_loss_password">Para criar sua nova senha, enviaremos um novo código token para seu email.</string>
+    <string name="text_loss_password"><![CDATA[Para criar sua nova senha,<br> enviaremos um novo<br> código token para seu email.]]></string>
     <string name="logout">Logout</string>
+    <string name="indicators">Indicadores</string>
+    <string name="menu">Menu</string>
 </resources>

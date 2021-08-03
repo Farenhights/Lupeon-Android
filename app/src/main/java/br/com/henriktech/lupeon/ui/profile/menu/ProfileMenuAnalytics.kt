@@ -19,6 +19,14 @@ class ProfileMenuAnalytics(private val analytics: Analytics) {
         analytics.trackEvent(eventName)
     }
 
+    fun clickMenu(option: String) {
+        trackEvent("${FRAG_PRESENTATION}_Clique_Menu_$option")
+    }
+
+    fun clickAlert(titulo: String) {
+        trackEvent("${FRAG_PRESENTATION}_Clique_Alerta_$titulo")
+    }
+
     internal companion object {
         private const val SCREEN_NAME = "Profile"
         internal const val FRAG_PRESENTATION = "${SCREEN_NAME}_Menu"

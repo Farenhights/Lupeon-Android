@@ -10,7 +10,7 @@ import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.api.model.Menu
 
 
-class ProfileMenuAdapter(private val menuList: ArrayList<Menu>, private val itemClickListener: OnItemClickListener) :
+class ProfileMenuAdapter(private val menuList: ArrayList<Menu>, private val itemClickListener: OnMenuClickListener) :
     RecyclerView.Adapter<ProfileMenuAdapter.ProfileMenuViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileMenuViewHolder {
@@ -45,13 +45,13 @@ class ProfileMenuAdapter(private val menuList: ArrayList<Menu>, private val item
         private val imageMenuView: ImageView = itemView.findViewById(R.id.imageMenuView)
         private var visibility = itemView.visibility
 
-        fun bind(menu: Menu, clickListener: OnItemClickListener) {
+        fun bind(menu: Menu, clickListener: OnMenuClickListener) {
             labelMenuView.text = menu.option
             imageMenuView.setImageResource(setIcon(menu.option))
             visibility = setVisibity(menu.visible)
 
             itemView.setOnClickListener {
-                clickListener.onItemClicked(menu)
+                clickListener.onMenuClicked(menu)
             }
         }
 
@@ -65,6 +65,6 @@ class ProfileMenuAdapter(private val menuList: ArrayList<Menu>, private val item
     }
 }
 
-interface OnItemClickListener {
-    fun onItemClicked(menu: Menu)
+interface OnMenuClickListener {
+    fun onMenuClicked(menu: Menu)
 }
