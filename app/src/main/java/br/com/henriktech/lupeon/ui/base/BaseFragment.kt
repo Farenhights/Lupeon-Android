@@ -39,7 +39,3 @@ open class BaseFragment(id: Int) : Fragment(id) {
         startActivity(intent)
     }
 }
-
-interface IOnBackPressed {
-    fun onBackPressed(): Boolean
-}

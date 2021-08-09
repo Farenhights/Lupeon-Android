@@ -11,12 +11,12 @@ import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.api.model.Alerta
 import br.com.henriktech.lupeon.api.model.Menu
 import br.com.henriktech.lupeon.ui.base.BaseFragment
-import br.com.henriktech.lupeon.ui.base.IOnBackPressed
+import br.com.henriktech.lupeon.ui.profile.IOnBackPressed
 import org.koin.android.ext.android.inject
 
 
-class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), OnMenuClickListener,
-    IOnBackPressed, ProfileAlertAdapter.OnAlertClickListener {
+class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPressed,
+    ProfileAlertAdapter.OnAlertClickListener, ProfileMenuAdapter.OnMenuClickListener {
 
     private val analytics: ProfileMenuAnalytics by inject()
     private val viewModel: ProfileMenuViewModel by inject()
@@ -42,13 +42,8 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), OnMenuClick
         }
     }
 
-    override fun onAlertClicked(alerta: Alerta) {
-        analytics.clickAlert(alerta.titulo)
-    }
-
-    override fun onBackPressed(): Boolean {
-        logoutApplication()
-        return true
+    override fun onAlertClicked(alert: Alerta) {
+        analytics.clickAlert(alert.titulo)
     }
 
     private fun startView(view: View) {
@@ -70,6 +65,8 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), OnMenuClick
 
         viewModel.alerts.observe(viewLifecycleOwner, { alerts ->
             val recycleAlert: RecyclerView = view.findViewById(R.id.recycleAlertView)
+            val numberOfColumns = 1
+            recycleAlert.layoutManager = GridLayoutManager(context, numberOfColumns)
             val adapter = ProfileAlertAdapter(alerts as ArrayList<Alerta>, this)
             recycleAlert.adapter = adapter
         })
@@ -79,5 +76,9 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), OnMenuClick
         })
 
         viewModel.setLogin(getLoginActive())
+    }
+
+    override fun onBackPressed(): Boolean {
+        return true
     }
 }

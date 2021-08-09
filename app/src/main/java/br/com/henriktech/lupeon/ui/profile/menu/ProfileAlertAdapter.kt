@@ -8,15 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.api.model.Alerta
 
-class ProfileAlertAdapter(private val alertList: ArrayList<Alerta>, private val itemClickListener: ProfileMenuFragment) :
+class ProfileAlertAdapter(private val alertList: ArrayList<Alerta>, private val itemClickListener: OnAlertClickListener) :
     RecyclerView.Adapter<ProfileAlertAdapter.ProfileAlertViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileAlertAdapter.ProfileAlertViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileAlertViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.view_alert, parent, false)
         return ProfileAlertViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ProfileAlertAdapter.ProfileAlertViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProfileAlertViewHolder, position: Int) {
         val alert = alertList[position]
         holder.bind(alert, itemClickListener)
     }

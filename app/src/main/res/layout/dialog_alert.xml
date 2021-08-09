@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/back_rectangle">
+
+    <ImageView
+        android:id="@+id/imageCloseDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/textDialogContent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textDialogTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_close" />
+
+    <TextView
+        android:id="@+id/textDialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="28dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/textDialogContent"
+        app:layout_constraintEnd_toStartOf="@+id/imageCloseDialog"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textDialogContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis accumsan diam sed facilisis mattis. Vivamus vel sem eget libero maximus rutrum. Ut erat eros, rutrum non diam id, maximus auctor elit. Praesent sed porttitor augue. Curabitur porta ornare mattis. Donec felis neque, ultrices quis nulla quis, iaculis aliquet mauris."
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDialogTitle" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="40dp"
+        android:text="VEJA MAIS EM WWW.LUPEON.COM.BR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDialogContent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

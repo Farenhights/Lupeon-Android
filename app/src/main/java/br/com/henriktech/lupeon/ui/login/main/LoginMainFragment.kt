@@ -53,6 +53,11 @@ class LoginMainFragment : BaseFragment(R.layout.fragment_login) {
         startViewModel()
     }
 
+    override fun onStart() {
+        super.onStart()
+        loginProgressBar.visibility = View.GONE
+    }
+
     private fun startViewModel() {
         viewModelLogin.login.observe(viewLifecycleOwner, Observer { login ->
             if (login?.TipoUsuario != null) {

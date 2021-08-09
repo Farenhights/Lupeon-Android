@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.api.model.Menu
 
-
 class ProfileMenuAdapter(private val menuList: ArrayList<Menu>, private val itemClickListener: OnMenuClickListener) :
     RecyclerView.Adapter<ProfileMenuAdapter.ProfileMenuViewHolder>() {
 
@@ -39,7 +38,6 @@ class ProfileMenuAdapter(private val menuList: ArrayList<Menu>, private val item
         }
     }
 
-
     inner class ProfileMenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val labelMenuView: TextView = itemView.findViewById(R.id.labelMenuView)
         private val imageMenuView: ImageView = itemView.findViewById(R.id.imageMenuView)
@@ -63,8 +61,7 @@ class ProfileMenuAdapter(private val menuList: ArrayList<Menu>, private val item
             }
         }
     }
-}
-
-interface OnMenuClickListener {
-    fun onMenuClicked(menu: Menu)
+    interface OnMenuClickListener {
+        fun onMenuClicked(menu: Menu)
+    }
 }
