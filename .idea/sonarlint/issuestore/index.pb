@@ -108,12 +108,6 @@ P
  app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
 X
 (gradle/wrapper/gradle-wrapper.properties,f/b/fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
-F
-analytics/build.gradle,4/0/40fb601278b3828f97c131a8f7dc7bb0fe01fbf9
-@
-app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
-<
-build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
 ?
 settings.gradle,0/5/05efc8b1657769a27696d478ded1e95f38737233
 A
@@ -156,8 +150,6 @@ Aapi/src/test/java/br/com/henriktech/lupeon/api/ExampleUnitTest.kt,e/e/ee02185b
 Papi/src/androidTest/java/br/com/henriktech/lupeon/api/ExampleInstrumentedTest.kt,7/d/7db79cfabeb19f3cfa1783565c9bb4cf1b6babf9
 >
 app/.gitignore,5/1/51e1c5d383dfaa35e0e7e5873a0a99355a86880f
-F
-app/proguard-rules.pro,9/e/9e08934d811afe28fbc77aaa3c0d747b94348db9
 [
 +app/src/main/res/layout/activity_driver.xml,d/4/d4569f93870cc5e16d1cccff879609494b0bccac
 a
@@ -218,8 +210,6 @@ k
 ;app/src/main/java/br/com/henriktech/lupeon/di/AppModules.kt,b/9/b99099aac35584c7ff29dc4b0a41c07fb34a67ce
 @
 api/build.gradle,9/a/9a557c682b145d376083b076557250a7b23bead3
-n
->api/src/main/java/br/com/henriktech/lupeon/api/model/Alerta.kt,a/c/ac3843f000ecd69952262480bfb50ec45c361814
 m
 =api/src/main/java/br/com/henriktech/lupeon/api/model/Login.kt,3/9/39f0428c981673daf50b58db6df28add311475a0
 ‚
@@ -238,3 +228,11 @@ Papp/src/main/java/br/com/henriktech/lupeon/ui/profile/menu/ProfileMenuAdapter.k
 Qapp/src/main/java/br/com/henriktech/lupeon/ui/profile/menu/ProfileAlertAdapter.kt,9/1/91a5926355856ce517e6e69e382231cd2b27977b
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+
+]app/src/main/java/br/com/henriktech/lupeon/ui/profile/indicators/ProfileIndicatorsFragment.kt,1\4\146122ba44fa2dcfeb2c73734124d8a524da70e3
+
+Qapp/src/main/java/br/com/henriktech/lupeon/ui/profile/menu/ProfileMenuFragment.kt,c\8\c8da69cc6add2a004087e1402bea365475b569ff
+r
+Bapp/src/main/java/br/com/henriktech/lupeon/ui/base/BaseFragment.kt,7\2\720bc4b12dc8cd306bfe25825affdba50cc70882
+n
+>api/src/main/java/br/com/henriktech/lupeon/api/model/Alerta.kt,a\c\ac3843f000ecd69952262480bfb50ec45c361814
