@@ -76,8 +76,6 @@ Lapp/src/androidTest/java/br/com/henriktech/lupeon/ExampleInstrumentedTest.kt,5
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
 ;
 gradlew.bat,2/a/2a45a911a8f1836b0b6c5b758962572012d8f8c3
-9
-	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 ]
 -app/src/main/res/layout/fragment_tracking.xml,1/4/141c3978f0ff6dacd2f91a6a1445f6dbd91a956a
 ç
@@ -94,8 +92,6 @@ Z
 *app/src/main/res/layout/fragment_token.xml,2/4/2462e3b43f07e51e5e727c64da508096de73918b
 É
 Sapp/src/main/java/br/com/henriktech/lupeon/ui/profile/token/ProfileTokenFragment.kt,9/6/960880853bf847e915a65417ee74cfd4b61c49dc
-_
-/app/src/main/res/layout/fragment_simulation.xml,4/7/47e9c190ce0363da1fe750692bf2a3611d56b033
 é
 ^app/src/main/java/br/com/henriktech/lupeon/ui/login/presentention/LoginPresentationFragment.kt,e/d/edf3eea3bf667d99a3b62661459d32f6a0200c10
 è
@@ -232,17 +228,13 @@ Rapp/src/main/java/br/com/henriktech/lupeon/ui/profile/menu/ProfileMenuViewModel
 Rapp/src/main/java/br/com/henriktech/lupeon/ui/profile/menu/ProfileMenuAnalytics.kt,5/b/5b486b455d0b468172c64ba93aff0f07858cc243
 é
 ^app/src/main/java/br/com/henriktech/lupeon/ui/profile/indicators/ProfileIndicatorsAnalytics.kt,4/3/43585ea73fa76068a8f5870a85d62977f08c7a87
-ç
-]app/src/main/java/br/com/henriktech/lupeon/ui/profile/indicators/ProfileIndicatorsFragment.kt,1/4/146122ba44fa2dcfeb2c73734124d8a524da70e3
 }
 Mapp/src/main/java/br/com/henriktech/lupeon/ui/login/main/LoginMainFragment.kt,4/5/45b88805da63828f0e62d5d17a23c420b81a8d05
 x
 Happ/src/main/java/br/com/henriktech/lupeon/ui/profile/ProfileActivity.kt,5/5/5537730a16e8e8236126a1010e6013190316c31f
-r
-Bapp/src/main/java/br/com/henriktech/lupeon/ui/base/BaseFragment.kt,7/2/720bc4b12dc8cd306bfe25825affdba50cc70882
-Å
-Qapp/src/main/java/br/com/henriktech/lupeon/ui/profile/menu/ProfileMenuFragment.kt,c/8/c8da69cc6add2a004087e1402bea365475b569ff
 Ä
 Papp/src/main/java/br/com/henriktech/lupeon/ui/profile/menu/ProfileMenuAdapter.kt,d/9/d94a70045fef842be3f7b54856b71a5026d455fb
 Å
 Qapp/src/main/java/br/com/henriktech/lupeon/ui/profile/menu/ProfileAlertAdapter.kt,9/1/91a5926355856ce517e6e69e382231cd2b27977b
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

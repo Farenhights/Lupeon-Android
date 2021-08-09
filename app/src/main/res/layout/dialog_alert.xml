@@ -48,14 +48,14 @@
         android:fontFamily="@font/montserrat_regular"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis accumsan diam sed facilisis mattis. Vivamus vel sem eget libero maximus rutrum. Ut erat eros, rutrum non diam id, maximus auctor elit. Praesent sed porttitor augue. Curabitur porta ornare mattis. Donec felis neque, ultrices quis nulla quis, iaculis aliquet mauris."
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintBottom_toTopOf="@+id/textDialogLink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textDialogTitle" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textDialogLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"

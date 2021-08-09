@@ -1,7 +1,11 @@
 package br.com.henriktech.lupeon.ui.profile.menu
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.View
+import android.view.Window
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
@@ -20,6 +24,8 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
 
     private val analytics: ProfileMenuAnalytics by inject()
     private val viewModel: ProfileMenuViewModel by inject()
+
+    private lateinit var webView: WebView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,6 +50,7 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
 
     override fun onAlertClicked(alert: Alerta) {
         analytics.clickAlert(alert.titulo)
+        showAlertDialog(alert)
     }
 
     private fun startView(view: View) {
@@ -76,6 +83,36 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
         })
 
         viewModel.setLogin(getLoginActive())
+    }
+
+    private fun showAlertDialog(alerta: Alerta) {
+        val dialog = Dialog(requireActivity())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.dialog_alert)
+
+        val title = dialog.findViewById(R.id.textDialogTitle) as TextView
+        title.text = alerta.titulo
+
+        val close = dialog.findViewById(R.id.imageCloseDialog) as ImageView
+        close.setOnClickListener { dialog.dismiss() }
+
+        val body = dialog.findViewById(R.id.textDialogContent) as TextView
+        body.text = alerta.texto
+
+        val link = dialog.findViewById(R.id.textDialogLink) as TextView
+        link.text = alerta.link
+        link.setOnClickListener {
+            webView.webViewClient = object : WebViewClient() {
+                override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                    view?.loadUrl(alerta.link)
+                    return true
+                }
+            }
+            webView.loadUrl(alerta.link)
+        }
+        dialog.show()
+
     }
 
     override fun onBackPressed(): Boolean {
