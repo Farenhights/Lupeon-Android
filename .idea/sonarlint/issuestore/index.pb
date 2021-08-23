@@ -222,16 +222,10 @@ Rapp/src/main/java/br/com/henriktech/lupeon/ui/profile/menu/ProfileMenuAnalytics
 Mapp/src/main/java/br/com/henriktech/lupeon/ui/login/main/LoginMainFragment.kt,4/5/45b88805da63828f0e62d5d17a23c420b81a8d05
 x
 Happ/src/main/java/br/com/henriktech/lupeon/ui/profile/ProfileActivity.kt,5/5/5537730a16e8e8236126a1010e6013190316c31f
-Ä
-Papp/src/main/java/br/com/henriktech/lupeon/ui/profile/menu/ProfileMenuAdapter.kt,d/9/d94a70045fef842be3f7b54856b71a5026d455fb
-Å
-Qapp/src/main/java/br/com/henriktech/lupeon/ui/profile/menu/ProfileAlertAdapter.kt,9/1/91a5926355856ce517e6e69e382231cd2b27977b
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 ç
 ]app/src/main/java/br/com/henriktech/lupeon/ui/profile/indicators/ProfileIndicatorsFragment.kt,1\4\146122ba44fa2dcfeb2c73734124d8a524da70e3
-Å
-Qapp/src/main/java/br/com/henriktech/lupeon/ui/profile/menu/ProfileMenuFragment.kt,c\8\c8da69cc6add2a004087e1402bea365475b569ff
 r
 Bapp/src/main/java/br/com/henriktech/lupeon/ui/base/BaseFragment.kt,7\2\720bc4b12dc8cd306bfe25825affdba50cc70882
 n

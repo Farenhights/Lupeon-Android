@@ -112,10 +112,10 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
             webView.loadUrl(alerta.link)
         }
         dialog.show()
-
     }
 
     override fun onBackPressed(): Boolean {
-        return true
+        loginApplication(getLoginActive())
+        return false
     }
 }

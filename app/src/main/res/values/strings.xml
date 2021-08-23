@@ -25,4 +25,5 @@
     <string name="logout">Logout</string>
     <string name="indicators">Indicadores</string>
     <string name="menu">Menu</string>
+    <string name="simulation">Simulaçao</string>
 </resources>

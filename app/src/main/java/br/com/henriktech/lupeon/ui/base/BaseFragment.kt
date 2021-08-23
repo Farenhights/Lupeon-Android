@@ -1,16 +1,8 @@
 package br.com.henriktech.lupeon.ui.base
 
-import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.view.Window
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import br.com.henriktech.lupeon.R
-import br.com.henriktech.lupeon.api.model.Alerta
 import br.com.henriktech.lupeon.api.model.Login
 import br.com.henriktech.lupeon.ui.driver.DriverActivity
 import br.com.henriktech.lupeon.ui.login.LoginActivity
@@ -43,7 +35,7 @@ open class BaseFragment(id: Int) : Fragment(id) {
         val bundle = Bundle()
         bundle.putParcelable(LOGIN, null)
         intent.putExtra(BUNDLE, bundle)
-        requireActivity().finish()
         startActivity(intent)
+        requireActivity().finish()
     }
 }
