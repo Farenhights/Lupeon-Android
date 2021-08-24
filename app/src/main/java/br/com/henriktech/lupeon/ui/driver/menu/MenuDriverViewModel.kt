@@ -1,4 +1,6 @@
 package br.com.henriktech.lupeon.ui.driver.menu
 
-class MenuDriverViewModel {
+import androidx.lifecycle.ViewModel
+
+class MenuDriverViewModel: ViewModel() {
 }

@@ -1,4 +1,5 @@
 package br.com.henriktech.lupeon.ui.login.newpassword
 
-class LoginNewPasswodViewModel {
-}
+import androidx.lifecycle.ViewModel
+
+class LoginNewPasswodViewModel: ViewModel()

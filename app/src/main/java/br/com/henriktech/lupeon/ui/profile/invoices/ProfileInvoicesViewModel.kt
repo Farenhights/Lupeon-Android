@@ -1,4 +1,5 @@
 package br.com.henriktech.lupeon.ui.profile.invoices
 
-class ProfileInvoicesViewModel {
-}
+import androidx.lifecycle.ViewModel
+
+class ProfileInvoicesViewModel: ViewModel()

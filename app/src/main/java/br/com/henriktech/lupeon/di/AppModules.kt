@@ -7,9 +7,10 @@ object AppModules {
         loadKoinModules(
             listOf(
                 SplashModule.get(),
-                PresentationModule.get(),
+                LoginPresentationModule.get(),
                 LoginMainModule.get(),
-                LossPasswordModule.get(),
+                LoginLossPasswordModule.get(),
+                LoginNewPasswordModule.get(),
                 DriverModule.get(),
                 ProfileMenuModule.get(),
                 ProfileIndicatorsModule.get()

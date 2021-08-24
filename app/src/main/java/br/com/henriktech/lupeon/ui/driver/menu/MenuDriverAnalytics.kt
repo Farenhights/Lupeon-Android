@@ -1,4 +1,6 @@
 package br.com.henriktech.lupeon.ui.driver.menu
 
-class MenuDriverAnalytics {
+import br.com.henriktech.lupeon.analytics.Analytics
+
+class MenuDriverAnalytics(private val analytics: Analytics) {
 }

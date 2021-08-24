@@ -1,4 +1,5 @@
 package br.com.henriktech.lupeon.ui.profile.invoices
 
-class ProfileInvoicesAnalytics {
-}
+import br.com.henriktech.lupeon.analytics.Analytics
+
+class ProfileInvoicesAnalytics(private val analytics: Analytics)

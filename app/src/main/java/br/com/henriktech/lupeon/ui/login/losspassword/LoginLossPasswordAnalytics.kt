@@ -23,7 +23,7 @@ class LoginLossPasswordAnalytics(private val analytics: Analytics) {
 
     private companion object {
         private const val SCREEN_NAME = "Login"
-        internal const val FRAG_NAME = "${SCREEN_NAME}_LossPassword"
+        const val FRAG_NAME = "${SCREEN_NAME}_LossPassword"
         private const val EVENT_NAME = "${FRAG_NAME}_Tela_aberta"
     }
 }

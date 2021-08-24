@@ -1,5 +1,6 @@
 package br.com.henriktech.lupeon.ui.login.main
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,27 +12,26 @@ import kotlinx.coroutines.launch
 
 class LoginMainViewModel(private val authenticationService: AuthenticationService) : ViewModel() {
 
-    val login: MutableLiveData<Login> by lazy {
-        MutableLiveData<Login>()
-    }
+    private val _login = MutableLiveData<Login>()
+    val login: LiveData<Login> get() = _login
 
-    val  errorMessage: MutableLiveData<String> by lazy {
-        MutableLiveData<String>()
-    }
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage: LiveData<String> get() = _errorMessage
+
 
     fun validateLogin(user: String, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
             if (user.isNotEmpty() && password.isNotEmpty()) {
                 when (val response = authenticationService.validateLogin(user, password)) {
                     is ApiResult.Success -> {
-                        login.postValue(response.data)
+                        _login.postValue(response.data!!)
                     }
                     is ApiResult.Error -> {
-                        errorMessage.postValue(response.message)
+                        _errorMessage.postValue(response.message)
                     }
                 }
             } else {
-                errorMessage.postValue("Erro ao realizar login!")
+                _errorMessage.postValue("Erro ao realizar login!")
             }
         }
     }
