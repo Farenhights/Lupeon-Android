@@ -11,19 +11,23 @@ buildscript {
 
         kotlin_version = '1.5.21'
         corektx_version = '1.6.0'
+        lifecycle_version = '2.3.1'
         appcompat_version = '1.3.1'
         nav_version = '2.3.5'
         coroutines_version = '1.5.1'
         retrofit_version = '2.9.0'
         koin_version = '3.1.2'
         timber_version = '5.0.1'
+
+        realm_version = '10.7.0'
     }
     repositories {
         google()
-        mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.1'
+        classpath "io.realm:realm-gradle-plugin:$realm_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }

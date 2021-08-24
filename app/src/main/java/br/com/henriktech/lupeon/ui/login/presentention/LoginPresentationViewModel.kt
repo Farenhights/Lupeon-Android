@@ -1,21 +1,21 @@
 package br.com.henriktech.lupeon.ui.login.presentention
 
+import android.text.Html
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import br.com.henriktech.lupeon.data.service.AppInfoService
 
 class LoginPresentationViewModel(private val service: AppInfoService) : ViewModel() {
 
-    val versionLiveData: MutableLiveData<String> by lazy {
-        MutableLiveData<String>()
-    }
+    private val _version = MutableLiveData<String>()
+    val version: LiveData<String> get() = _version
 
-    val contactsLiveData: MutableLiveData<String> by lazy {
-        MutableLiveData<String>()
-    }
+    private val _contacts = MutableLiveData<String>()
+    val contacts: LiveData<String> get() = _contacts
 
     fun getInformations() {
-        versionLiveData.postValue(service.getVersion())
-        contactsLiveData.postValue(service.getContacts())
+        _version.postValue(service.getVersion())
+        _contacts.postValue(Html.fromHtml(service.getContacts(), 0).toString())
     }
 }

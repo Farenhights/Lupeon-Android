@@ -2,3 +2,4 @@ rootProject.name = "Lupeon"
 include ':app'
 include ':analytics'
 include ':api'
+include ':database'

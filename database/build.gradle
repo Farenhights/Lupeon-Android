@@ -1,32 +1,28 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
 }
+
 android {
     compileSdkVersion compile_version
     buildToolsVersion build_version
+
+    buildFeatures {
+        dataBinding true
+    }
+
 }
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.core:core-ktx:$corektx_version"
     implementation "com.jakewharton.timber:timber:$timber_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
 
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
 
     // Koin main features for Android (Scope,ViewModel ...)
     implementation "io.insert-koin:koin-android:$koin_version"
-
-    // Retrofit
-    def retrofit_version = '2.9.0'
-    def okhttp_version = '5.0.0-alpha.2'
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
-    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
-    implementation 'com.google.code.gson:gson:2.8.8'
-
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
 }
