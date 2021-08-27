@@ -7,11 +7,12 @@ import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.databinding.FragmentPresentationBinding
 import br.com.henriktech.lupeon.ui.base.BaseFragment
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginPresentationFragment : BaseFragment(R.layout.fragment_presentation) {
 
     private val analytics: LoginPresentationAnalytics by inject()
-    private val viewModel: LoginPresentationViewModel by inject()
+    private val viewModel: LoginPresentationViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

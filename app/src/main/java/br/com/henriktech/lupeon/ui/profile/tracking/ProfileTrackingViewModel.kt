@@ -1,4 +1,5 @@
 package br.com.henriktech.lupeon.ui.profile.tracking
 
-class ProfileTrackingViewModel {
-}
+import androidx.lifecycle.ViewModel
+
+class ProfileTrackingViewModel : ViewModel()

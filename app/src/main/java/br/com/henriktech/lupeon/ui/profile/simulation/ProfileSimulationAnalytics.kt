@@ -1,4 +1,5 @@
 package br.com.henriktech.lupeon.ui.profile.simulation
 
-class ProfileSimulationAnalytics {
-}
+import br.com.henriktech.lupeon.analytics.Analytics
+
+class ProfileSimulationAnalytics(private val analytics: Analytics)

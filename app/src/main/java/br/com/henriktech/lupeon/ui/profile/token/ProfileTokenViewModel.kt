@@ -1,4 +1,5 @@
 package br.com.henriktech.lupeon.ui.profile.token
 
-class ProfileTokenViewModel {
-}
+import androidx.lifecycle.ViewModel
+
+class ProfileTokenViewModel: ViewModel()

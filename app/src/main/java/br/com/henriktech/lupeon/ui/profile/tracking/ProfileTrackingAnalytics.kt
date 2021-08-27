@@ -1,4 +1,5 @@
 package br.com.henriktech.lupeon.ui.profile.tracking
 
-class ProfileTrackingAnalytics {
-}
+import br.com.henriktech.lupeon.analytics.Analytics
+
+class ProfileTrackingAnalytics(private val analytics: Analytics)
