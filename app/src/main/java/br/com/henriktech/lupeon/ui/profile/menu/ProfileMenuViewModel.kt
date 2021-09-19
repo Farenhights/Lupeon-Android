@@ -2,6 +2,9 @@ package br.com.henriktech.lupeon.ui.profile.menu
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import br.com.henriktech.lupeon.api.model.Alerta
+import br.com.henriktech.lupeon.api.model.Login
+import br.com.henriktech.lupeon.api.model.Menu
 
 class ProfileMenuViewModel : ViewModel() {
 
@@ -18,14 +21,8 @@ class ProfileMenuViewModel : ViewModel() {
     }
 
     fun setLogin(login: Login) {
-        menus.postValue(login.Menus)
-        alerts.postValue(login.Alertas)
-
-        when(login.TipoUsuario) {
-            "E" -> name.postValue("Embarcador")
-            "T" -> name.postValue("Transportador")
-            else -> name.postValue("Motorista")
-        }
-
+        menus.postValue(login.menus)
+        alerts.postValue(login.alertas)
+        name.postValue(login.nome)
     }
 }

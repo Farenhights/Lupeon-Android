@@ -3,6 +3,7 @@ package br.com.henriktech.lupeon.ui.base
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import br.com.henriktech.lupeon.api.model.Login
 import br.com.henriktech.lupeon.ui.driver.DriverActivity
 import br.com.henriktech.lupeon.ui.login.LoginActivity
 import br.com.henriktech.lupeon.ui.profile.ProfileActivity
@@ -14,7 +15,7 @@ open class BaseFragment(id: Int) : Fragment(id) {
 
     fun loginApplication(login: Login) {
         val intent =
-            when (login.TipoUsuario) {
+            when (login.tipoUsuario) {
                 "M" -> Intent(context, DriverActivity::class.java)
                 else -> Intent(context, ProfileActivity::class.java)
             }
@@ -26,7 +27,7 @@ open class BaseFragment(id: Int) : Fragment(id) {
 
     fun getLoginActive(): Login {
         val bundle = requireActivity().intent.getBundleExtra(BUNDLE)
-        return bundle!!.getParcelable<Login>(LOGIN)!!
+        return bundle!!.getParcelable(LOGIN)!!
     }
 
     fun logoutApplication() {
