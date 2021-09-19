@@ -12,8 +12,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
-import br.com.henriktech.lupeon.api.model.Alerta
-import br.com.henriktech.lupeon.api.model.Menu
 import br.com.henriktech.lupeon.ui.base.BaseFragment
 import br.com.henriktech.lupeon.ui.profile.IOnBackPressed
 import org.koin.android.ext.android.inject

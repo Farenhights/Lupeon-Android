@@ -2,9 +2,6 @@ package br.com.henriktech.lupeon.ui.profile.menu
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import br.com.henriktech.lupeon.api.model.Alerta
-import br.com.henriktech.lupeon.api.model.Login
-import br.com.henriktech.lupeon.api.model.Menu
 
 class ProfileMenuViewModel : ViewModel() {
 

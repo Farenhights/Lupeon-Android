@@ -7,4 +7,4 @@ import kotlinx.parcelize.Parcelize
 data class Menu(
     val option: String,
     val visible: Boolean
-): Parcelable
+) : Parcelable

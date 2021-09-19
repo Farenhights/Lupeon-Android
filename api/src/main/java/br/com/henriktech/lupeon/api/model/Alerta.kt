@@ -9,4 +9,4 @@ data class Alerta(
     val link: String,
     val texto: String,
     val titulo: String
-): Parcelable
+) : Parcelable
