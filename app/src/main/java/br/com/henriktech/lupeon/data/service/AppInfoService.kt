@@ -1,6 +1,8 @@
 package br.com.henriktech.lupeon.data.service
 
-import br.com.henriktech.lupeon.BuildConfig
+import androidx.multidex.BuildConfig.VERSION_NAME
+import org.koin.android.BuildConfig
+
 
 open class AppInfoService {
 
