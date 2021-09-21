@@ -1,6 +1,7 @@
 package br.com.henriktech.lupeon.data.service
 
-import br.com.henriktech.lupeon.api.data.repository.SecurityRepository
+import br.com.henriktech.lupeon.api.repository.SecurityRepository
+
 
 class AuthenticationService(private val securityRepository: SecurityRepository) {
 

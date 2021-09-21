@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
-import br.com.henriktech.lupeon.api.data.model.Alerta
+import br.com.henriktech.lupeon.api.model.Alerta
 
 class ProfileAlertAdapter(private val alertList: ArrayList<Alerta>, private val itemClickListener: OnAlertClickListener) :
     RecyclerView.Adapter<ProfileAlertAdapter.ProfileAlertViewHolder>() {

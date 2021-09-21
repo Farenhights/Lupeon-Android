@@ -12,8 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
-import br.com.henriktech.lupeon.api.data.model.Alerta
-import br.com.henriktech.lupeon.api.data.model.Menu
+import br.com.henriktech.lupeon.api.model.Alerta
+import br.com.henriktech.lupeon.api.model.Menu
 import br.com.henriktech.lupeon.ui.base.BaseFragment
 import br.com.henriktech.lupeon.ui.profile.IOnBackPressed
 import org.koin.android.ext.android.inject
@@ -82,8 +82,6 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
         viewModel.name.observe(viewLifecycleOwner, { name ->
             view.findViewById<TextView>(R.id.textNameProfileMenu).apply { text = "Olá, $name" }
         })
-
-        viewModel.setLogin(getLoginActive())
     }
 
     private fun showAlertDialog(alerta: Alerta) {
@@ -116,7 +114,6 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
     }
 
     override fun onBackPressed(): Boolean {
-        loginApplication(getLoginActive())
         return false
     }
 }

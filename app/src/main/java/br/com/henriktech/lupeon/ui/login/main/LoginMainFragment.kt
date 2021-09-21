@@ -38,7 +38,8 @@ class LoginMainFragment : BaseFragment(R.layout.fragment_login) {
             binding.loginProgressBar.visibility = View.VISIBLE
             viewModel.validateLogin(
                 binding.textUserLoginView.text.toString(),
-                binding.textPasswordLoginView.text.toString()
+                binding.textPasswordLoginView.text.toString(),
+                requireContext()
             )
         }
         startViewModel()
@@ -50,9 +51,9 @@ class LoginMainFragment : BaseFragment(R.layout.fragment_login) {
     }
 
     private fun startViewModel() {
-        viewModel.user.observe(viewLifecycleOwner, { login ->
-            analytics.typeLogin(login.tipoUsuario)
-            loginApplication(login)
+        viewModel.user.observe(viewLifecycleOwner, { user ->
+            analytics.typeLogin(user.userType)
+            loginApplication(user)
         })
 
         viewModel.errorMessage.observe(viewLifecycleOwner, {

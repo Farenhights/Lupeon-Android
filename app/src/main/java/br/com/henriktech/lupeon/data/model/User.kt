@@ -4,17 +4,17 @@ import br.com.henriktech.lupeon.api.model.Login
 import br.com.henriktech.lupeon.database.db.UserEntity
 
 data class User(
-    private val userId: Int,
-    private val accessToken: String,
-    private val companyId: String,
-    private val email: String,
-    private val expiresIn: Int,
-    private val login: String,
-    private val name: String,
-    private val userType: String,
-    private val tokenType: String,
-    private val nameManager: String,
-    private val contactsManager: String
+    val userId: Int,
+    val accessToken: String,
+    val companyId: String,
+    val email: String,
+    val expiresIn: Int,
+    val login: String,
+    val name: String,
+    val userType: String,
+    val tokenType: String,
+    val nameManager: String,
+    val contactsManager: String
 )
 
 fun Login.toUserEntity(): UserEntity {

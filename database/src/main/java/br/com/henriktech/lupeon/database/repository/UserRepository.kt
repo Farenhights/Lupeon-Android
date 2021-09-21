@@ -1,12 +1,11 @@
 package br.com.henriktech.lupeon.database.repository
 
-import br.com.henriktech.lupeon.api.model.Login
-import br.com.henriktech.lupeon.data.model.User
+import br.com.henriktech.lupeon.database.db.UserEntity
 
 interface UserRepository {
 
-    fun createUser(login: Login)
+    fun createUser(userEntity: UserEntity)
 
-    fun getUser(userId: Int): User
+    fun getUser(userId: Int): UserEntity
 
 }

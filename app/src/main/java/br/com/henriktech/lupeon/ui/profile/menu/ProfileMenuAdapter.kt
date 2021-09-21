@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
-import br.com.henriktech.lupeon.api.data.model.Menu
+import br.com.henriktech.lupeon.api.model.Menu
 
 class ProfileMenuAdapter(private val menuList: ArrayList<Menu>, private val itemClickListener: OnMenuClickListener) :
     RecyclerView.Adapter<ProfileMenuAdapter.ProfileMenuViewHolder>() {
