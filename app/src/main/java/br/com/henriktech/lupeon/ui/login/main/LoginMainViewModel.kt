@@ -42,7 +42,8 @@ class LoginMainViewModel(
     }
 
     private fun saveUser(login: Login, context: Context) {
-        val userRepository = UserDbDataSource(context)
+        val database = AppDataBase.getDatabase(context)
+        val userRepository = UserDbDataSource(database)
         userRepository.createUser(login.toUserEntity())
         _user.postValue(userRepository.getUser(login.usuarioId).toUser())
     }
