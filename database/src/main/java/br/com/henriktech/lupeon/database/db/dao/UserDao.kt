@@ -10,9 +10,9 @@ import br.com.henriktech.lupeon.database.db.UserEntity
 interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun save(userEntity: UserEntity)
+    suspend fun save(userEntity: UserEntity)
 
     @Query("SELECT * FROM user WHERE userId = :userId")
-    fun getUser(userId: Int): UserEntity
+    suspend fun getUser(userId: Int): UserEntity
 
 }

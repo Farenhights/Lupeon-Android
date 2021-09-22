@@ -4,7 +4,7 @@ import br.com.henriktech.lupeon.database.db.MenuEntity
 
 interface MenuRepository {
 
-    fun createMenu(menuEntity: MenuEntity)
+    suspend fun createMenu(menuEntity: MenuEntity)
 
-    fun deleteAll()
+    suspend fun deleteAll()
 }

@@ -8,11 +8,11 @@ import br.com.henriktech.lupeon.database.db.dao.AlertDao
 import br.com.henriktech.lupeon.database.db.dao.MenuDao
 import br.com.henriktech.lupeon.database.db.dao.UserDao
 
-@Database(version = 1, entities = [
+@Database(entities = [
     UserEntity::class,
     AlertEntity::class,
     MenuEntity::class
-])
+], version = 1, exportSchema = false)
 abstract class AppDataBase : RoomDatabase() {
 
     abstract fun userDao(): UserDao

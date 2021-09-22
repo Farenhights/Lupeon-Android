@@ -5,8 +5,8 @@ import br.com.henriktech.lupeon.database.db.AppDataBase
 
 class AlertDbDataSource(private val database: AppDataBase) : AlertRepository {
 
-    override fun deleteAll() = database.alertDao().deleteAll()
+    override suspend fun deleteAll() = database.alertDao().deleteAll()
 
-    override fun createAlert(alertEntity: AlertEntity) = database.alertDao().save(alertEntity)
+    override suspend fun createAlert(alertEntity: AlertEntity) = database.alertDao().save(alertEntity)
 
 }

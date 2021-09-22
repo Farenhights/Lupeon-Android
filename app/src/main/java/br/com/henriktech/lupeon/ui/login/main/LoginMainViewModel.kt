@@ -44,22 +44,26 @@ class LoginMainViewModel(
     }
 
     private fun saveUser(login: Login, context: Context) {
-        val database = AppDataBase.getDatabase(context)
 
-        val userRepository = UserDbDataSource(database)
-        userRepository.createUser(login.toUserEntity())
+        viewModelScope.launch {
+            val database = AppDataBase.getDatabase(context)
 
-        val menuRepository = MenuDbDataSource(database)
-        menuRepository.deleteAll()
-        login.menus.forEach {
-            menuRepository.createMenu(it.toMenuEntity(login.usuarioId))
+            val userRepository = UserDbDataSource(database)
+            userRepository.createUser(login.toUserEntity())
+
+            val menuRepository = MenuDbDataSource(database)
+            menuRepository.deleteAll()
+            login.menus.forEach {
+                menuRepository.createMenu(it.toMenuEntity(login.usuarioId))
+            }
+            val alertRepository = AlertDbDataSource(database)
+            alertRepository.deleteAll()
+            login.alertas.forEach {
+                alertRepository.createAlert(it.toAlertEntity(login.usuarioId))
+            }
+            _user.postValue(userRepository.getUser(login.usuarioId).toUser())
         }
-        val alertRepository = AlertDbDataSource(database)
-        alertRepository.deleteAll()
-        login.alertas.forEach {
-            alertRepository.createAlert(it.toAlertEntity(login.usuarioId))
-        }
 
-        _user.postValue(userRepository.getUser(login.usuarioId).toUser())
+
     }
 }

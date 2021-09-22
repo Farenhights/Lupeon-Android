@@ -4,8 +4,8 @@ import br.com.henriktech.lupeon.database.db.UserEntity
 
 interface UserRepository {
 
-    fun createUser(userEntity: UserEntity)
+    suspend fun createUser(userEntity: UserEntity)
 
-    fun getUser(userId: Int): UserEntity
+    suspend fun getUser(userId: Int): UserEntity
 
 }

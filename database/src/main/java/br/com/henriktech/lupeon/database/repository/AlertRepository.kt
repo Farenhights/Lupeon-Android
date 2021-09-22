@@ -4,7 +4,7 @@ import br.com.henriktech.lupeon.database.db.AlertEntity
 
 interface AlertRepository {
 
-    fun createAlert(alertEntity: AlertEntity)
+    suspend fun createAlert(alertEntity: AlertEntity)
 
-    fun deleteAll()
+    suspend fun deleteAll()
 }

@@ -6,8 +6,8 @@ import br.com.henriktech.lupeon.database.db.AlertEntity
 @Dao
 interface AlertDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun save(alertEntity: AlertEntity)
+    suspend fun save(alertEntity: AlertEntity)
 
     @Query("DELETE FROM alert")
-    fun deleteAll()
+    suspend fun deleteAll()
 }
