@@ -7,6 +7,6 @@ class MenuDbDataSource(private val database: AppDataBase) : MenuRepository {
 
     override suspend fun deleteAll() = database.alertDao().deleteAll()
 
-    override suspend fun createMenu(menuEntity: MenuEntity) = database.menuDao().save(menuEntity)
+    override suspend fun createListMenu(listMenuEntity: List<MenuEntity>) = database.menuDao().saveAll(listMenuEntity)
 
 }

@@ -9,7 +9,9 @@ import br.com.henriktech.lupeon.api.model.Login
 import br.com.henriktech.lupeon.api.network.ApiResult
 import br.com.henriktech.lupeon.data.model.*
 import br.com.henriktech.lupeon.data.service.AuthenticationService
+import br.com.henriktech.lupeon.database.db.AlertEntity
 import br.com.henriktech.lupeon.database.db.AppDataBase
+import br.com.henriktech.lupeon.database.db.MenuEntity
 import br.com.henriktech.lupeon.database.repository.AlertDbDataSource
 import br.com.henriktech.lupeon.database.repository.MenuDbDataSource
 import br.com.henriktech.lupeon.database.repository.UserDbDataSource
@@ -44,26 +46,27 @@ class LoginMainViewModel(
     }
 
     private fun saveUser(login: Login, context: Context) {
-
         viewModelScope.launch {
             val database = AppDataBase.getDatabase(context)
-
             val userRepository = UserDbDataSource(database)
+            val menuRepository = MenuDbDataSource(database)
+            val alertRepository = AlertDbDataSource(database)
+
             userRepository.createUser(login.toUserEntity())
 
-            val menuRepository = MenuDbDataSource(database)
-            menuRepository.deleteAll()
+            val menus = arrayListOf<MenuEntity>()
             login.menus.forEach {
-                menuRepository.createMenu(it.toMenuEntity(login.usuarioId))
+                menus.add(it.toMenuEntity(login.usuarioId))
             }
-            val alertRepository = AlertDbDataSource(database)
-            alertRepository.deleteAll()
+            menuRepository.deleteAll()
+            menuRepository.createListMenu(menus)
+            val alets = arrayListOf<AlertEntity>()
             login.alertas.forEach {
-                alertRepository.createAlert(it.toAlertEntity(login.usuarioId))
+                alets.add(it.toAlertEntity(login.usuarioId))
             }
+            alertRepository.deleteAll()
+            alertRepository.createListAlert(alets)
             _user.postValue(userRepository.getUser(login.usuarioId).toUser())
         }
-
-
     }
 }
