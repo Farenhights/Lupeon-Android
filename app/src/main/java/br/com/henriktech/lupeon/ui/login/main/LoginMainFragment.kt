@@ -51,9 +51,9 @@ class LoginMainFragment : BaseFragment(R.layout.fragment_login) {
     }
 
     private fun startViewModel() {
-        viewModel.user.observe(viewLifecycleOwner, { user ->
-            analytics.typeLogin(user.userType)
-            loginApplication(user)
+        viewModel.perfil.observe(viewLifecycleOwner, {
+            analytics.typeLogin(it)
+            loginApplication(it)
         })
 
         viewModel.errorMessage.observe(viewLifecycleOwner, {

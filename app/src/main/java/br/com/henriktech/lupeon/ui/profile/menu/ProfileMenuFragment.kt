@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.api.model.Alerta
-import br.com.henriktech.lupeon.api.model.Menu
+import br.com.henriktech.lupeon.data.model.Menu
 import br.com.henriktech.lupeon.ui.base.BaseFragment
 import br.com.henriktech.lupeon.ui.profile.IOnBackPressed
 import org.koin.android.ext.android.inject
@@ -67,7 +67,7 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
             val recycleMenu: RecyclerView = view.findViewById(R.id.recycleMenuView)
             val numberOfColumns = 2
             recycleMenu.layoutManager = GridLayoutManager(context, numberOfColumns)
-            val adapter = ProfileMenuAdapter(menus as ArrayList<Menu>, this)
+            val adapter = ProfileMenuAdapter(menus, this)
             recycleMenu.adapter = adapter
         })
 
@@ -79,8 +79,9 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
             recycleAlert.adapter = adapter
         })
 
-        viewModel.name.observe(viewLifecycleOwner, { name ->
-            view.findViewById<TextView>(R.id.textNameProfileMenu).apply { text = "Olá, $name" }
+        viewModel.user.observe(viewLifecycleOwner, { user ->
+            view.findViewById<TextView>(R.id.textNameProfileMenu)
+                .apply { text = "Olá, ${user.name}" }
         })
     }
 

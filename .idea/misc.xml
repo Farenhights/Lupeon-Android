@@ -30,11 +30,13 @@
         <entry key="app/src/main/res/layout/view_alert.xml" value="0.378125" />
         <entry key="app/src/main/res/layout/view_menu.xml" value="0.9" />
         <entry key="app/src/main/res/layout/view_sponsor.xml" value="0.30932971014492755" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3182291666666667" />
+        <entry key="database/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3182291666666667" />
       </map>
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

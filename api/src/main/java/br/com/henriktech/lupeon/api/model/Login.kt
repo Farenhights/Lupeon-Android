@@ -20,7 +20,7 @@ data class Login(
     val gestorContas: GestorContas,
     @SerializedName("Login")
     val login: String,
-    @SerializedName("Menus|")
+    @SerializedName("Menus")
     val menus: List<Menu>,
     @SerializedName("Nome")
     val nome: String,

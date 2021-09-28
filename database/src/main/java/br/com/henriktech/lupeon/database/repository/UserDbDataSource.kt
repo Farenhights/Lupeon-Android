@@ -7,5 +7,6 @@ class UserDbDataSource(private val dataBase: AppDataBase) : UserRepository {
 
     override suspend fun createUser(userEntity: UserEntity) = dataBase.userDao().save(userEntity)
 
-    override suspend fun getUser(userId: Int): UserEntity = dataBase.userDao().getUser(userId)
+    override fun getUser() = dataBase.userDao().getUser()
+
 }

@@ -2,16 +2,15 @@ package br.com.henriktech.lupeon.ui.base
 
 import android.content.Intent
 import androidx.fragment.app.Fragment
-import br.com.henriktech.lupeon.data.model.User
 import br.com.henriktech.lupeon.ui.driver.DriverActivity
 import br.com.henriktech.lupeon.ui.login.LoginActivity
 import br.com.henriktech.lupeon.ui.profile.ProfileActivity
 
 open class BaseFragment(id: Int) : Fragment(id) {
 
-    fun loginApplication(user: User) {
+    fun loginApplication(profile: String) {
         val intent =
-            when (user.userType) {
+            when (profile) {
                 "M" -> Intent(context, DriverActivity::class.java)
                 else -> Intent(context, ProfileActivity::class.java)
             }
