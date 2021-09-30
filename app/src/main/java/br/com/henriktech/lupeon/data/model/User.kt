@@ -35,6 +35,24 @@ fun Login.toUserEntity(): UserEntity {
     }
 }
 
+fun User.toUserEntity(): UserEntity {
+    return with(this) {
+        UserEntity(
+            userId = this.userId,
+            accessToken = this.accessToken,
+            companyId = this.companyId,
+            email = this.email,
+            expiresIn = this.expiresIn,
+            login = this.login,
+            name = this.name,
+            userType = this.userType,
+            tokenType = this.tokenType,
+            nameManager = this.nameManager,
+            contactsManager = this.contactsManager
+        )
+    }
+}
+
 fun UserEntity.toUser(): User {
     return with(this) {
         User(

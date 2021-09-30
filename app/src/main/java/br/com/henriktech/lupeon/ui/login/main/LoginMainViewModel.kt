@@ -20,10 +20,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class LoginMainViewModel(
-    private val authenticationService: AuthenticationService,
     private val userRepository: UserRepository,
     private val menuRepository: MenuRepository,
-    private val alertRepository: AlertRepository
+    private val alertRepository: AlertRepository,
+    private val authenticationService: AuthenticationService
 ) : ViewModel() {
 
     private val _perfil = MutableLiveData<String>()
@@ -49,21 +49,22 @@ class LoginMainViewModel(
         }
     }
 
-    private suspend fun saveUser(login: Login) {
-        userRepository.createUser(login.toUserEntity())
-        val menus = arrayListOf<MenuEntity>()
-        login.menus.forEach {
-            menus.add(it.toMenuEntity(login.usuarioId))
+    private fun saveUser(login: Login) {
+        viewModelScope.launch {
+            userRepository.createUser(login.toUserEntity())
+            val menus = arrayListOf<MenuEntity>()
+            login.menus.forEach {
+                menus.add(it.toMenuEntity(login.usuarioId))
+            }
+            menuRepository.deleteAll()
+            menuRepository.createListMenu(menus)
+            val alets = arrayListOf<AlertEntity>()
+            login.alertas.forEach {
+                alets.add(it.toAlertEntity(login.usuarioId))
+            }
+            alertRepository.deleteAll()
+            alertRepository.createListAlert(alets)
         }
-        menuRepository.deleteAll()
-        menuRepository.createListMenu(menus)
-        val alets = arrayListOf<AlertEntity>()
-        login.alertas.forEach {
-            alets.add(it.toAlertEntity(login.usuarioId))
-        }
-        alertRepository.deleteAll()
-        alertRepository.createListAlert(alets)
-
         _perfil.postValue(login.tipoUsuario)
     }
 }

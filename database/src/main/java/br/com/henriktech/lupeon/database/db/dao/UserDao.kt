@@ -1,11 +1,7 @@
 package br.com.henriktech.lupeon.database.db.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import br.com.henriktech.lupeon.database.db.UserEntity
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserDao {
@@ -14,6 +10,9 @@ interface UserDao {
     suspend fun save(userEntity: UserEntity)
 
     @Query("SELECT * FROM user LIMIT 1")
-    fun getUser(): Flow<UserEntity>
+    fun getUser(): UserEntity
+
+    @Delete()
+    fun delete(userEntity: UserEntity)
 
 }

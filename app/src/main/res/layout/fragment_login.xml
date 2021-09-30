@@ -58,6 +58,7 @@
                 android:textColor="@color/white"
                 android:textSize="34sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/layoutMainLoginView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -80,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="28dp"
                     android:layout_marginBottom="7dp"
                     android:text="@string/user"
                     android:textColor="@color/black"
@@ -150,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="24dp"
                     android:text="@string/loss_password"
                     android:textColor="@color/lupeon_secondary"
                     android:textSize="20sp"
@@ -177,6 +178,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutMainLoginView"
                 tools:ignore="DuplicateSpeakableTextCheck" />
 
             <TextView

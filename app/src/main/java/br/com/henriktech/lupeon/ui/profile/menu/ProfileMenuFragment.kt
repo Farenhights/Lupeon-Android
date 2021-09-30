@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.api.model.Alerta
 import br.com.henriktech.lupeon.data.model.Menu
+import br.com.henriktech.lupeon.databinding.FragmentProfileBinding
 import br.com.henriktech.lupeon.ui.base.BaseFragment
 import br.com.henriktech.lupeon.ui.profile.IOnBackPressed
 import org.koin.android.ext.android.inject
@@ -28,9 +29,14 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
 
     private lateinit var webView: WebView
 
+    private lateinit var binding: FragmentProfileBinding
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         analytics.trackScreen(requireActivity())
+        binding = FragmentProfileBinding.bind(view)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         startView(view)
         startViewModel(view)
     }
@@ -57,6 +63,7 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
     private fun startView(view: View) {
         view.findViewById<ImageView>(R.id.imageViewLogoutProfileMenu).apply {
             setOnClickListener {
+                viewModel.logout()
                 logoutApplication()
             }
         }
@@ -83,6 +90,8 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
             view.findViewById<TextView>(R.id.textNameProfileMenu)
                 .apply { text = "Olá, ${user.name}" }
         })
+
+        viewModel.getUser()
     }
 
     private fun showAlertDialog(alerta: Alerta) {

@@ -7,6 +7,8 @@ interface UserRepository {
 
     suspend fun createUser(userEntity: UserEntity)
 
-    fun getUser(): Flow<UserEntity>
+    fun getUser(): UserEntity
+
+    suspend fun delete(userEntity: UserEntity)
 
 }

@@ -5,12 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "menu")
 data class MenuEntity(
-    @PrimaryKey(autoGenerate = true)
-    var menuId: Int,
     val userId: Int,
+    @PrimaryKey
     val option: String,
     val visible: Boolean
-) {
-    constructor(userId: Int, option: String, visible: Boolean) :
-            this(0, userId, option, visible)
-}
+)
