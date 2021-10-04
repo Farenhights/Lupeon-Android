@@ -64,7 +64,7 @@ class LoginMainViewModel(
             }
             alertRepository.deleteAll()
             alertRepository.createListAlert(alets)
+            _perfil.postValue(login.tipoUsuario)
         }
-        _perfil.postValue(login.tipoUsuario)
     }
 }

@@ -10,7 +10,7 @@ interface UserDao {
     suspend fun save(userEntity: UserEntity)
 
     @Query("SELECT * FROM user LIMIT 1")
-    fun getUser(): UserEntity
+    suspend fun getUser(): UserEntity
 
     @Delete()
     fun delete(userEntity: UserEntity)

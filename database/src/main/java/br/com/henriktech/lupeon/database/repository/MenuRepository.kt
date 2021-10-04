@@ -9,5 +9,5 @@ interface MenuRepository {
 
     suspend fun deleteAll()
 
-    fun loadMenus(userId: Int): Flow<List<MenuEntity>>
+    suspend fun loadMenus(userId: Int): List<MenuEntity>
 }

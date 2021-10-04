@@ -1,6 +1,9 @@
 package br.com.henriktech.lupeon.ui.profile.menu
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import br.com.henriktech.lupeon.api.model.Alerta
 import br.com.henriktech.lupeon.data.model.*
 import br.com.henriktech.lupeon.database.repository.AlertRepository
@@ -23,11 +26,12 @@ class ProfileMenuViewModel(
         MutableLiveData<List<Alerta>>()
     }
 
-
     init {
-        _user.value?.let { user ->
-            menuRepository.loadMenus(user.userId).asLiveData().value!!.let {
-                _menus.postValue(it.toListMenu())
+        _user.observeForever { user ->
+            viewModelScope.launch {
+                menuRepository.loadMenus(user.userId).let {
+                    _menus.postValue(it.toListMenu())
+                }
             }
         }
     }
