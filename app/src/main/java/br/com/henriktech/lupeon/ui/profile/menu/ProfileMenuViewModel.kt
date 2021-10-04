@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.henriktech.lupeon.api.model.Alerta
+import br.com.henriktech.lupeon.api.model.response.Alerta
 import br.com.henriktech.lupeon.data.model.*
 import br.com.henriktech.lupeon.database.repository.AlertRepository
 import br.com.henriktech.lupeon.database.repository.MenuRepository

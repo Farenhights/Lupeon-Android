@@ -1,6 +1,6 @@
 package br.com.henriktech.lupeon.data.model
 
-import br.com.henriktech.lupeon.api.model.Alerta
+import br.com.henriktech.lupeon.api.model.response.Alerta
 import br.com.henriktech.lupeon.database.db.AlertEntity
 
 data class Alert(

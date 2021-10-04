@@ -7,7 +7,7 @@ data class Menu(
     val visible: Boolean
 )
 
-fun br.com.henriktech.lupeon.api.model.Menu.toMenuEntity(id: Int): MenuEntity {
+fun br.com.henriktech.lupeon.api.model.response.Menu.toMenuEntity(id: Int): MenuEntity {
     return with(this) {
         MenuEntity(
             userId = id,

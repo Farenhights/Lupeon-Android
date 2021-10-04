@@ -1,6 +1,6 @@
 package br.com.henriktech.lupeon.data.model
 
-import br.com.henriktech.lupeon.api.model.Login
+import br.com.henriktech.lupeon.api.model.response.Login
 import br.com.henriktech.lupeon.database.db.UserEntity
 
 data class User(

@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.henriktech.lupeon.api.model.Login
+import br.com.henriktech.lupeon.api.model.response.Login
 import br.com.henriktech.lupeon.api.network.ApiResult
 import br.com.henriktech.lupeon.data.model.toAlertEntity
 import br.com.henriktech.lupeon.data.model.toMenuEntity

@@ -1,4 +1,4 @@
-package br.com.henriktech.lupeon.api.model
+package br.com.henriktech.lupeon.api.model.response
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

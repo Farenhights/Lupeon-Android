@@ -1,6 +1,6 @@
 package br.com.henriktech.lupeon.api.repository
 
-import br.com.henriktech.lupeon.api.model.Login
+import br.com.henriktech.lupeon.api.model.response.Login
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Headers

@@ -1,6 +1,7 @@
 package br.com.henriktech.lupeon.api
 
 import br.com.henriktech.lupeon.api.network.AuthInterceptor
+import br.com.henriktech.lupeon.api.repository.EmbarcadorRepository
 import br.com.henriktech.lupeon.api.repository.SecurityApi
 import br.com.henriktech.lupeon.api.repository.SecurityRepository
 import okhttp3.OkHttpClient
@@ -15,6 +16,7 @@ object ApiModules {
 
     private val moduleDI = module {
         single { SecurityRepository(get(), get()) }
+        single { EmbarcadorRepository(get(), get()) }
     }
 
     private val networkModule = module {
