@@ -15,6 +15,18 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    flavorDimensions "stage"
+
+    productFlavors {
+        dev {
+            dimension "stage"
+            minSdkVersion 30
+        }
+        prod {
+            dimension "stage"
+        }
+    }
 }
 
 dependencies {

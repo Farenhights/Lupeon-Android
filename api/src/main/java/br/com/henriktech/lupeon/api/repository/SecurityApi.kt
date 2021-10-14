@@ -1,5 +1,6 @@
 package br.com.henriktech.lupeon.api.repository
 
+import br.com.henriktech.lupeon.api.model.request.LoginRequest
 import br.com.henriktech.lupeon.api.model.response.Login
 import retrofit2.Response
 import retrofit2.http.Body
@@ -10,6 +11,6 @@ interface SecurityApi {
 
     @Headers("Content-Type: application/json")
     @POST("/Security/Login")
-    suspend fun postLogin(@Body body: br.com.henriktech.lupeon.api.repository.LoginRequest): Response<Login>
+    suspend fun postLogin(@Body body: LoginRequest): Response<Login>
 
 }

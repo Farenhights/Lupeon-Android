@@ -1,6 +1,5 @@
 package br.com.henriktech.lupeon.ui.login.main
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,7 +31,7 @@ class LoginMainViewModel(
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
 
-    fun validateLogin(user: String, password: String, context: Context) {
+    fun validateLogin(user: String, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
             if (user.isNotEmpty() && password.isNotEmpty()) {
                 when (val response = authenticationService.validateLogin(user, password)) {

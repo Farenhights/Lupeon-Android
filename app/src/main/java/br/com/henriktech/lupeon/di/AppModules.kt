@@ -6,7 +6,6 @@ object AppModules {
     fun loadModule() {
         loadKoinModules(
             listOf(
-                SplashModule.get(),
                 LoginPresentationModule.get(),
                 LoginMainModule.get(),
                 LoginLossPasswordModule.get(),

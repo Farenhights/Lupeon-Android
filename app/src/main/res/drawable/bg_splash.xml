@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/lupeon_secondary" />
+    <item android:drawable="@drawable/background_skeleton" />
+    <item
+        android:gravity="center"
+        android:drawable="@drawable/logo_white"/>
+</layer-list>

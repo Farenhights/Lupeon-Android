@@ -14,6 +14,11 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.Splash" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/lupeon_secondary</item>
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+    </style>
+
     <style name="Theme.Lupeon.Button" parent="Widget.AppCompat.Button">
         <item name="backgroundTint">@color/lupeon_secondary</item>
         <item name="android:textColor">@color/white</item>
