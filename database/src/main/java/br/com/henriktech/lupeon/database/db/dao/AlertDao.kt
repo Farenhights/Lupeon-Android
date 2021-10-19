@@ -13,4 +13,7 @@ interface AlertDao {
 
     @Query("DELETE FROM alert")
     suspend fun deleteAll()
+
+    @Query("SELECT * FROM alert WHERE userId = :userId")
+    suspend fun loadAlerts(userId: Int): List<AlertEntity>
 }

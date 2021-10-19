@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.henriktech.lupeon.api.model.response.Alerta
 import br.com.henriktech.lupeon.data.model.*
 import br.com.henriktech.lupeon.database.repository.AlertRepository
 import br.com.henriktech.lupeon.database.repository.MenuRepository
@@ -22,15 +21,17 @@ class ProfileMenuViewModel(
     private val _menus = MutableLiveData<List<Menu>>()
     val menus: LiveData<List<Menu>> = _menus
 
-    val alerts: MutableLiveData<List<Alerta>> by lazy {
-        MutableLiveData<List<Alerta>>()
-    }
+    private val _alerts = MutableLiveData<List<Alert>>()
+    val alerts: LiveData<List<Alert>> = _alerts
 
     init {
         _user.observeForever { user ->
             viewModelScope.launch {
                 menuRepository.loadMenus(user.userId).let {
                     _menus.postValue(it.toListMenu())
+                }
+                alertRepository.loadAlerts(user.userId).let {
+                    _alerts.postValue(it.toListAlert())
                 }
             }
         }

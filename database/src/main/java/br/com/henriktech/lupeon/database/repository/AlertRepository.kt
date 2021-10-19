@@ -7,4 +7,6 @@ interface AlertRepository {
     suspend fun createListAlert(listAlertEntity: List<AlertEntity>)
 
     suspend fun deleteAll()
+
+    suspend fun loadAlerts(userId: Int): List<AlertEntity>
 }

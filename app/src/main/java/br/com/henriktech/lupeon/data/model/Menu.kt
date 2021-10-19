@@ -27,11 +27,11 @@ fun MenuEntity.toMenu(): Menu {
 }
 
 fun List<MenuEntity>.toListMenu(): List<Menu> {
-    val menus = ArrayList<Menu>()
+    val arrayList = ArrayList<Menu>()
     with(this) {
         forEach {
-            menus.add(it.toMenu())
+            arrayList.add(it.toMenu())
         }
     }
-    return menus
+    return arrayList
 }

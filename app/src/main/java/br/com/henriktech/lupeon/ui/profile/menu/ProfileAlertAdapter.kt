@@ -6,9 +6,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
-import br.com.henriktech.lupeon.api.model.response.Alerta
+import br.com.henriktech.lupeon.data.model.Alert
 
-class ProfileAlertAdapter(private val alertList: ArrayList<Alerta>, private val itemClickListener: OnAlertClickListener) :
+class ProfileAlertAdapter(
+    private val alertList: ArrayList<Alert>,
+    private val itemClickListener: OnAlertClickListener
+) :
     RecyclerView.Adapter<ProfileAlertAdapter.ProfileAlertViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileAlertViewHolder {
@@ -29,8 +32,8 @@ class ProfileAlertAdapter(private val alertList: ArrayList<Alerta>, private val 
 
         private val alertTextView = itemView.findViewById<TextView>(R.id.alertTextView)
 
-        fun bind(alert: Alerta, clickListener: OnAlertClickListener) {
-            alertTextView.text = alert.titulo
+        fun bind(alert: Alert, clickListener: OnAlertClickListener) {
+            alertTextView.text = alert.title
 
             itemView.setOnClickListener {
                 clickListener.onAlertClicked(alert)
@@ -39,7 +42,7 @@ class ProfileAlertAdapter(private val alertList: ArrayList<Alerta>, private val 
     }
 
     interface OnAlertClickListener {
-        fun onAlertClicked(alert: Alerta)
+        fun onAlertClicked(alert: Alert)
     }
 }
 

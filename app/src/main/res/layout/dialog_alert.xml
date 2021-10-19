@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/imageCloseDialog"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginTop="12dp"
@@ -22,7 +22,7 @@
 
     <TextView
         android:id="@+id/textDialogTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
         android:layout_marginTop="20dp"
@@ -65,6 +65,7 @@
         android:text="VEJA MAIS EM WWW.LUPEON.COM.BR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textDialogContent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

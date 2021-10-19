@@ -7,6 +7,10 @@ class AlertDbDataSource(private val database: AppDataBase) : AlertRepository {
 
     override suspend fun deleteAll() = database.alertDao().deleteAll()
 
-    override suspend fun createListAlert(listAlertEntity: List<AlertEntity>) = database.alertDao().saveAll(listAlertEntity)
+    override suspend fun createListAlert(listAlertEntity: List<AlertEntity>) =
+        database.alertDao().saveAll(listAlertEntity)
+
+    override suspend fun loadAlerts(userId: Int): List<AlertEntity> =
+        database.alertDao().loadAlerts(userId)
 
 }

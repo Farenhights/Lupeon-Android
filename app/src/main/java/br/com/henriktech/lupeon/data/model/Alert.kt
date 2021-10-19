@@ -21,3 +21,24 @@ fun Alerta.toAlertEntity(id: Int): AlertEntity {
         )
     }
 }
+
+fun AlertEntity.toAlert(): Alert {
+    return with(this) {
+        Alert(
+            icon = this.icon,
+            link = this.link,
+            text = this.text,
+            title = this.title
+        )
+    }
+}
+
+fun List<AlertEntity>.toListAlert(): List<Alert> {
+    val arrayList = ArrayList<Alert>()
+    with(this) {
+        forEach {
+            arrayList.add(it.toAlert())
+        }
+    }
+    return arrayList
+}

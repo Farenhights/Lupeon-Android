@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
-import br.com.henriktech.lupeon.api.model.response.Alerta
+import br.com.henriktech.lupeon.data.model.Alert
 import br.com.henriktech.lupeon.data.model.Menu
 import br.com.henriktech.lupeon.databinding.FragmentProfileBinding
 import br.com.henriktech.lupeon.ui.base.BaseFragment
@@ -55,8 +55,8 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
         }
     }
 
-    override fun onAlertClicked(alert: Alerta) {
-        analytics.clickAlert(alert.titulo)
+    override fun onAlertClicked(alert: Alert) {
+        analytics.clickAlert(alert.title)
         showAlertDialog(alert)
     }
 
@@ -82,32 +82,27 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
             val recycleAlert: RecyclerView = view.findViewById(R.id.recycleAlertView)
             val numberOfColumns = 1
             recycleAlert.layoutManager = GridLayoutManager(context, numberOfColumns)
-            val adapter = ProfileAlertAdapter(alerts as ArrayList<Alerta>, this)
+            val adapter = ProfileAlertAdapter(alerts as ArrayList<Alert>, this)
             recycleAlert.adapter = adapter
-        })
-
-        viewModel.user.observe(viewLifecycleOwner, { user ->
-            view.findViewById<TextView>(R.id.textNameProfileMenu)
-                .apply { text = "Olá, ${user.name}" }
         })
 
         viewModel.getUser()
     }
 
-    private fun showAlertDialog(alerta: Alerta) {
+    private fun showAlertDialog(alerta: Alert) {
         val dialog = Dialog(requireActivity())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)
         dialog.setContentView(R.layout.dialog_alert)
 
         val title = dialog.findViewById(R.id.textDialogTitle) as TextView
-        title.text = alerta.titulo
+        title.text = alerta.title
 
         val close = dialog.findViewById(R.id.imageCloseDialog) as ImageView
         close.setOnClickListener { dialog.dismiss() }
 
         val body = dialog.findViewById(R.id.textDialogContent) as TextView
-        body.text = alerta.texto
+        body.text = alerta.text
 
         val link = dialog.findViewById(R.id.textDialogLink) as TextView
         link.text = alerta.link
