@@ -1,7 +1,9 @@
 package br.com.henriktech.lupeon.ui.profile.menu
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.os.Bundle
+import android.text.Html
 import android.view.View
 import android.view.Window
 import android.webkit.WebView
@@ -69,6 +71,7 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun startViewModel(view: View) {
         viewModel.menus.observe(viewLifecycleOwner, { menus ->
             val recycleMenu: RecyclerView = view.findViewById(R.id.recycleMenuView)
@@ -84,6 +87,15 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
             recycleAlert.layoutManager = GridLayoutManager(context, numberOfColumns)
             val adapter = ProfileAlertAdapter(alerts as ArrayList<Alert>, this)
             recycleAlert.adapter = adapter
+        })
+
+        viewModel.user.observe(viewLifecycleOwner, {
+            val nome = it.name.split(" ")
+            binding.textNameProfileMenu.text = "${getString(R.string.hello)}, ${nome[0]}"
+            binding.textServiceSponsor.text = viewModel.getInfoService()
+            binding.textContactSponsor.text = Html.fromHtml("GESTOR DA CONTA<br>${it.nameManager}" +
+                    "<br>${it.contactsManager}", 0).toString()
+
         })
 
         viewModel.getUser()

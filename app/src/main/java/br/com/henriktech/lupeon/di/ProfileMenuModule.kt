@@ -10,7 +10,7 @@ object ProfileMenuModule {
 
     private fun profileMenuModule() = module {
         single { ProfileMenuAnalytics(get()) }
-        viewModel { ProfileMenuViewModel(get(), get(), get()) }
+        viewModel { ProfileMenuViewModel(get(), get(), get(), get()) }
     }
 
     fun get(): Module {

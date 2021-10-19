@@ -1,10 +1,12 @@
 package br.com.henriktech.lupeon.ui.profile.menu
 
+import android.text.Html
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.henriktech.lupeon.data.model.*
+import br.com.henriktech.lupeon.data.service.AppInfoService
 import br.com.henriktech.lupeon.database.repository.AlertRepository
 import br.com.henriktech.lupeon.database.repository.MenuRepository
 import br.com.henriktech.lupeon.database.repository.UserRepository
@@ -13,7 +15,8 @@ import kotlinx.coroutines.launch
 class ProfileMenuViewModel(
     private val userRepository: UserRepository,
     private val menuRepository: MenuRepository,
-    private val alertRepository: AlertRepository
+    private val alertRepository: AlertRepository,
+    private val informatioRepository: AppInfoService
 ) : ViewModel() {
     private val _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
@@ -50,4 +53,7 @@ class ProfileMenuViewModel(
             userRepository.delete(_user.value!!.toUserEntity())
         }
     }
+
+    fun getInfoService() = Html.fromHtml(informatioRepository.getService(), 0).toString()
+
 }
