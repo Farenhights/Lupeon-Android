@@ -1,12 +1,7 @@
-plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
-}
+apply from: "$rootDir/common-android-library.gradle"
 
 android {
-    compileSdkVersion compile_version
-    buildToolsVersion build_version
+
     flavorDimensions "stage"
 
     productFlavors {

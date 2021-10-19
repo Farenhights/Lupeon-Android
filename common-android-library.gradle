@@ -1,0 +1,29 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.compile_version
+    buildToolsVersion rootProject.ext.build_version
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.min_version
+        targetSdkVersion rootProject.ext.target_version
+        versionCode rootProject.ext.version_code
+        versionName rootProject.ext.version_name
+    }
+
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+}
