@@ -7,13 +7,6 @@ android {
     compileSdkVersion compile_version
     buildToolsVersion build_version
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
     flavorDimensions "stage"
 
     productFlavors {
