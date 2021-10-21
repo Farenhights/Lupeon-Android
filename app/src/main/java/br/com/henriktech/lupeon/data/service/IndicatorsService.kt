@@ -1,9 +1,9 @@
 package br.com.henriktech.lupeon.data.service
 
-import br.com.henriktech.lupeon.api.repository.EmbarcadorRepository
+import br.com.henriktech.lupeon.api.repository.LupeonRepository
 
-class IndicatorsService(private val embarcadorRepository: EmbarcadorRepository) {
+class IndicatorsService(private val lupeonRepository: LupeonRepository) {
 
     suspend fun getShipperIndicators(token: String, shipperId: Int, periodId: Int) =
-        embarcadorRepository.postIndicadores(token, shipperId, periodId)
+        lupeonRepository.postEmbarcadorIndicadores(token, shipperId, periodId)
 }

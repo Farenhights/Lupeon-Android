@@ -1,9 +1,8 @@
 package br.com.henriktech.lupeon.api
 
 import br.com.henriktech.lupeon.api.network.AuthInterceptor
-import br.com.henriktech.lupeon.api.repository.EmbarcadorRepository
-import br.com.henriktech.lupeon.api.repository.SecurityApi
-import br.com.henriktech.lupeon.api.repository.SecurityRepository
+import br.com.henriktech.lupeon.api.repository.LupeonApi
+import br.com.henriktech.lupeon.api.repository.LupeonRepository
 import okhttp3.OkHttpClient
 import org.koin.core.context.loadKoinModules
 import org.koin.dsl.module
@@ -15,14 +14,13 @@ object ApiModules {
     private const val API_URL = "http://apimobile.lupeon.com.br"
 
     private val moduleDI = module {
-        single { SecurityRepository(get(), get()) }
-        single { EmbarcadorRepository(get(), get()) }
+        single { LupeonRepository(get(), get()) }
     }
 
     private val networkModule = module {
         factory { AuthInterceptor() }
         factory { provideOkHttpClient(get()) }
-        factory { provideCountriesApi(get()) }
+        factory { provideLupeonApi(get()) }
         single { provideRetrofit(get()) }
     }
 
@@ -32,7 +30,7 @@ object ApiModules {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    private fun provideCountriesApi(retrofit: Retrofit) = retrofit.create(SecurityApi::class.java)
+    private fun provideLupeonApi(retrofit: Retrofit) = retrofit.create(LupeonApi::class.java)
 
     private fun provideOkHttpClient(authInterceptor: AuthInterceptor) =
         OkHttpClient().newBuilder().addInterceptor(authInterceptor).build()

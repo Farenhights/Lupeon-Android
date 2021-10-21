@@ -1,5 +1,6 @@
 package br.com.henriktech.lupeon.di
 
+import br.com.henriktech.lupeon.data.service.IndicatorsService
 import br.com.henriktech.lupeon.ui.profile.menu.ProfileMenuAnalytics
 import br.com.henriktech.lupeon.ui.profile.menu.ProfileMenuViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -10,6 +11,7 @@ object ProfileMenuModule {
 
     private fun profileMenuModule() = module {
         single { ProfileMenuAnalytics(get()) }
+        single { IndicatorsService(get()) }
         viewModel { ProfileMenuViewModel(get(), get(), get(), get()) }
     }
 

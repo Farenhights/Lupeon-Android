@@ -16,7 +16,7 @@ class ProfileMenuViewModel(
     private val userRepository: UserRepository,
     private val menuRepository: MenuRepository,
     private val alertRepository: AlertRepository,
-    private val informatioRepository: AppInfoService
+    private val informationService: AppInfoService
 ) : ViewModel() {
     private val _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
@@ -54,6 +54,6 @@ class ProfileMenuViewModel(
         }
     }
 
-    fun getInfoService() = Html.fromHtml(informatioRepository.getService(), 0).toString()
+    fun getInfoService() = Html.fromHtml(informationService.getService(), 0).toString()
 
 }

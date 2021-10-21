@@ -2,19 +2,22 @@ package br.com.henriktech.lupeon.ui.profile.indicators
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
+import br.com.henriktech.lupeon.data.model.Indicator
 import br.com.henriktech.lupeon.databinding.FragmentIndicatorsBinding
-import br.com.henriktech.lupeon.databinding.FragmentProfileBinding
 import br.com.henriktech.lupeon.ui.base.BaseFragment
 import br.com.henriktech.lupeon.ui.profile.IOnBackPressed
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProfileIndicatorsFragment: BaseFragment(R.layout.fragment_indicators), IOnBackPressed {
+class ProfileIndicatorsFragment : BaseFragment(R.layout.fragment_indicators),
+    IndicatorAdapter.OnIndicatorClickListener,
+    IOnBackPressed {
 
     private val analytics: ProfileIndicatorsAnalytics by inject()
-    private val viewlModel: ProfileIndicatorsViewModel by viewModel()
+    private val viewModel: ProfileIndicatorsViewModel by viewModel()
 
     private lateinit var binding: FragmentIndicatorsBinding
 
@@ -22,15 +25,21 @@ class ProfileIndicatorsFragment: BaseFragment(R.layout.fragment_indicators), IOn
         super.onViewCreated(view, savedInstanceState)
         analytics.trackScreen(requireActivity())
         binding = FragmentIndicatorsBinding.bind(view)
-        binding.viewModel = viewlModel
+        binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         startView()
         startViewModel()
-
     }
 
     private fun startViewModel() {
-        TODO("Not yet implemented")
+        viewModel.indicators.observe(viewLifecycleOwner, { indicators ->
+            val recycleIndicator: RecyclerView = binding.recycleIndicatorView
+            val numberOfColumns = 2
+            recycleIndicator.layoutManager = GridLayoutManager(context, numberOfColumns)
+            val adapter = IndicatorAdapter(indicators as ArrayList<Indicator>, this)
+            recycleIndicator.adapter = adapter
+        })
+        viewModel.getUser()
     }
 
     private fun startView() {
@@ -42,7 +51,10 @@ class ProfileIndicatorsFragment: BaseFragment(R.layout.fragment_indicators), IOn
     }
 
     override fun onBackPressed(): Boolean {
-       return true
+        return true
     }
 
+    override fun onIndicatorClicked(indicator: Indicator) {
+        TODO("Not yet implemented")
+    }
 }

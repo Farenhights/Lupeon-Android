@@ -9,7 +9,7 @@ import org.koin.dsl.module
 object ProfileIndicatorsModule {
     private val profileIndicatorModule = module {
         single { ProfileIndicatorsAnalytics(get()) }
-        viewModel { ProfileIndicatorsViewModel() }
+        viewModel { ProfileIndicatorsViewModel(get(), get()) }
     }
 
     fun get(): Module {
