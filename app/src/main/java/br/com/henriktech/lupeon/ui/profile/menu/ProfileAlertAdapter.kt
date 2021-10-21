@@ -24,9 +24,8 @@ class ProfileAlertAdapter(
         holder.bind(alert, itemClickListener)
     }
 
-    override fun getItemCount(): Int {
-        return alertList.size
-    }
+    override fun getItemCount(): Int = alertList.size
+
 
     inner class ProfileAlertViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

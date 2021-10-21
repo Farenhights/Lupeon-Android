@@ -39,8 +39,8 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
         binding = FragmentProfileBinding.bind(view)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        startView(view)
-        startViewModel(view)
+        startView()
+        startViewModel()
     }
 
     override fun onMenuClicked(menu: Menu) {
@@ -62,8 +62,8 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
         showAlertDialog(alert)
     }
 
-    private fun startView(view: View) {
-        view.findViewById<ImageView>(R.id.imageViewLogoutProfileMenu).apply {
+    private fun startView() {
+        binding.imageViewLogoutProfileMenu.apply {
             setOnClickListener {
                 viewModel.logout()
                 logoutApplication()
@@ -72,9 +72,9 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
     }
 
     @SuppressLint("SetTextI18n")
-    private fun startViewModel(view: View) {
+    private fun startViewModel() {
         viewModel.menus.observe(viewLifecycleOwner, { menus ->
-            val recycleMenu: RecyclerView = view.findViewById(R.id.recycleMenuView)
+            val recycleMenu: RecyclerView = binding.recycleMenuView
             val numberOfColumns = 2
             recycleMenu.layoutManager = GridLayoutManager(context, numberOfColumns)
             val adapter = ProfileMenuAdapter(menus, this)
@@ -82,7 +82,7 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
         })
 
         viewModel.alerts.observe(viewLifecycleOwner, { alerts ->
-            val recycleAlert: RecyclerView = view.findViewById(R.id.recycleAlertView)
+            val recycleAlert: RecyclerView = binding.recycleAlertView
             val numberOfColumns = 1
             recycleAlert.layoutManager = GridLayoutManager(context, numberOfColumns)
             val adapter = ProfileAlertAdapter(alerts as ArrayList<Alert>, this)
@@ -93,8 +93,10 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
             val nome = it.name.split(" ")
             binding.textNameProfileMenu.text = "${getString(R.string.hello)}, ${nome[0]}"
             binding.textServiceSponsor.text = viewModel.getInfoService()
-            binding.textContactSponsor.text = Html.fromHtml("GESTOR DA CONTA<br>${it.nameManager}" +
-                    "<br>${it.contactsManager}", 0).toString()
+            binding.textContactSponsor.text = Html.fromHtml(
+                "GESTOR DA CONTA<br>${it.nameManager}" +
+                        "<br>${it.contactsManager}", 0
+            ).toString()
 
         })
 

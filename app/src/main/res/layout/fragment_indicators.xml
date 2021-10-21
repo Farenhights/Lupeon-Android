@@ -24,10 +24,14 @@
             android:fontFamily="@font/montserrat_regular"
             android:text="@string/indicators"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/recycleIndicatorView"
+            app:layout_constraintEnd_toStartOf="@+id/imageView6"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/imageViewLogoutProfileIndicators"
@@ -39,13 +43,32 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_logout" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleIndicatorView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView"
+            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            app:spanCount="6" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
             android:layout_width="0dp"
             android:layout_height="96dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/layout_bg_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycleIndicatorView">
 
 
             <ImageView
@@ -91,6 +114,7 @@
             android:layout_marginEnd="32dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageViewLogoutProfileIndicators"
             app:layout_constraintEnd_toStartOf="@+id/imageViewLogoutProfileIndicators"
+            app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toTopOf="@+id/imageViewLogoutProfileIndicators"
             app:srcCompat="@drawable/ic_filter_white" />
 

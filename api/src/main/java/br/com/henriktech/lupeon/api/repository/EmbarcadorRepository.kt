@@ -7,10 +7,10 @@ import br.com.henriktech.lupeon.api.network.BaseRepository
 class EmbarcadorRepository(val context: Context, private val embarcadorApi: EmbarcadorApi) :
     BaseRepository() {
 
-    suspend fun postIndicadores(token: String, id: Int, period: Int) {
+    suspend fun postIndicadores(token: String, shipperId: Int, periodId: Int) {
         embarcadorApi.postIndicadores(
             token = token,
-            EmbarcadorRequest(EmbarcadorId = id, PeriodoId = period)
+            EmbarcadorRequest(EmbarcadorId = shipperId, PeriodoId = periodId)
         )
     }
 }
