@@ -29,12 +29,14 @@ class ProfileMenuViewModel(
 
     init {
         _user.observeForever { user ->
-            viewModelScope.launch {
-                menuRepository.loadMenus(user.userId).let {
-                    _menus.postValue(it.toListMenu())
-                }
-                alertRepository.loadAlerts(user.userId).let {
-                    _alerts.postValue(it.toListAlert())
+            if (user != null) {
+                viewModelScope.launch {
+                    menuRepository.loadMenus(user.userId).let {
+                        _menus.postValue(it.toListMenu())
+                    }
+                    alertRepository.loadAlerts(user.userId).let {
+                        _alerts.postValue(it.toListAlert())
+                    }
                 }
             }
         }
@@ -50,7 +52,8 @@ class ProfileMenuViewModel(
 
     fun logout() {
         viewModelScope.launch {
-            userRepository.delete(_user.value!!.toUserEntity())
+            userRepository.delete()
+            _user.postValue(null)
         }
     }
 

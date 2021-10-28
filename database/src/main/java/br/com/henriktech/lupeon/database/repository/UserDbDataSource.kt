@@ -9,6 +9,6 @@ class UserDbDataSource(private val dataBase: AppDataBase) : UserRepository {
 
     override suspend fun getUser() = dataBase.userDao().getUser()
 
-    override suspend fun delete(userEntity: UserEntity) = dataBase.userDao().delete(userEntity)
+    override suspend fun delete() = dataBase.userDao().delete()
 
 }

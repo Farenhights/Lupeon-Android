@@ -1,4 +1,4 @@
-package br.com.henriktech.lupeon.ui.profile.simulation
+package br.com.henriktech.lupeon.ui.simulation
 
 import br.com.henriktech.lupeon.analytics.Analytics
 

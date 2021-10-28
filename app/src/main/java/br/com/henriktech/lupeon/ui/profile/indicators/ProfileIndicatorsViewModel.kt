@@ -30,15 +30,17 @@ class ProfileIndicatorsViewModel(
 
     init {
         _user.observeForever { user ->
-            viewModelScope.launch {
-                when (val response =
-                    indicatorsService.getShipperIndicators(user.tokenType, user.userId, 0)) {
-                    is ApiResult.Success<*> -> {
-                        val indicadores = response.data!! as Indicadores
-                        _indicators.postValue(indicadores.indicadores.toIndicatorList())
-                    }
-                    is ApiResult.Error -> {
-                        _errorMessage.postValue(response.message)
+            if (user != null) {
+                viewModelScope.launch {
+                    when (val response =
+                        indicatorsService.getShipperIndicators(user.tokenType, user.userId, 0)) {
+                        is ApiResult.Success<*> -> {
+                            val indicadores = response.data!! as Indicadores
+                            _indicators.postValue(indicadores.indicadores.toIndicatorList())
+                        }
+                        is ApiResult.Error -> {
+                            _errorMessage.postValue(response.message)
+                        }
                     }
                 }
             }
@@ -48,9 +50,16 @@ class ProfileIndicatorsViewModel(
     fun getUser() {
         viewModelScope.launch {
             userRepository.getUser().let {
-                _user.postValue(it.toUser())
+                if (it != null)
+                    _user.postValue(it.toUser())
             }
         }
     }
 
+    fun logout() {
+        viewModelScope.launch {
+            userRepository.delete()
+            _user.postValue(null)
+        }
+    }
 }

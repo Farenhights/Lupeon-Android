@@ -4,6 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.marginLeft
+import androidx.core.view.marginRight
+import androidx.core.view.marginStart
 import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.data.model.Alert
@@ -28,7 +31,6 @@ class ProfileAlertAdapter(
 
 
     inner class ProfileAlertViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
         private val alertTextView = itemView.findViewById<TextView>(R.id.alertTextView)
 
         fun bind(alert: Alert, clickListener: OnAlertClickListener) {

@@ -9,6 +9,6 @@ interface UserRepository {
 
     suspend fun getUser(): UserEntity
 
-    suspend fun delete(userEntity: UserEntity)
+    suspend fun delete()
 
 }

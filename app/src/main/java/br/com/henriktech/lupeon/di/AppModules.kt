@@ -10,13 +10,8 @@ object AppModules {
                 LoginMainModule.get(),
                 LoginLossPasswordModule.get(),
                 LoginNewPasswordModule.get(),
-                DriverModule.get(),
-                ProfileAllowanceModule.get(),
                 ProfileIndicatorsModule.get(),
                 ProfileMenuModule.get(),
-                ProfileSimulationModule.get(),
-                ProfileTokenModule.get(),
-                ProfileTrackingModule.get()
             )
         )
     }

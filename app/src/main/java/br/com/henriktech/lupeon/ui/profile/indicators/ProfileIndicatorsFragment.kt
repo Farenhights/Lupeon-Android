@@ -8,13 +8,11 @@ import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.data.model.Indicator
 import br.com.henriktech.lupeon.databinding.FragmentIndicatorsBinding
 import br.com.henriktech.lupeon.ui.base.BaseFragment
-import br.com.henriktech.lupeon.ui.profile.IOnBackPressed
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileIndicatorsFragment : BaseFragment(R.layout.fragment_indicators),
-    IndicatorAdapter.OnIndicatorClickListener,
-    IOnBackPressed {
+    IndicatorAdapter.OnIndicatorClickListener {
 
     private val analytics: ProfileIndicatorsAnalytics by inject()
     private val viewModel: ProfileIndicatorsViewModel by viewModel()
@@ -27,7 +25,7 @@ class ProfileIndicatorsFragment : BaseFragment(R.layout.fragment_indicators),
         binding = FragmentIndicatorsBinding.bind(view)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        startView()
+        startView(binding)
         startViewModel()
     }
 
@@ -39,22 +37,25 @@ class ProfileIndicatorsFragment : BaseFragment(R.layout.fragment_indicators),
             val adapter = IndicatorAdapter(indicators as ArrayList<Indicator>, this)
             recycleIndicator.adapter = adapter
         })
+
+        viewModel.user.observe(viewLifecycleOwner, { user ->
+            if (user == null)
+                logoutApplication()
+        })
+
         viewModel.getUser()
     }
 
-    private fun startView() {
-        binding.imageViewLogoutProfileIndicators.apply {
-            setOnClickListener {
-                logoutApplication()
-            }
+    private fun startView(binding: FragmentIndicatorsBinding) {
+        binding.imageViewLogoutProfileIndicators.setOnClickListener {
+            viewModel.logout()
+        }
+        binding.IndicatorsMenuTextView.setOnClickListener {
+            requireActivity().onBackPressed()
         }
     }
 
-    override fun onBackPressed(): Boolean {
-        return true
-    }
-
     override fun onIndicatorClicked(indicator: Indicator) {
-        TODO("Not yet implemented")
+//        TODO("Not yet implemented")
     }
 }

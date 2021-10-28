@@ -2,6 +2,7 @@ package br.com.henriktech.lupeon.ui.profile.menu
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.text.Html
 import android.view.View
@@ -19,6 +20,7 @@ import br.com.henriktech.lupeon.data.model.Menu
 import br.com.henriktech.lupeon.databinding.FragmentProfileBinding
 import br.com.henriktech.lupeon.ui.base.BaseFragment
 import br.com.henriktech.lupeon.ui.profile.IOnBackPressed
+import br.com.henriktech.lupeon.ui.profile.ProfileActivity
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -39,7 +41,7 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
         binding = FragmentProfileBinding.bind(view)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        startView()
+        startView(binding)
         startViewModel()
     }
 
@@ -49,11 +51,11 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
 
         when (menu.option) {
             "Indicadores" -> findNavController().navigate(R.id.action_profileMenuFragment_to_profileIndicatorsFragment)
-            "Simulacao" -> findNavController().navigate(R.id.action_profileMenuFragment_to_profileSimulationFragment)
-            "Tracking" -> findNavController().navigate(R.id.action_profileMenuFragment_to_profileTrackingFragment)
-            "Faturas" -> findNavController().navigate(R.id.action_profileMenuFragment_to_profileInvoicesFragment)
-            "Abono" -> findNavController().navigate(R.id.action_profileMenuFragment_to_profileAllowanceFragment)
-            else -> findNavController().navigate(R.id.action_profileMenuFragment_to_profileTokenFragment)
+            "Simulacao" -> open(Intent(context, ProfileActivity::class.java))
+            "Tracking" -> open(Intent(context, ProfileActivity::class.java))
+            "Faturas" -> open(Intent(context, ProfileActivity::class.java))
+            "Abono" -> open(Intent(context, ProfileActivity::class.java))
+            else -> open(Intent(context, ProfileActivity::class.java))
         }
     }
 
@@ -62,12 +64,13 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
         showAlertDialog(alert)
     }
 
-    private fun startView() {
-        binding.imageViewLogoutProfileMenu.apply {
-            setOnClickListener {
-                viewModel.logout()
-                logoutApplication()
-            }
+    override fun onBackPressed(): Boolean {
+        return false
+    }
+
+    private fun startView(binding: FragmentProfileBinding) {
+        binding.imageViewLogoutProfileMenu.setOnClickListener {
+            viewModel.logout()
         }
     }
 
@@ -89,17 +92,20 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
             recycleAlert.adapter = adapter
         })
 
-        viewModel.user.observe(viewLifecycleOwner, {
-            val nome = it.name.split(" ")
-            binding.textNameProfileMenu.text = "${getString(R.string.hello)}, ${nome[0]}"
-            binding.textServiceSponsor.text = viewModel.getInfoService()
-            binding.textContactSponsor.text = Html.fromHtml(
-                "GESTOR DA CONTA<br>${it.nameManager}" +
-                        "<br>${it.contactsManager}", 0
-            ).toString()
+        viewModel.user.observe(viewLifecycleOwner, { user ->
+            if (user != null) {
+                val nome = user.name.split(" ")
+                binding.textNameProfileMenu.text = "${getString(R.string.hello)}, ${nome[0]}"
+                binding.textServiceSponsor.text = viewModel.getInfoService()
+                binding.textContactSponsor.text = Html.fromHtml(
+                    "GESTOR DA CONTA<br>${user.nameManager}" +
+                            "<br>${user.contactsManager}", 0
+                ).toString()
+            } else {
+                logoutApplication()
+            }
 
         })
-
         viewModel.getUser()
     }
 
@@ -130,9 +136,5 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
             webView.loadUrl(alerta.link)
         }
         dialog.show()
-    }
-
-    override fun onBackPressed(): Boolean {
-        return false
     }
 }
