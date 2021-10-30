@@ -50,8 +50,7 @@ class ProfileIndicatorsViewModel(
     fun getUser() {
         viewModelScope.launch {
             userRepository.getUser().let {
-                if (it != null)
-                    _user.postValue(it.toUser())
+                _user.postValue(it.toUser())
             }
         }
     }

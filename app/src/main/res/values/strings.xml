@@ -28,4 +28,5 @@
     <string name="simulation">Simulaçao</string>
     <string name="tracking">Tracking</string>
     <string name="hello">Olá</string>
+    <string name="avanced_search">Pesquisa avançada</string>
 </resources>
