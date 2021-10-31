@@ -1,4 +1,4 @@
-package br.com.henriktech.lupeon.ui.profile.indicators
+package br.com.henriktech.lupeon.ui.indicators
 
 import android.os.Bundle
 import android.view.View
@@ -11,11 +11,11 @@ import br.com.henriktech.lupeon.ui.base.BaseFragment
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProfileIndicatorsFragment : BaseFragment(R.layout.fragment_indicators),
+class IndicatorsFragment : BaseFragment(R.layout.fragment_indicators),
     IndicatorAdapter.OnIndicatorClickListener {
 
-    private val analytics: ProfileIndicatorsAnalytics by inject()
-    private val viewModel: ProfileIndicatorsViewModel by viewModel()
+    private val analytics: IndicatorsAnalytics by inject()
+    private val viewModel: IndicatorsViewModel by viewModel()
 
     private lateinit var binding: FragmentIndicatorsBinding
 

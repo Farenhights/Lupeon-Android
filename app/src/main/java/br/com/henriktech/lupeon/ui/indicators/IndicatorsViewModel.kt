@@ -1,4 +1,4 @@
-package br.com.henriktech.lupeon.ui.profile.indicators
+package br.com.henriktech.lupeon.ui.indicators
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,7 +14,7 @@ import br.com.henriktech.lupeon.data.service.IndicatorsService
 import br.com.henriktech.lupeon.database.repository.UserRepository
 import kotlinx.coroutines.launch
 
-class ProfileIndicatorsViewModel(
+class IndicatorsViewModel(
     private val userRepository: UserRepository,
     private val indicatorsService: IndicatorsService
 ) : ViewModel() {

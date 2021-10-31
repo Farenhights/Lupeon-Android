@@ -1,4 +1,4 @@
-package br.com.henriktech.lupeon.ui.profile.indicators
+package br.com.henriktech.lupeon.ui.indicators
 
 import android.view.LayoutInflater
 import android.view.View

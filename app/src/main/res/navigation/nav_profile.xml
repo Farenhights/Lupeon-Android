@@ -21,6 +21,6 @@
         android:label="ProfileIndicatorsFragment" />
     <fragment
         android:id="@+id/profileSimulationFragment"
-        android:name="br.com.henriktech.lupeon.ui.simulation.ProfileSimulationFragment"
+        android:name="br.com.henriktech.lupeon.ui.simulation.SimulationFragment"
         android:label="ProfileSimulationFragment" />
 </navigation>
