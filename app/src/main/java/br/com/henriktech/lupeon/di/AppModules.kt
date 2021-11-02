@@ -12,6 +12,7 @@ object AppModules {
                 LoginNewPasswordModule.get(),
                 IndicatorsModule.get(),
                 SimulationModule.get(),
+                TrackingModule.get(),
                 ProfileMenuModule.get()
             )
         )

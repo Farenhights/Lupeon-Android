@@ -10,17 +10,17 @@
         android:label="ProfileMenuFragment" >
         <action
             android:id="@+id/action_profileMenuFragment_to_profileIndicatorsFragment"
-            app:destination="@id/profileIndicatorsFragment" />
+            app:destination="@id/indicatorsFragment" />
         <action
             android:id="@+id/action_profileMenuFragment_to_profileSimulationFragment"
-            app:destination="@id/profileSimulationFragment" />
+            app:destination="@id/simulationFragment" />
     </fragment>
     <fragment
-        android:id="@+id/profileIndicatorsFragment"
+        android:id="@+id/indicatorsFragment"
         android:name="br.com.henriktech.lupeon.ui.profile.indicators.ProfileIndicatorsFragment"
         android:label="ProfileIndicatorsFragment" />
     <fragment
-        android:id="@+id/profileSimulationFragment"
+        android:id="@+id/simulationFragment"
         android:name="br.com.henriktech.lupeon.ui.simulation.SimulationFragment"
         android:label="ProfileSimulationFragment" />
 </navigation>

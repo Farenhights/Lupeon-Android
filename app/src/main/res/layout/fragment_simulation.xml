@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="br.com.henriktech.lupeon.ui.simulation.ProfileSimulationViewModel" />
+            type="br.com.henriktech.lupeon.ui.simulation.SimulationViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -159,7 +159,7 @@
 
             <EditText
                 android:id="@+id/editTextTextPersonName3"
-                android:layout_width="95"
+                android:layout_width="95dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"

@@ -19,8 +19,8 @@
         <item name="android:windowBackground">@drawable/bg_splash</item>
     </style>
 
-    <style name="Theme.Lupeon.Button" parent="Widget.AppCompat.Button">
-        <item name="backgroundTint">@color/lupeon_secondary</item>
+    <style name="Theme.Lupeon.Button" parent="Widget.AppCompat.Light.ActionButton">
+        <item name="android:background">@drawable/background_button_round</item>
         <item name="android:textColor">@color/white</item>
     </style>
 

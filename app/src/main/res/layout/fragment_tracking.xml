@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="br.com.henriktech.lupeon.ui.indicators.IndicatorsViewModel" />
+            type="br.com.henriktech.lupeon.ui.tracking.TrackingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,81 +22,95 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="34dp"
             android:fontFamily="@font/montserrat_regular"
-            android:text="@string/indicators"
+            android:text="@string/tracking"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/recycleIndicatorView"
-            app:layout_constraintEnd_toStartOf="@+id/imageView6"
+            app:layout_constraintBottom_toTopOf="@+id/recycleTrackingView"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewLogoutProfileTrackings"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-            android:id="@+id/imageViewLogoutProfileIndicators"
+            android:id="@+id/imageViewLogoutProfileTrackings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="26dp"
             android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/textView"
             app:srcCompat="@drawable/ic_logout" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycleIndicatorView"
+            android:id="@+id/recycleTrackingView"
             android:layout_width="340dp"
             android:layout_height="0dp"
             android:layout_margin="8dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+            android:layout_marginEnd="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView"
-            app:layout_constraintVertical_bias="1.0"
             app:layout_constraintVertical_chainStyle="spread_inside"
             app:spanCount="6" />
+
+        <Button
+            android:id="@+id/trackingSearchButton"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="64dp"
+            android:backgroundTint="@color/lupeon_secondary"
+            android:text="@string/search"
+            android:textColor="@color/white"
+            app:cornerRadius="50dp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="0dp"
             android:layout_height="96dp"
-            android:layout_marginTop="8dp"
             android:background="@drawable/layout_bg_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycleIndicatorView">
+            app:layout_constraintStart_toStartOf="parent">
 
 
             <ImageView
-                android:id="@+id/imageBottomBarIndicator"
+                android:id="@+id/imageBottomBarTracking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/IndicatorsMenuTextView"
+                app:layout_constraintTop_toBottomOf="@+id/TrackingsMenuTextView"
                 app:srcCompat="@drawable/ic_home" />
 
             <ImageView
-                android:id="@+id/imageIndicatorArrowLetf"
+                android:id="@+id/imageTrackingArrowLetf"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginStart="34dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:rotation="-180"
-                app:layout_constraintBottom_toTopOf="@+id/imageBottomBarIndicator"
-                app:layout_constraintEnd_toStartOf="@+id/IndicatorsMenuTextView"
+                app:layout_constraintBottom_toTopOf="@+id/imageBottomBarTracking"
+                app:layout_constraintEnd_toStartOf="@+id/TrackingsMenuTextView"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_right_arrow" />
 
             <TextView
-                android:id="@+id/IndicatorsMenuTextView"
+                android:id="@+id/TrackingsMenuTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -105,21 +119,24 @@
                 android:text="@string/menu"
                 android:textColor="#616161"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/imageBottomBarIndicator"
-                app:layout_constraintStart_toEndOf="@+id/imageIndicatorArrowLetf"
-                app:layout_constraintTop_toTopOf="@+id/imageIndicatorArrowLetf" />
+                app:layout_constraintBottom_toTopOf="@+id/imageBottomBarTracking"
+                app:layout_constraintStart_toEndOf="@+id/imageTrackingArrowLetf"
+                app:layout_constraintTop_toTopOf="@+id/imageTrackingArrowLetf" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewLogoutProfileIndicators"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewLogoutProfileIndicators"
-            app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="@+id/imageViewLogoutProfileIndicators"
-            app:srcCompat="@drawable/ic_filter_white" />
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name"
+            app:layout_constraintBottom_toTopOf="@+id/trackingSearchButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

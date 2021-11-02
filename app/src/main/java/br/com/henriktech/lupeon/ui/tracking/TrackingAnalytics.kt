@@ -1,9 +1,9 @@
-package br.com.henriktech.lupeon.ui.simulation
+package br.com.henriktech.lupeon.ui.tracking
 
 import android.app.Activity
 import br.com.henriktech.lupeon.analytics.Analytics
 
-class SimulationAnalytics(private val analytics: Analytics) {
+class TrackingAnalytics(private val analytics: Analytics) {
     fun trackScreen(activity: Activity) {
         analytics.trackScreen(
             activity,
@@ -17,7 +17,7 @@ class SimulationAnalytics(private val analytics: Analytics) {
 
     internal companion object {
         private const val SCREEN_NAME = "Profile"
-        internal const val FRAG_PRESENTATION = "${SCREEN_NAME}_Simulação"
+        internal const val FRAG_PRESENTATION = "${SCREEN_NAME}_Tracking"
         private const val EVENT_PRESENTATION = "${FRAG_PRESENTATION}_Tela_aberta"
     }
 }
