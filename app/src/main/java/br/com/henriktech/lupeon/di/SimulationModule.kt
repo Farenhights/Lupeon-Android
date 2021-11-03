@@ -9,7 +9,7 @@ import org.koin.dsl.module
 object SimulationModule {
     private val indicatorModule = module {
         single { SimulationAnalytics(get()) }
-        viewModel { SimulationViewModel() }
+        viewModel { SimulationViewModel(get()) }
     }
 
     fun get(): Module {

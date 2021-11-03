@@ -8,7 +8,7 @@ import br.com.henriktech.lupeon.ui.base.BaseFragment
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SimulationFragment: BaseFragment(R.layout.fragment_simulation) {
+class SimulationFragment: BaseFragment(R.layout.fragment_simulation){
     private val analytics: SimulationAnalytics by inject()
     private val viewModel: SimulationViewModel by viewModel()
 
@@ -29,7 +29,9 @@ class SimulationFragment: BaseFragment(R.layout.fragment_simulation) {
     }
 
     private fun startViewModel() {
-       //  TODO("Not yet implemented")
+        viewModel.user.observe(viewLifecycleOwner) { user ->
+            if (user == null)
+                logoutApplication()
+        }
     }
-
 }

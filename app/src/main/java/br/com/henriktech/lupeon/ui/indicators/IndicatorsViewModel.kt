@@ -19,8 +19,8 @@ class IndicatorsViewModel(
     private val indicatorsService: IndicatorsService
 ) : ViewModel() {
 
-    private val _user = MutableLiveData<User>()
-    val user: LiveData<User> = _user
+    private val _user = MutableLiveData<User?>()
+    val user: MutableLiveData<User?> = _user
 
     private val _indicators = MutableLiveData<List<Indicator>>()
     val indicators: LiveData<List<Indicator>> = _indicators

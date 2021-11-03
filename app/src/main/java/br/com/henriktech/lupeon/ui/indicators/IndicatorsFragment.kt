@@ -13,7 +13,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class IndicatorsFragment : BaseFragment(R.layout.fragment_indicators),
     IndicatorAdapter.OnIndicatorClickListener {
-
     private val analytics: IndicatorsAnalytics by inject()
     private val viewModel: IndicatorsViewModel by viewModel()
 

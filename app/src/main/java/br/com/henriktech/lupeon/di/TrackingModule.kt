@@ -9,7 +9,7 @@ import org.koin.dsl.module
 object TrackingModule {
     private val trackingModule = module {
         single { TrackingAnalytics(get()) }
-        viewModel { TrackingViewModel() }
+        viewModel { TrackingViewModel(get()) }
     }
 
     fun get(): Module {

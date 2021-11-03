@@ -18,8 +18,8 @@ class ProfileMenuViewModel(
     private val alertRepository: AlertRepository,
     private val informationService: AppInfoService
 ) : ViewModel() {
-    private val _user = MutableLiveData<User>()
-    val user: LiveData<User> = _user
+    private val _user = MutableLiveData<User?>()
+    val user: MutableLiveData<User?> = _user
 
     private val _menus = MutableLiveData<List<Menu>>()
     val menus: LiveData<List<Menu>> = _menus

@@ -24,15 +24,11 @@ import br.com.henriktech.lupeon.ui.profile.ProfileActivity
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPressed,
     ProfileAlertAdapter.OnAlertClickListener, ProfileMenuAdapter.OnMenuClickListener {
-
     private val analytics: ProfileMenuAnalytics by inject()
     private val viewModel: ProfileMenuViewModel by viewModel()
-
     private lateinit var webView: WebView
-
     private lateinit var binding: FragmentProfileBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
