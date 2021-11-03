@@ -52,7 +52,7 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
         when (menu.option) {
             "Indicadores" -> findNavController().navigate(R.id.action_profileMenuFragment_to_profileIndicatorsFragment)
             "Simulacao" -> findNavController().navigate(R.id.action_profileMenuFragment_to_profileSimulationFragment)
-            "Tracking" -> open(Intent(context, ProfileActivity::class.java))
+            "Tracking" -> findNavController().navigate(R.id.action_profileMenuFragment_to_trackingFragment)
             "Faturas" -> open(Intent(context, ProfileActivity::class.java))
             "Abono" -> open(Intent(context, ProfileActivity::class.java))
             else -> open(Intent(context, ProfileActivity::class.java))

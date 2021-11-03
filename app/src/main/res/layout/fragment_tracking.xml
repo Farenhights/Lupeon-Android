@@ -52,6 +52,8 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="24dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView"
@@ -63,6 +65,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="64dp"
             android:backgroundTint="@color/lupeon_secondary"
@@ -71,7 +74,8 @@
             app:cornerRadius="50dp"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
@@ -127,16 +131,34 @@
         <EditText
             android:id="@+id/editTextTextPersonName"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="24dp"
-            android:ems="10"
+            android:background="@drawable/back_rectangle"
             android:inputType="textPersonName"
-            android:text="Name"
             app:layout_constraintBottom_toTopOf="@+id/trackingSearchButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="Digite o número da nota"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycleTrackingView" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
