@@ -11,9 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lupeon"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.driver.DriverActivity" />
-        <activity android:name=".ui.profile.ProfileActivity" />
         <activity
+            android:exported="true"
             android:name=".ui.LupeonActivity"
             android:theme="@style/Theme.Splash">
             <intent-filter>

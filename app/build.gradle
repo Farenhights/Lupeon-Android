@@ -28,20 +28,6 @@ android {
         viewBinding true
         dataBinding true
     }
-    flavorDimensions "stage"
-
-    productFlavors {
-        dev {
-            dimension "stage"
-            minSdkVersion 30
-            versionNameSuffix "-dev"
-            applicationIdSuffix ".dev"
-            resConfigs "en", "xxhdpi"
-        }
-        prod {
-            dimension "stage"
-        }
-    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
