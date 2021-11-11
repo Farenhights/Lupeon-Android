@@ -3,6 +3,7 @@ package br.com.henriktech.lupeon.ui.simulation
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.databinding.FragmentSimulationBinding
 import org.koin.android.ext.android.inject
@@ -25,13 +26,16 @@ class SimulationFragment: Fragment(R.layout.fragment_simulation){
     }
 
     private fun startView(binding: FragmentSimulationBinding) {
-
+        binding.imageViewLogoutSimulation.setOnClickListener {
+            viewModel.logout()
+        }
     }
 
     private fun startViewModel() {
-//        viewModel.user.observe(viewLifecycleOwner) { user ->
-//            if (user == null)
-//                logoutApplication()
-//        }
+        viewModel.user.observe(viewLifecycleOwner) { user ->
+            if (user == null)
+                findNavController().navigate(R.id.action_simulationFragment_to_loginActivity)
+        }
+        viewModel.getUser()
     }
 }

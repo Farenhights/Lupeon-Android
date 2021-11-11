@@ -265,14 +265,14 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewLogoutProfileMenu"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewLogoutSimulation"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Olá, Júlia" />
 
         <ImageView
-            android:id="@+id/imageViewLogoutProfileMenu"
+            android:id="@+id/imageViewLogoutSimulation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="26dp"

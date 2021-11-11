@@ -25,14 +25,14 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/recycleTrackingView"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewLogoutProfileTrackings"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewLogoutTracking"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-            android:id="@+id/imageViewLogoutProfileTrackings"
+            android:id="@+id/imageViewLogoutTracking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"

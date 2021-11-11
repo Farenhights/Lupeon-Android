@@ -2,7 +2,6 @@ package br.com.henriktech.lupeon.ui.menu
 
 import android.annotation.SuppressLint
 import android.app.Dialog
-import android.content.Intent
 import android.os.Bundle
 import android.text.Html
 import android.view.View
@@ -46,11 +45,9 @@ class MenuFragment : Fragment(R.layout.fragment_menu), IOnBackPressed,
 
         when (menu.option) {
             "Indicadores" -> findNavController().navigate(R.id.action_menuFragment_to_indicatorsFragment)
-//            "Simulacao" -> findNavController().navigate(R.id.action_profileMenuFragment_to_profileSimulationFragment)
-//            "Tracking" -> findNavController().navigate(R.id.action_profileMenuFragment_to_trackingFragment)
-//            "Faturas" -> open(Intent(context, ProfileActivity::class.java))
-//            "Abono" -> open(Intent(context, ProfileActivity::class.java))
-//            else -> open(Intent(context, ProfileActivity::class.java))
+            "Simulacao" -> findNavController().navigate(R.id.action_menuFragment_to_simulationFragment)
+            "Tracking" -> findNavController().navigate(R.id.action_menuFragment_to_trackingFragment)
+            else -> findNavController().navigate(R.id.action_menuFragment_to_loginActivity)
         }
     }
 
@@ -64,7 +61,7 @@ class MenuFragment : Fragment(R.layout.fragment_menu), IOnBackPressed,
     }
 
     private fun startView(binding: FragmentMenuBinding) {
-        binding.imageViewLogoutProfileMenu.setOnClickListener {
+        binding.imageViewLogoutMenu.setOnClickListener {
             viewModel.logout()
         }
     }

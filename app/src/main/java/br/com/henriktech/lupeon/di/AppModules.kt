@@ -13,7 +13,7 @@ object AppModules {
                 IndicatorsModule.get(),
                 SimulationModule.get(),
                 TrackingModule.get(),
-                ProfileMenuModule.get()
+                MenuModule.get()
             )
         )
     }

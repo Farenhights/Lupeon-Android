@@ -29,7 +29,7 @@
         android:id="@+id/lossPasswordFragment"
         android:name="br.com.henriktech.lupeon.ui.login.losspassword.LoginLossPasswordFragment"
         android:label="fragment_losspassword"
-        tools:layout="@layout/fragment_losspassword" >
+        tools:layout="@layout/fragment_losspassword">
         <action
             android:id="@+id/action_lossPasswordFragment_to_loginNewPasswordFragment"
             app:destination="@id/loginNewPasswordFragment" />
@@ -42,20 +42,46 @@
     <fragment
         android:id="@+id/menuFragment"
         android:name="br.com.henriktech.lupeon.ui.menu.MenuFragment"
-        android:label="MenuFragment">
+        android:label="MenuFragment"
+        tools:layout="@layout/fragment_menu">
         <action
             android:id="@+id/action_menuFragment_to_loginActivity"
             app:destination="@id/loginActivity" />
         <action
             android:id="@+id/action_menuFragment_to_indicatorsFragment"
             app:destination="@id/indicatorsFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_simulationFragment"
+            app:destination="@id/simulationFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_trackingFragment"
+            app:destination="@id/trackingFragment" />
     </fragment>
     <fragment
         android:id="@+id/indicatorsFragment"
         android:name="br.com.henriktech.lupeon.ui.indicators.IndicatorsFragment"
-        android:label="IndicatorsFragment" >
+        android:label="IndicatorsFragment"
+        tools:layout="@layout/fragment_indicators">
         <action
             android:id="@+id/action_indicatorsFragment_to_loginActivity"
+            app:destination="@id/loginActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/simulationFragment"
+        android:name="br.com.henriktech.lupeon.ui.simulation.SimulationFragment"
+        android:label="SimulationFragment"
+        tools:layout="@layout/fragment_simulation">
+        <action
+            android:id="@+id/action_simulationFragment_to_loginActivity"
+            app:destination="@id/loginActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/trackingFragment"
+        android:name="br.com.henriktech.lupeon.ui.tracking.TrackingFragment"
+        android:label="TrackingFragment"
+        tools:layout="@layout/fragment_tracking">
+        <action
+            android:id="@+id/action_trackingFragment_to_loginActivity"
             app:destination="@id/loginActivity" />
     </fragment>
 </navigation>

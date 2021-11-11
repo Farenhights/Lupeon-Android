@@ -7,7 +7,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-object ProfileMenuModule {
+object MenuModule {
 
     private fun profileMenuModule() = module {
         single { MenuAnalytics(get()) }

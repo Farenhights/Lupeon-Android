@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -149,14 +149,14 @@
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewLogoutProfileMenu"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewLogoutProfileMenu"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewLogoutMenu"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewLogoutMenu"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageViewLogoutProfileMenu" />
+            app:layout_constraintTop_toTopOf="@+id/imageViewLogoutMenu" />
 
         <ImageView
-            android:id="@+id/imageViewLogoutProfileMenu"
+            android:id="@+id/imageViewLogoutMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="26dp"
