@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_mainFragment_to_lossPasswordFragment"
             app:destination="@id/lossPasswordFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_profileMenuFragment"
+            app:destination="@id/menuFragment" />
     </fragment>
     <fragment
         android:id="@+id/lossPasswordFragment"
@@ -36,4 +39,23 @@
         android:name="br.com.henriktech.lupeon.ui.login.newpassword.LoginNewPasswordFragment"
         android:label="fragment_newpassword"
         tools:layout="@layout/fragment_newpassword" />
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="br.com.henriktech.lupeon.ui.menu.MenuFragment"
+        android:label="MenuFragment">
+        <action
+            android:id="@+id/action_menuFragment_to_loginActivity"
+            app:destination="@id/loginActivity" />
+        <action
+            android:id="@+id/action_menuFragment_to_indicatorsFragment"
+            app:destination="@id/indicatorsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/indicatorsFragment"
+        android:name="br.com.henriktech.lupeon.ui.indicators.IndicatorsFragment"
+        android:label="IndicatorsFragment" >
+        <action
+            android:id="@+id/action_indicatorsFragment_to_loginActivity"
+            app:destination="@id/loginActivity" />
+    </fragment>
 </navigation>

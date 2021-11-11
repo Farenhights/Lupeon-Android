@@ -1,4 +1,4 @@
-package br.com.henriktech.lupeon.ui.profile.menu
+package br.com.henriktech.lupeon.ui.menu
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.data.model.Menu
 
-class ProfileMenuAdapter(private val menuList: List<Menu>, private val itemClickListener: OnMenuClickListener) :
-    RecyclerView.Adapter<ProfileMenuAdapter.ProfileMenuViewHolder>() {
+class MenuAdapter(private val menuList: List<Menu>, private val itemClickListener: OnMenuClickListener) :
+    RecyclerView.Adapter<MenuAdapter.ProfileMenuViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileMenuViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.view_menu, parent, false)

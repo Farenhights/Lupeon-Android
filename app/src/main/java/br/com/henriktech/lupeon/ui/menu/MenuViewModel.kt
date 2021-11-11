@@ -1,4 +1,4 @@
-package br.com.henriktech.lupeon.ui.profile.menu
+package br.com.henriktech.lupeon.ui.menu
 
 import android.text.Html
 import androidx.lifecycle.LiveData
@@ -12,7 +12,7 @@ import br.com.henriktech.lupeon.database.repository.MenuRepository
 import br.com.henriktech.lupeon.database.repository.UserRepository
 import kotlinx.coroutines.launch
 
-class ProfileMenuViewModel(
+class MenuViewModel(
     private val userRepository: UserRepository,
     private val menuRepository: MenuRepository,
     private val alertRepository: AlertRepository,

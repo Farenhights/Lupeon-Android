@@ -2,14 +2,14 @@ package br.com.henriktech.lupeon.ui.login.presentention
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.databinding.FragmentPresentationBinding
-import br.com.henriktech.lupeon.ui.base.BaseFragment
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LoginPresentationFragment : BaseFragment(R.layout.fragment_presentation) {
+class LoginPresentationFragment : Fragment(R.layout.fragment_presentation) {
 
     private val analytics: LoginPresentationAnalytics by inject()
     private val viewModel: LoginPresentationViewModel by viewModel()
@@ -25,7 +25,7 @@ class LoginPresentationFragment : BaseFragment(R.layout.fragment_presentation) {
         binding.presentationEnterButton.apply {
             setOnClickListener {
                 analytics.clickEnterButton()
-                it.findNavController().navigate(R.id.action_loginActivity_to_mainFragment)
+                findNavController().navigate(R.id.action_loginActivity_to_mainFragment)
             }
         }
     }

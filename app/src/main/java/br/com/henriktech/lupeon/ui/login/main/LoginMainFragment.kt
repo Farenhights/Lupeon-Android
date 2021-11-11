@@ -2,14 +2,14 @@ package br.com.henriktech.lupeon.ui.login.main
 
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.findNavController
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.databinding.FragmentLoginBinding
-import br.com.henriktech.lupeon.ui.base.BaseFragment
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LoginMainFragment : BaseFragment(R.layout.fragment_login) {
+class LoginMainFragment : Fragment(R.layout.fragment_login) {
 
     private val analytics: LoginMainAnalytics by inject()
     private val viewModel: LoginMainViewModel by viewModel()
@@ -30,7 +30,7 @@ class LoginMainFragment : BaseFragment(R.layout.fragment_login) {
 
         binding.buttonLossPasswordView.setOnClickListener {
             analytics.clickLossPasswordButton()
-            it.findNavController().navigate(R.id.action_mainFragment_to_lossPasswordFragment)
+            findNavController().navigate(R.id.action_mainFragment_to_lossPasswordFragment)
         }
 
         binding.mainEnterButton.setOnClickListener {
@@ -52,7 +52,7 @@ class LoginMainFragment : BaseFragment(R.layout.fragment_login) {
     private fun startViewModel() {
         viewModel.perfil.observe(viewLifecycleOwner, {
             analytics.typeLogin(it)
-            loginApplication(it)
+            findNavController().navigate(R.id.action_mainFragment_to_profileMenuFragment)
         })
 
         viewModel.errorMessage.observe(viewLifecycleOwner, {

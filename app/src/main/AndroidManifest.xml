@@ -14,7 +14,7 @@
         <activity android:name=".ui.driver.DriverActivity" />
         <activity android:name=".ui.profile.ProfileActivity" />
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name=".ui.LupeonActivity"
             android:theme="@style/Theme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package br.com.henriktech.lupeon.ui.profile.menu
+package br.com.henriktech.lupeon.ui.menu
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -11,30 +11,29 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.data.model.Alert
 import br.com.henriktech.lupeon.data.model.Menu
-import br.com.henriktech.lupeon.databinding.FragmentProfileBinding
-import br.com.henriktech.lupeon.ui.base.BaseFragment
-import br.com.henriktech.lupeon.ui.profile.IOnBackPressed
-import br.com.henriktech.lupeon.ui.profile.ProfileActivity
+import br.com.henriktech.lupeon.databinding.FragmentMenuBinding
+import br.com.henriktech.lupeon.ui.IOnBackPressed
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPressed,
-    ProfileAlertAdapter.OnAlertClickListener, ProfileMenuAdapter.OnMenuClickListener {
-    private val analytics: ProfileMenuAnalytics by inject()
-    private val viewModel: ProfileMenuViewModel by viewModel()
+class MenuFragment : Fragment(R.layout.fragment_menu), IOnBackPressed,
+    AlertAdapter.OnAlertClickListener, MenuAdapter.OnMenuClickListener {
+    private val analytics: MenuAnalytics by inject()
+    private val viewModel: MenuViewModel by viewModel()
     private lateinit var webView: WebView
-    private lateinit var binding: FragmentProfileBinding
+    private lateinit var binding: FragmentMenuBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         analytics.trackScreen(requireActivity())
-        binding = FragmentProfileBinding.bind(view)
+        binding = FragmentMenuBinding.bind(view)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         startView(binding)
@@ -46,12 +45,12 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
         analytics.clickMenu(menu.option)
 
         when (menu.option) {
-            "Indicadores" -> findNavController().navigate(R.id.action_profileMenuFragment_to_profileIndicatorsFragment)
-            "Simulacao" -> findNavController().navigate(R.id.action_profileMenuFragment_to_profileSimulationFragment)
-            "Tracking" -> findNavController().navigate(R.id.action_profileMenuFragment_to_trackingFragment)
-            "Faturas" -> open(Intent(context, ProfileActivity::class.java))
-            "Abono" -> open(Intent(context, ProfileActivity::class.java))
-            else -> open(Intent(context, ProfileActivity::class.java))
+            "Indicadores" -> findNavController().navigate(R.id.action_menuFragment_to_indicatorsFragment)
+//            "Simulacao" -> findNavController().navigate(R.id.action_profileMenuFragment_to_profileSimulationFragment)
+//            "Tracking" -> findNavController().navigate(R.id.action_profileMenuFragment_to_trackingFragment)
+//            "Faturas" -> open(Intent(context, ProfileActivity::class.java))
+//            "Abono" -> open(Intent(context, ProfileActivity::class.java))
+//            else -> open(Intent(context, ProfileActivity::class.java))
         }
     }
 
@@ -64,7 +63,7 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
         return false
     }
 
-    private fun startView(binding: FragmentProfileBinding) {
+    private fun startView(binding: FragmentMenuBinding) {
         binding.imageViewLogoutProfileMenu.setOnClickListener {
             viewModel.logout()
         }
@@ -76,7 +75,7 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
             val recycleMenu: RecyclerView = binding.recycleMenuView
             val numberOfColumns = 2
             recycleMenu.layoutManager = GridLayoutManager(context, numberOfColumns)
-            val adapter = ProfileMenuAdapter(menus, this)
+            val adapter = MenuAdapter(menus, this)
             recycleMenu.adapter = adapter
         })
 
@@ -84,7 +83,7 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
             val recycleAlert: RecyclerView = binding.recycleAlertView
             val numberOfColumns = 1
             recycleAlert.layoutManager = GridLayoutManager(context, numberOfColumns)
-            val adapter = ProfileAlertAdapter(alerts as ArrayList<Alert>, this)
+            val adapter = AlertAdapter(alerts as ArrayList<Alert>, this)
             recycleAlert.adapter = adapter
         })
 
@@ -98,7 +97,7 @@ class ProfileMenuFragment : BaseFragment(R.layout.fragment_profile), IOnBackPres
                             "<br>${user.contactsManager}", 0
                 ).toString()
             } else {
-                logoutApplication()
+                findNavController().navigate(R.id.action_menuFragment_to_loginActivity)
             }
 
         })

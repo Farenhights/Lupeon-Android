@@ -2,16 +2,17 @@ package br.com.henriktech.lupeon.ui.indicators
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.data.model.Indicator
 import br.com.henriktech.lupeon.databinding.FragmentIndicatorsBinding
-import br.com.henriktech.lupeon.ui.base.BaseFragment
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class IndicatorsFragment : BaseFragment(R.layout.fragment_indicators),
+class IndicatorsFragment : Fragment(R.layout.fragment_indicators),
     IndicatorAdapter.OnIndicatorClickListener {
     private val analytics: IndicatorsAnalytics by inject()
     private val viewModel: IndicatorsViewModel by viewModel()
@@ -39,7 +40,7 @@ class IndicatorsFragment : BaseFragment(R.layout.fragment_indicators),
 
         viewModel.user.observe(viewLifecycleOwner, { user ->
             if (user == null)
-                logoutApplication()
+                findNavController().navigate(R.id.action_indicatorsFragment_to_loginActivity)
         })
 
         viewModel.getUser()

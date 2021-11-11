@@ -1,9 +1,9 @@
-package br.com.henriktech.lupeon.ui.profile.menu
+package br.com.henriktech.lupeon.ui.menu
 
 import android.app.Activity
 import br.com.henriktech.lupeon.analytics.Analytics
 
-class ProfileMenuAnalytics(private val analytics: Analytics) {
+class MenuAnalytics(private val analytics: Analytics) {
     fun trackScreen(activity: Activity) {
         analytics.trackScreen(
             activity,

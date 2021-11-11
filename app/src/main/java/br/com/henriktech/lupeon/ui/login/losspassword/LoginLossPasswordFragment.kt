@@ -5,12 +5,12 @@ import android.text.Html
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import br.com.henriktech.lupeon.R
-import br.com.henriktech.lupeon.ui.base.BaseFragment
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LoginLossPasswordFragment : BaseFragment(R.layout.fragment_losspassword) {
+class LoginLossPasswordFragment : Fragment(R.layout.fragment_losspassword) {
 
     private val analytics: LoginLossPasswordAnalytics by inject()
     private val viewModel: LoginLossPasswordViewModel by viewModel()

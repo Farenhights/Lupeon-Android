@@ -1,21 +1,18 @@
-package br.com.henriktech.lupeon.ui.profile.menu
+package br.com.henriktech.lupeon.ui.menu
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.view.marginLeft
-import androidx.core.view.marginRight
-import androidx.core.view.marginStart
 import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.data.model.Alert
 
-class ProfileAlertAdapter(
+class AlertAdapter(
     private val alertList: ArrayList<Alert>,
     private val itemClickListener: OnAlertClickListener
 ) :
-    RecyclerView.Adapter<ProfileAlertAdapter.ProfileAlertViewHolder>() {
+    RecyclerView.Adapter<AlertAdapter.ProfileAlertViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileAlertViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.view_alert, parent, false)
