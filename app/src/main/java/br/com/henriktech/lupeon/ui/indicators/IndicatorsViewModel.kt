@@ -35,8 +35,8 @@ class IndicatorsViewModel(
                     when (val response =
                         indicatorsService.getShipperIndicators(user.tokenType, user.userId, 0)) {
                         is ApiResult.Success<*> -> {
-                            val indicadores = response.data!! as Indicadores
-                            _indicators.postValue(indicadores.indicadores.toIndicatorList())
+                            val indicators = response.data!! as Indicadores
+                            _indicators.postValue(indicators.indicadores.toIndicatorList())
                         }
                         is ApiResult.Error -> {
                             _errorMessage.postValue(response.message)

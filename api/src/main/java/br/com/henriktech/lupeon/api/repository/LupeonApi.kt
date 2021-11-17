@@ -11,16 +11,20 @@ import retrofit2.http.Headers
 import retrofit2.http.POST
 
 interface LupeonApi {
-
+    /**
+     * Security
+     * */
     @Headers("Content-Type: application/json")
     @POST("/Security/Login")
     suspend fun postLogin(@Body body: LoginRequest): Response<Login>
 
+    /**
+     * Embarcador
+     * */
     @Headers("Content-Type: application/json")
     @POST("/Embarcador/Indicadores")
     suspend fun postEmbacadorIndicadores(
         @Header("Authorization") token: String,
         @Body body: EmbarcadorRequest
     ): Response<Indicadores>
-
 }

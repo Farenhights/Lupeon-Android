@@ -26,24 +26,13 @@ class MenuAdapter(private val menuList: List<Menu>, private val itemClickListene
         return menuList.size
     }
 
-
-    private fun setIcon(option: String): Int {
-        return when (option) {
-            "Indicadores" -> R.drawable.ic_indicadores
-            "Simulacao" -> R.drawable.ic_simulacao
-            "Tracking" -> R.drawable.ic_tracking
-            "Faturas" -> R.drawable.ic_fatura
-            "Abono" -> R.drawable.ic_abono
-            else -> R.drawable.ic_token
-        }
-    }
-
     inner class ProfileMenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         private val labelMenuView: TextView = itemView.findViewById(R.id.labelMenuView)
         private val imageMenuView: ImageView = itemView.findViewById(R.id.imageMenuView)
         private var visibility = itemView.visibility
 
-        fun bind(menu: br.com.henriktech.lupeon.data.model.Menu, clickListener: OnMenuClickListener) {
+        fun bind(menu: Menu, clickListener: OnMenuClickListener) {
             labelMenuView.text = menu.option
             imageMenuView.setImageResource(setIcon(menu.option))
             visibility = setVisibity(menu.visible)
@@ -58,6 +47,17 @@ class MenuAdapter(private val menuList: List<Menu>, private val itemClickListene
                 View.VISIBLE
             } else {
                 View.GONE
+            }
+        }
+
+        private fun setIcon(option: String): Int {
+            return when (option) {
+                "Indicadores" -> R.drawable.ic_indicadores
+                "Simulacao" -> R.drawable.ic_simulacao
+                "Tracking" -> R.drawable.ic_tracking
+                "Faturas" -> R.drawable.ic_fatura
+                "Abono" -> R.drawable.ic_abono
+                else -> R.drawable.ic_token
             }
         }
     }
