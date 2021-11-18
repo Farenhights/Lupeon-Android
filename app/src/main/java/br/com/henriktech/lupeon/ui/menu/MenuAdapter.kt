@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.data.model.Menu
 
-class MenuAdapter(private val menuList: List<Menu>, private val itemClickListener: OnMenuClickListener) :
+class MenuAdapter(
+    private val menuList: List<Menu>,
+    private val itemClickListener: OnMenuClickListener
+) :
     RecyclerView.Adapter<MenuAdapter.ProfileMenuViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileMenuViewHolder {
@@ -18,8 +21,10 @@ class MenuAdapter(private val menuList: List<Menu>, private val itemClickListene
     }
 
     override fun onBindViewHolder(holder: ProfileMenuViewHolder, position: Int) {
-       val menu = menuList[position]
-        holder.bind(menu, itemClickListener)
+        val menu = menuList[position]
+        if (menu.visible) {
+            holder.bind(menu, itemClickListener)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -61,6 +66,7 @@ class MenuAdapter(private val menuList: List<Menu>, private val itemClickListene
             }
         }
     }
+
     interface OnMenuClickListener {
         fun onMenuClicked(menu: Menu)
     }
