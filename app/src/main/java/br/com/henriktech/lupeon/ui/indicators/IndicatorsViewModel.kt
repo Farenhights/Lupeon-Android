@@ -33,7 +33,27 @@ class IndicatorsViewModel(
             if (user != null) {
                 viewModelScope.launch {
                     when (val response =
-                        indicatorsService.getShipperIndicators(user.tokenType, user.userId, 0)) {
+                        when (user.userType) {
+                            "E" -> indicatorsService.getShipperIndicators(
+                                user.tokenType,
+                                user.userId,
+                                user.companyId.toInt(),
+                                0
+                            )
+                            "T" -> indicatorsService.getTransporterIndicators(
+                                user.tokenType,
+                                user.userId,
+                                user.companyId.toInt(),
+                                0
+                            )
+                            else -> indicatorsService.getDriverIndicators(
+                                user.tokenType,
+                                user.userId,
+                                user.companyId.toInt(),
+                                0
+                            )
+                        }
+                    ) {
                         is ApiResult.Success<*> -> {
                             val indicators = response.data!! as Indicadores
                             _indicators.postValue(indicators.indicadores.toIndicatorList())

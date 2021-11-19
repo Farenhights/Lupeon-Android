@@ -9,7 +9,7 @@ buildscript {
         target_version = 31
         package_name = 'br.com.henriktech.lupeon'
 
-        kotlin_version = '1.6.0'
+        kotlin_version = '1.5.30'
         corektx_version = '1.7.0'
         lifecycle_version = '2.4.0'
         appcompat_version = '1.4.0'

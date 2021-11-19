@@ -28,6 +28,7 @@ interface LupeonApi {
     @POST("/Embarcador/Indicadores")
     suspend fun postEmbacadorIndicadores(
         @Header("Authorization") token: String,
+        @Header("CompanyId") companyId: Int,
         @Body body: ShipperRequest
     ): Response<Indicadores>
 
@@ -46,5 +47,22 @@ interface LupeonApi {
         @Header("CompanyId") companyId: Int,
         @Body body: Filial
     ): Response<Simulacao>
+
+    @Headers("Content-Type: application/json")
+    @POST("/Transportador/Indicadores")
+    suspend fun postTransportadorIndicadores(
+        @Header("Authorization") token: String,
+        @Header("CompanyId") companyId: Int,
+        @Body body: TransporterRequest
+    ): Response<Indicadores>
+
+    @Headers("Content-Type: application/json")
+    @POST("/Motorista/Indicadores")
+    suspend fun postMotoristaIndicadores(
+        @Header("Authorization") token: String,
+        @Header("CompanyId") companyId: Int,
+        @Body body: DriverRequest
+    ): Response<Indicadores>
+
 
 }

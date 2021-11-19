@@ -22,9 +22,7 @@ class MenuAdapter(
 
     override fun onBindViewHolder(holder: ProfileMenuViewHolder, position: Int) {
         val menu = menuList[position]
-        if (menu.visible) {
-            holder.bind(menu, itemClickListener)
-        }
+        holder.bind(menu, itemClickListener)
     }
 
     override fun getItemCount(): Int {

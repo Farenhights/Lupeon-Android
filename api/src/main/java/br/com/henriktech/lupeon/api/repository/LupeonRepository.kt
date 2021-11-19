@@ -21,9 +21,46 @@ class LupeonRepository(val context: Context, private val lupeonApi: LupeonApi) :
             lupeonApi.postTokenNovaSenha(NewPasswordRequest(email))
         }
 
-    suspend fun indicatorsShipper(token: String, shipperId: Int, timeCourseId: Int) =
+    suspend fun indicatorsShipper(
+        token: String,
+        shipperId: Int,
+        companyId: Int,
+        timeCourseId: Int
+    ) =
         safeCallApi {
-            lupeonApi.postEmbacadorIndicadores(token, ShipperRequest(shipperId, timeCourseId))
+            lupeonApi.postEmbacadorIndicadores(
+                token,
+                companyId,
+                ShipperRequest(shipperId, timeCourseId)
+            )
+        }
+
+    suspend fun indicatorsTransporter(
+        token: String,
+        transporterId: Int,
+        companyId: Int,
+        timeCourseId: Int
+    ) =
+        safeCallApi {
+            lupeonApi.postTransportadorIndicadores(
+                token,
+                companyId,
+                TransporterRequest(transporterId, timeCourseId)
+            )
+        }
+
+    suspend fun indicatorsDriver(
+        token: String,
+        driverId: Int,
+        companyId: Int,
+        timeCourseId: Int
+    ) =
+        safeCallApi {
+            lupeonApi.postMotoristaIndicadores(
+                token,
+                companyId,
+                DriverRequest(driverId, timeCourseId)
+            )
         }
 
     suspend fun trackingShipper(token: String, companyId: Int, cnpj: String, numberNFe: Int) =

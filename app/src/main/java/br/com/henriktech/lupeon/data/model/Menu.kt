@@ -30,7 +30,8 @@ fun List<MenuEntity>.toListMenu(): List<Menu> {
     val arrayList = ArrayList<Menu>()
     with(this) {
         forEach {
-            arrayList.add(it.toMenu())
+            if (it.visible)
+                arrayList.add(it.toMenu())
         }
     }
     return arrayList
