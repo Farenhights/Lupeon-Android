@@ -17,6 +17,14 @@ class LoginLossPasswordAnalytics(private val analytics: Analytics) {
         trackEvent("${LoginPresentationAnalytics.FRAG_PRESENTATION}_Clique_Botao_Voltar")
     }
 
+    fun clickSendEmailButton() {
+        trackEvent("${LoginPresentationAnalytics.FRAG_PRESENTATION}_Clique_Botao_Enviar_Email")
+    }
+
+    fun clickHaveCodeButton() {
+        trackEvent("${LoginPresentationAnalytics.FRAG_PRESENTATION}_Clique_Botao_Possuo_Codigo")
+    }
+
     private fun trackEvent(eventName: String) {
         analytics.trackEvent(eventName)
     }

@@ -10,10 +10,10 @@ open class BaseRepository {
             if (response.isSuccessful) {
                 ApiResult.Success(response.body())
             } else {
-                ApiResult.Error(response.message() ?: "Não foi possível fazer a chamada.")
+                ApiResult.Error("ApiResult Error: ${response.message()}")
             }
         } catch (error: Exception) {
-            ApiResult.Error("Não foi possível fazer a chamada.")
+            ApiResult.Error("ApiResult Error: ${error.message}")
         }
     }
 }

@@ -30,4 +30,9 @@
     <string name="hello">Olá</string>
     <string name="avanced_search">Pesquisa avançada</string>
     <string name="search">Pesquisa</string>
+    <string name="token_code">Digite o token</string>
+    <string name="label_password">Digite a senha</string>
+    <string name="label_confirm_password">Confirme a senha</string>
+    <string name="confirm">Confirmar</string>
+    <string name="new_password">Criar nova senha</string>
 </resources>

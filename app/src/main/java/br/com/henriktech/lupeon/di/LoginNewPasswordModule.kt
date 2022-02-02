@@ -9,7 +9,7 @@ import org.koin.dsl.module
 object LoginNewPasswordModule {
     private val loginNewPasswordModule = module {
         single { LoginNewPasswordAnalytics(get()) }
-        viewModel { LoginNewPasswodViewModel() }
+        viewModel { LoginNewPasswodViewModel(get()) }
     }
 
     fun get(): Module {

@@ -1,7 +1,7 @@
 buildscript {
     ext {
-        version_code = 2
-        version_name = '2021.1'
+        version_code = 1
+        version_name = '2022.1'
 
         compile_version = 31
         build_version = '30.0.2'

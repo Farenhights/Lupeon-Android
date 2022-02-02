@@ -7,4 +7,7 @@ class AuthenticationService(private val lupeonRepository: LupeonRepository) {
 
     suspend fun validateLogin(user: String, password: String) =
         lupeonRepository.enterLogin(user, password)
+
+    suspend fun sendEmail(email: String) =
+        lupeonRepository.newPassword(email)
 }
