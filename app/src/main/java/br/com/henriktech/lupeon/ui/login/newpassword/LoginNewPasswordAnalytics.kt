@@ -5,6 +5,7 @@ import br.com.henriktech.lupeon.analytics.Analytics
 
 class LoginNewPasswordAnalytics(private val analytics: Analytics) {
 
+
     fun trackScreen(activity: Activity) {
         analytics.trackScreen(
             activity,
@@ -14,6 +15,10 @@ class LoginNewPasswordAnalytics(private val analytics: Analytics) {
 
     fun clickBackButton() {
         trackEvent("${LoginNewPasswordAnalytics.FRAG_PRESENTATION}_Clique_Botao_Voltar")
+    }
+
+    fun clickNewPasswordButton() {
+        trackEvent("${LoginNewPasswordAnalytics.FRAG_PRESENTATION}_Clique_Botao_Nova_Senha")
     }
 
     private fun trackEvent(eventName: String) {

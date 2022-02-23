@@ -34,5 +34,5 @@
     <string name="label_password">Digite a senha</string>
     <string name="label_confirm_password">Confirme a senha</string>
     <string name="confirm">Confirmar</string>
-    <string name="new_password">Criar nova senha</string>
+    <string name="new_password"><![CDATA[Criar nova<br>senha]]></string>
 </resources>

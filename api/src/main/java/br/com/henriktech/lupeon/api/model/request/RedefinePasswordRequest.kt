@@ -8,5 +8,5 @@ data class RedefinePasswordRequest(
     @SerializedName("Password")
     val password: String,
     @SerializedName("PasswordConfirm")
-    val passwordConfirm: StrictMath
+    val passwordConfirm: String
 )

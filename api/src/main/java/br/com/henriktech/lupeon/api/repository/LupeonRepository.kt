@@ -11,7 +11,7 @@ class LupeonRepository(val context: Context, private val lupeonApi: LupeonApi) :
         lupeonApi.postLogin(LoginRequest(user, password))
     }
 
-    suspend fun redefinePassword(token: String, password: String, passwordConfirm: StrictMath) =
+    suspend fun redefinePassword(token: String, password: String, passwordConfirm: String) =
         safeCallApi {
             lupeonApi.postRedefinirSenha(RedefinePasswordRequest(token, password, passwordConfirm))
         }

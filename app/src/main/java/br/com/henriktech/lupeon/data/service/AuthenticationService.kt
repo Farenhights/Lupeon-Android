@@ -10,4 +10,7 @@ class AuthenticationService(private val lupeonRepository: LupeonRepository) {
 
     suspend fun sendEmail(email: String) =
         lupeonRepository.newPassword(email)
+
+    suspend fun redefinePassword(token: String, password: String, passwordConfirm: String) =
+        lupeonRepository.redefinePassword(token, password, passwordConfirm)
 }

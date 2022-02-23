@@ -50,14 +50,14 @@ class LoginMainFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun startViewModel() {
-        viewModel.perfil.observe(viewLifecycleOwner, {
+        viewModel.perfil.observe(viewLifecycleOwner) {
             analytics.typeLogin(it)
             findNavController().navigate(R.id.action_mainFragment_to_profileMenuFragment)
-        })
+        }
 
-        viewModel.errorMessage.observe(viewLifecycleOwner, {
+        viewModel.errorMessage.observe(viewLifecycleOwner) {
             binding.loginProgressBar.visibility = View.GONE
             binding.loginMessageErroView.visibility = View.VISIBLE
-        })
+        }
     }
 }
