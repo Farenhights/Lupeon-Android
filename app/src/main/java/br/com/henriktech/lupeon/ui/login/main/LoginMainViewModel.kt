@@ -1,5 +1,6 @@
 package br.com.henriktech.lupeon.ui.login.main
 
+import android.text.Html
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,8 +16,11 @@ import br.com.henriktech.lupeon.database.db.MenuEntity
 import br.com.henriktech.lupeon.database.repository.AlertRepository
 import br.com.henriktech.lupeon.database.repository.MenuRepository
 import br.com.henriktech.lupeon.database.repository.UserRepository
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.util.*
 
 class LoginMainViewModel(
     private val userRepository: UserRepository,
@@ -25,6 +29,13 @@ class LoginMainViewModel(
     private val authenticationService: AuthenticationService
 ) : ViewModel() {
 
+    private val coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val messgeError: String = Html.fromHtml(
+        "Houve um problema na sua solicitação.<br>Caso o problema persista contate o Atendimento Lupeon",
+        0,
+    ).toString()
+
+
     private val _perfil = MutableLiveData<String>()
     val perfil: LiveData<String> get() = _perfil
 
@@ -32,19 +43,24 @@ class LoginMainViewModel(
     val errorMessage: LiveData<String> get() = _errorMessage
 
     fun validateLogin(user: String, password: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            if (user.isNotEmpty() && password.isNotEmpty()) {
-                when (val response = authenticationService.validateLogin(user, password)) {
-                    is ApiResult.Success<*> -> {
-                        saveUser(response.data!! as Login)
-                    }
-                    is ApiResult.Error -> {
-                        _errorMessage.postValue(response.message)
+        if (user.isNotEmpty() && password.isNotEmpty()) {
+            viewModelScope.launch {
+                withContext(coroutineDispatcher) {
+                    when (val response = authenticationService.validateLogin(user, password)) {
+                        is ApiResult.Success<*> -> {
+                            saveUser(response.data!! as Login)
+                        }
+                        is ApiResult.Error -> {
+                            var message = response.message.uppercase(Locale.ROOT)
+                            if (message.contains("SERVER ERROR"))
+                                message = messgeError
+                            _errorMessage.postValue(message)
+                        }
                     }
                 }
-            } else {
-                _errorMessage.postValue("Erro ao realizar login!")
             }
+        } else {
+            _errorMessage.postValue("Erro ao realizar login!")
         }
     }
 

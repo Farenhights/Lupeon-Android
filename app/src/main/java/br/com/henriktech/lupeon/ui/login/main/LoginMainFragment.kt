@@ -25,7 +25,7 @@ class LoginMainFragment : Fragment(R.layout.fragment_login) {
 
         binding.leftArrowView.setOnClickListener {
             analytics.clickBackButton()
-            requireActivity().onBackPressed()
+            findNavController().navigate(R.id.action_mainFragment_to_loginActivity)
         }
 
         binding.buttonLossPasswordView.setOnClickListener {
