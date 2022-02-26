@@ -3,10 +3,7 @@ package br.com.henriktech.lupeon.api.repository
 import br.com.henriktech.lupeon.api.model.request.*
 import br.com.henriktech.lupeon.api.model.response.*
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.Header
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface LupeonApi {
 
@@ -64,5 +61,11 @@ interface LupeonApi {
         @Body body: DriverRequest
     ): Response<Indicadores>
 
+    @Headers("Content-Type: application/json")
+    @GET("/Filtro/Transportadoras")
+    suspend fun getTransportadoras(
+        @Header("Authorization") token: String,
+        @Header("CompanyId") companyId: Int
+    ): Response<TransporterFilterList>
 
 }

@@ -61,7 +61,7 @@
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout2"
+                android:id="@+id/menuBottom"
                 android:layout_width="0dp"
                 android:layout_height="96dp"
                 android:layout_marginTop="16dp"
@@ -246,7 +246,7 @@
                 android:text="@string/simulation"
                 android:textColor="@color/white"
                 app:cornerRadius="50dp"
-                app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+                app:layout_constraintBottom_toTopOf="@+id/menuBottom"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/button" />

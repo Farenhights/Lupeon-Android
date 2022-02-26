@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.henriktech.lupeon.api.model.response.Indicadores
+import br.com.henriktech.lupeon.api.model.response.TransporterFilterList
+import br.com.henriktech.lupeon.api.model.response.toArrylistNames
 import br.com.henriktech.lupeon.api.network.ApiResult
 import br.com.henriktech.lupeon.data.model.Indicator
 import br.com.henriktech.lupeon.data.model.User
@@ -13,6 +15,7 @@ import br.com.henriktech.lupeon.data.model.toUser
 import br.com.henriktech.lupeon.data.service.IndicatorsService
 import br.com.henriktech.lupeon.database.repository.UserRepository
 import kotlinx.coroutines.launch
+import java.util.*
 
 class IndicatorsViewModel(
     private val userRepository: UserRepository,
@@ -24,6 +27,9 @@ class IndicatorsViewModel(
 
     private val _indicators = MutableLiveData<List<Indicator>>()
     val indicators: LiveData<List<Indicator>> = _indicators
+
+    private val _transporters = MutableLiveData<ArrayList<String>>()
+    val transporters: LiveData<ArrayList<String>> = _transporters
 
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
@@ -81,4 +87,19 @@ class IndicatorsViewModel(
             _user.postValue(null)
         }
     }
+
+    fun getFilters(token: String, companyId: Int) {
+        viewModelScope.launch {
+            when (val response = indicatorsService.getTransportersFilter(token, companyId)) {
+                is ApiResult.Success<*> -> {
+                    val transporterFilterList = response.data!! as TransporterFilterList
+                    _transporters.postValue(transporterFilterList.toArrylistNames())
+                }
+                is ApiResult.Error -> {
+                    _errorMessage.postValue(response.message.uppercase(Locale.ROOT))
+                }
+            }
+        }
+    }
 }
+

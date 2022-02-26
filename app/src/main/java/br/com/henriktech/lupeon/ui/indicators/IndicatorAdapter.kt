@@ -9,8 +9,7 @@ import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.data.model.Indicator
 
 class IndicatorAdapter(
-    private val indicatorList: ArrayList<Indicator>,
-    private val itemClickListener: OnIndicatorClickListener
+    private val indicatorList: ArrayList<Indicator>
 ) :
     RecyclerView.Adapter<IndicatorAdapter.IndicatorViewHolder>() {
 
@@ -22,7 +21,7 @@ class IndicatorAdapter(
 
     override fun onBindViewHolder(holder: IndicatorViewHolder, position: Int) {
         val indicator = indicatorList[position]
-        holder.bind(indicator, itemClickListener)
+        holder.bind(indicator)
     }
 
     override fun getItemCount(): Int = indicatorList.size
@@ -33,16 +32,9 @@ class IndicatorAdapter(
         private val description = itemView.findViewById<TextView>(R.id.textIndicatorDescription)
         private val value = itemView.findViewById<TextView>(R.id.textIndicatorValue)
 
-        fun bind(indicator: Indicator, clickListener: OnIndicatorClickListener) {
+        fun bind(indicator: Indicator) {
             description.text = indicator.description
             value.text = indicator.value
-            itemView.setOnClickListener {
-                clickListener.onIndicatorClicked(indicator)
-            }
         }
-    }
-
-    interface OnIndicatorClickListener {
-        fun onIndicatorClicked(indicator: Indicator)
     }
 }

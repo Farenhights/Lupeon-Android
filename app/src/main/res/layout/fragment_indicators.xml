@@ -48,7 +48,8 @@
             android:layout_height="0dp"
             android:layout_margin="8dp"
             android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@id/buttonMenuBottomShow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/titleIndicator"
@@ -56,12 +57,24 @@
             app:layout_constraintVertical_chainStyle="spread_inside"
             app:spanCount="6" />
 
+        <ImageView
+            android:id="@+id/buttonMenuBottomShow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycleIndicatorView"
+            app:srcCompat="@drawable/ic_home_light" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
+            android:id="@+id/menuBottom"
             android:layout_width="0dp"
             android:layout_height="96dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/bg_bottom_white"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,14 +82,13 @@
 
 
             <ImageView
-                android:id="@+id/imageBottomBarIndicator"
+                android:id="@+id/buttonMenuBottomHide"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buttonMenuIndicator"
                 app:srcCompat="@drawable/ic_home" />
 
             <ImageView
@@ -87,7 +99,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:rotation="-180"
-                app:layout_constraintBottom_toTopOf="@+id/imageBottomBarIndicator"
+                app:layout_constraintBottom_toTopOf="@+id/buttonMenuBottomHide"
                 app:layout_constraintEnd_toStartOf="@+id/buttonMenuIndicator"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -104,7 +116,7 @@
                 android:text="@string/menu"
                 android:textColor="#616161"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/imageBottomBarIndicator"
+                app:layout_constraintBottom_toTopOf="@+id/buttonMenuBottomHide"
                 app:layout_constraintStart_toEndOf="@+id/imageIndicatorArrowLetf"
                 app:layout_constraintTop_toTopOf="@+id/imageIndicatorArrowLetf" />
         </androidx.constraintlayout.widget.ConstraintLayout>

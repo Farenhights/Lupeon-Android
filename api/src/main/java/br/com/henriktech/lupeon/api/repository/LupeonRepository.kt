@@ -67,4 +67,9 @@ class LupeonRepository(val context: Context, private val lupeonApi: LupeonApi) :
         safeCallApi {
             lupeonApi.postEmbacadorTracking(token, companyId, TrackingRequest(cnpj, numberNFe))
         }
+
+    suspend fun getTransportersFilter(token: String, companyId: Int) =
+        safeCallApi {
+            lupeonApi.getTransportadoras(token, companyId)
+        }
 }
