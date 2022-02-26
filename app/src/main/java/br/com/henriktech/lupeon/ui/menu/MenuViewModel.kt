@@ -58,5 +58,4 @@ class MenuViewModel(
     }
 
     fun getInfoService() = Html.fromHtml(informationService.getService(), 0).toString()
-
 }

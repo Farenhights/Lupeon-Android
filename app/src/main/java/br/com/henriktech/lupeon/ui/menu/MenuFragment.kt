@@ -68,26 +68,25 @@ class MenuFragment : Fragment(R.layout.fragment_menu), IOnBackPressed,
 
     @SuppressLint("SetTextI18n")
     private fun startViewModel() {
-        viewModel.menus.observe(viewLifecycleOwner, { menus ->
+        viewModel.menus.observe(viewLifecycleOwner) { menus ->
             val recycleMenu: RecyclerView = binding.recycleMenuView
             val numberOfColumns = 2
             recycleMenu.layoutManager = GridLayoutManager(context, numberOfColumns)
             val adapter = MenuAdapter(menus, this)
             recycleMenu.adapter = adapter
-        })
+        }
 
-        viewModel.alerts.observe(viewLifecycleOwner, { alerts ->
+        viewModel.alerts.observe(viewLifecycleOwner) { alerts ->
             val recycleAlert: RecyclerView = binding.recycleAlertView
             val numberOfColumns = 1
             recycleAlert.layoutManager = GridLayoutManager(context, numberOfColumns)
             val adapter = AlertAdapter(alerts as ArrayList<Alert>, this)
             recycleAlert.adapter = adapter
-        })
+        }
 
-        viewModel.user.observe(viewLifecycleOwner, { user ->
+        viewModel.user.observe(viewLifecycleOwner) { user ->
             if (user != null) {
-                val nome = user.name.split(" ")
-                binding.textNameProfileMenu.text = "${getString(R.string.hello)}, ${nome[0]}"
+                binding.textNameProfileMenu.text = "${getString(R.string.hello)}, ${user.name}"
                 binding.textServiceSponsor.text = viewModel.getInfoService()
                 binding.textContactSponsor.text = Html.fromHtml(
                     "GESTOR DA CONTA<br>${user.nameManager}" +
@@ -97,35 +96,38 @@ class MenuFragment : Fragment(R.layout.fragment_menu), IOnBackPressed,
                 findNavController().navigate(R.id.action_menuFragment_to_loginActivity)
             }
 
-        })
+        }
         viewModel.getUser()
     }
 
-    private fun showAlertDialog(alerta: Alert) {
+    private fun showAlertDialog(alert: Alert) {
         val dialog = Dialog(requireActivity())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)
         dialog.setContentView(R.layout.dialog_alert)
 
         val title = dialog.findViewById(R.id.textDialogTitle) as TextView
-        title.text = alerta.title
+        title.text = alert.title
+        title.setTextColor(requireContext().getColor(R.color.gray_600))
 
         val close = dialog.findViewById(R.id.imageCloseDialog) as ImageView
         close.setOnClickListener { dialog.dismiss() }
 
         val body = dialog.findViewById(R.id.textDialogContent) as TextView
-        body.text = alerta.text
+        body.text = alert.text
+        body.setTextColor(requireContext().getColor(R.color.black))
 
         val link = dialog.findViewById(R.id.textDialogLink) as TextView
-        link.text = alerta.link
+        link.text = alert.link
+        link.setTextColor(requireContext().getColor(R.color.gray_600))
         link.setOnClickListener {
             webView.webViewClient = object : WebViewClient() {
                 override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                    view?.loadUrl(alerta.link)
+                    view?.loadUrl(alert.link)
                     return true
                 }
             }
-            webView.loadUrl(alerta.link)
+            webView.loadUrl(alert.link)
         }
         dialog.show()
     }
