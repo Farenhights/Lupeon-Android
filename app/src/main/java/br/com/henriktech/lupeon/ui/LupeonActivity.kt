@@ -27,17 +27,6 @@ class LupeonActivity : AppCompatActivity() {
             }
         }
     }
-
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        if (hasFocus) {
-            window.decorView.apply {
-                systemUiVisibility =
-                    SYSTEM_UI_FLAG_HIDE_NAVIGATION or
-                            SYSTEM_UI_FLAG_FULLSCREEN
-            }
-        }
-        super.onWindowFocusChanged(hasFocus)
-    }
 }
 
 interface IOnBackPressed {

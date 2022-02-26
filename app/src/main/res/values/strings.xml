@@ -35,4 +35,9 @@
     <string name="label_confirm_password">Confirme a senha</string>
     <string name="confirm">Confirmar</string>
     <string name="new_password"><![CDATA[Criar nova<br>senha]]></string>
+    <string name="filters">Filtros</string>
+    <string name="transporter">Transportadora</string>
+    <string name="period">Período</string>
+    <string name="clean">Limpar</string>
+    <string name="apply">Aplicar</string>
 </resources>

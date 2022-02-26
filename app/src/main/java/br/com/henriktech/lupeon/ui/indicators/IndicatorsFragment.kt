@@ -29,33 +29,49 @@ class IndicatorsFragment : Fragment(R.layout.fragment_indicators),
         startViewModel()
     }
 
+    override fun onIndicatorClicked(indicator: Indicator) {
+        // TODO("Not yet implemented")
+    }
+
     private fun startViewModel() {
-        viewModel.indicators.observe(viewLifecycleOwner, { indicators ->
+        viewModel.indicators.observe(viewLifecycleOwner) { indicators ->
             val recycleIndicator: RecyclerView = binding.recycleIndicatorView
             val numberOfColumns = 2
             recycleIndicator.layoutManager = GridLayoutManager(context, numberOfColumns)
             val adapter = IndicatorAdapter(indicators as ArrayList<Indicator>, this)
             recycleIndicator.adapter = adapter
-        })
+        }
 
-        viewModel.user.observe(viewLifecycleOwner, { user ->
+        viewModel.user.observe(viewLifecycleOwner) { user ->
             if (user == null)
                 findNavController().navigate(R.id.action_indicatorsFragment_to_loginActivity)
-        })
+        }
 
         viewModel.getUser()
     }
 
     private fun startView(binding: FragmentIndicatorsBinding) {
-        binding.imageViewLogoutProfileIndicators.setOnClickListener {
+        binding.buttonLogoutIndicator.setOnClickListener {
             viewModel.logout()
         }
-        binding.IndicatorsMenuTextView.setOnClickListener {
+        binding.buttonMenuIndicator.setOnClickListener {
             requireActivity().onBackPressed()
+        }
+        binding.imageIndicatorArrowLetf.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+        binding.buttonFilterIndicator.setOnClickListener {
+            binding.menuFilterIndicator.visibility = View.VISIBLE
+        }
+        binding.buttonCloseFilter.setOnClickListener {
+            binding.menuFilterIndicator.visibility = View.GONE
+        }
+        binding.buttonCleanFilter.setOnClickListener {
+            binding.menuFilterIndicator.visibility = View.GONE
+        }
+        binding.buttonApplyFilter.setOnClickListener {
+            binding.menuFilterIndicator.visibility = View.GONE
         }
     }
 
-    override fun onIndicatorClicked(indicator: Indicator) {
-//        TODO("Not yet implemented")
-    }
 }

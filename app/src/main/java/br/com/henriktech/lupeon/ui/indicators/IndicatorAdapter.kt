@@ -16,7 +16,7 @@ class IndicatorAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IndicatorViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.view_indicator, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.view_indicator_item, parent, false)
         return IndicatorViewHolder(view)
     }
 
