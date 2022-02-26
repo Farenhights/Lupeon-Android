@@ -16,7 +16,7 @@
     <string name="back">Voltar</string>
     <string name="user">Usuário</string>
     <string name="password">Senha</string>
-    <string name="loss_password">Esqueci minha senha</string>
+    <string name="loss_password">esqueci minha senha</string>
     <string name="loss_my_password"><![CDATA[Esqueci<br>minha senha]]></string>
     <string name="your_email">Digite seu email</string>
     <string name="my_code">Já possuo o código</string>

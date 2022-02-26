@@ -1,6 +1,8 @@
 package br.com.henriktech.lupeon.ui
 
 import android.os.Bundle
+import android.view.View.SYSTEM_UI_FLAG_FULLSCREEN
+import android.view.View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 import androidx.appcompat.app.AppCompatActivity
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.ui.login.presentention.LoginPresentationFragment
@@ -20,12 +22,24 @@ class LupeonActivity : AppCompatActivity() {
         navHost?.let { navFragment ->
             navFragment.childFragmentManager.primaryNavigationFragment?.let { fragment ->
                 if (fragment is LoginPresentationFragment) {
-                   finish()
+                    finish()
                 }
             }
         }
     }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        if (hasFocus) {
+            window.decorView.apply {
+                systemUiVisibility =
+                    SYSTEM_UI_FLAG_HIDE_NAVIGATION or
+                            SYSTEM_UI_FLAG_FULLSCREEN
+            }
+        }
+        super.onWindowFocusChanged(hasFocus)
+    }
 }
+
 interface IOnBackPressed {
     fun onBackPressed(): Boolean
 }
