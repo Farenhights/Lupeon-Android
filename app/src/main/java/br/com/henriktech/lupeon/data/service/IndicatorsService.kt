@@ -20,4 +20,7 @@ class IndicatorsService(private val lupeonRepository: LupeonRepository) {
 
     suspend fun getTransportersFilter(token: String, companyId: Int) =
         lupeonRepository.getTransportersFilter(token, companyId)
+
+    suspend fun getPeriodsFilter(token: String, companyId: Int) =
+        lupeonRepository.getPeriodsFilter(token, companyId)
 }

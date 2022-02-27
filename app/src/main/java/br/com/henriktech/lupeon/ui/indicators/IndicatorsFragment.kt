@@ -55,6 +55,15 @@ class IndicatorsFragment : Fragment(R.layout.fragment_indicators) {
             binding.spinnerTransporterFilter.adapter = filtersAdapter
         }
 
+        viewModel.periods.observe(viewLifecycleOwner) {
+            val filtersAdapter = ArrayAdapter(
+                requireContext(),
+                R.layout.spinner_text_item,
+                it,
+            )
+            binding.spinnerPeriodFilter.adapter = filtersAdapter
+        }
+
         viewModel.getUser()
     }
 
@@ -71,7 +80,8 @@ class IndicatorsFragment : Fragment(R.layout.fragment_indicators) {
         binding.buttonFilterIndicator.setOnClickListener {
             val token = viewModel.user.value!!.accessToken
             val companyId = viewModel.user.value!!.companyId.toInt()
-            viewModel.getFilters(token, companyId)
+            viewModel.getTransportersFilters(token, companyId)
+            viewModel.getPeriodsFilters(token, companyId)
             binding.menuFilterIndicator.visibility = View.VISIBLE
         }
         binding.buttonCloseFilter.setOnClickListener {

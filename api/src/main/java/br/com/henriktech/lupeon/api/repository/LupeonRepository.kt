@@ -25,7 +25,7 @@ class LupeonRepository(val context: Context, private val lupeonApi: LupeonApi) :
         token: String,
         shipperId: Int,
         companyId: Int,
-        timeCourseId: Int
+        timeCourseId: Int,
     ) =
         safeCallApi {
             lupeonApi.postEmbacadorIndicadores(
@@ -39,7 +39,7 @@ class LupeonRepository(val context: Context, private val lupeonApi: LupeonApi) :
         token: String,
         transporterId: Int,
         companyId: Int,
-        timeCourseId: Int
+        timeCourseId: Int,
     ) =
         safeCallApi {
             lupeonApi.postTransportadorIndicadores(
@@ -53,7 +53,7 @@ class LupeonRepository(val context: Context, private val lupeonApi: LupeonApi) :
         token: String,
         driverId: Int,
         companyId: Int,
-        timeCourseId: Int
+        timeCourseId: Int,
     ) =
         safeCallApi {
             lupeonApi.postMotoristaIndicadores(
@@ -70,6 +70,11 @@ class LupeonRepository(val context: Context, private val lupeonApi: LupeonApi) :
 
     suspend fun getTransportersFilter(token: String, companyId: Int) =
         safeCallApi {
-            lupeonApi.getTransportadoras(token, companyId)
+            lupeonApi.getFiltroTransportadoras(token, companyId)
+        }
+
+    suspend fun getPeriodsFilter(token: String, companyId: Int) =
+        safeCallApi {
+            lupeonApi.getFiltroPeriodo(token, companyId)
         }
 }

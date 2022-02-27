@@ -63,9 +63,16 @@ interface LupeonApi {
 
     @Headers("Content-Type: application/json")
     @GET("/Filtro/Transportadoras")
-    suspend fun getTransportadoras(
+    suspend fun getFiltroTransportadoras(
         @Header("Authorization") token: String,
         @Header("CompanyId") companyId: Int
     ): Response<TransporterFilterList>
+
+    @Headers("Content-Type: application/json")
+    @GET("/Filtro/Periodo")
+    suspend fun getFiltroPeriodo(
+        @Header("Authorization") token: String,
+        @Header("CompanyId") companyId: Int
+    ): Response<PeriodFilterList>
 
 }

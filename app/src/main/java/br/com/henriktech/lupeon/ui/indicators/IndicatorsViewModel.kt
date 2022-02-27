@@ -4,9 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.henriktech.lupeon.api.model.response.Indicadores
-import br.com.henriktech.lupeon.api.model.response.TransporterFilterList
-import br.com.henriktech.lupeon.api.model.response.toArrylistNames
+import br.com.henriktech.lupeon.api.model.response.*
 import br.com.henriktech.lupeon.api.network.ApiResult
 import br.com.henriktech.lupeon.data.model.Indicator
 import br.com.henriktech.lupeon.data.model.User
@@ -19,7 +17,7 @@ import java.util.*
 
 class IndicatorsViewModel(
     private val userRepository: UserRepository,
-    private val indicatorsService: IndicatorsService
+    private val indicatorsService: IndicatorsService,
 ) : ViewModel() {
 
     private val _user = MutableLiveData<User?>()
@@ -30,6 +28,9 @@ class IndicatorsViewModel(
 
     private val _transporters = MutableLiveData<ArrayList<String>>()
     val transporters: LiveData<ArrayList<String>> = _transporters
+
+    private val _periods = MutableLiveData<ArrayList<String>>()
+    val periods: LiveData<ArrayList<String>> = _periods
 
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
@@ -88,12 +89,26 @@ class IndicatorsViewModel(
         }
     }
 
-    fun getFilters(token: String, companyId: Int) {
+    fun getTransportersFilters(token: String, companyId: Int) {
         viewModelScope.launch {
             when (val response = indicatorsService.getTransportersFilter(token, companyId)) {
                 is ApiResult.Success<*> -> {
                     val transporterFilterList = response.data!! as TransporterFilterList
                     _transporters.postValue(transporterFilterList.toArrylistNames())
+                }
+                is ApiResult.Error -> {
+                    _errorMessage.postValue(response.message.uppercase(Locale.ROOT))
+                }
+            }
+        }
+    }
+
+    fun getPeriodsFilters(token: String, companyId: Int) {
+        viewModelScope.launch {
+            when (val response = indicatorsService.getPeriodsFilter(token, companyId)) {
+                is ApiResult.Success<*> -> {
+                    val periodFilterList = response.data!! as PeriodFilterList
+                    _periods.postValue(periodFilterList.toArrylistDescriptions())
                 }
                 is ApiResult.Error -> {
                     _errorMessage.postValue(response.message.uppercase(Locale.ROOT))

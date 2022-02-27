@@ -4,18 +4,19 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 import java.util.*
+import kotlin.collections.ArrayList
 
 @Parcelize
-data class TransporterFilterList(
+data class PeriodFilterList(
     @SerializedName("data")
-    val transporterFilterList: List<TransporterFilter>,
-    val status: String,
+    val periodFilterList: List<PeriodFilter>,
+    val status: String
 ) : Parcelable
 
-fun TransporterFilterList.toArrylistNames(): ArrayList<String> {
+fun PeriodFilterList.toArrylistDescriptions(): ArrayList<String> {
     val arrayList = arrayListOf<String>()
-    transporterFilterList.forEach {
-        arrayList.add(it.name.uppercase(Locale.ROOT))
+    periodFilterList.forEach {
+        arrayList.add(it.description.uppercase(Locale.ROOT))
     }
     return arrayList
 }
