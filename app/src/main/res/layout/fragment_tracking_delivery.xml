@@ -1,266 +1,419 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/lupeon_primary">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/titleTrackingName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="35dp"
-        android:textColor="@color/white"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        tools:text="Olá, Júlia" />
+    <data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+        <variable
+            name="viewModel"
+            type="br.com.henriktech.lupeon.ui.tracking.delivery.DeliveryViewModel" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@+id/titleTrackingName"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_bottom_gray">
+        android:layout_height="match_parent"
+        android:background="@color/lupeon_primary">
 
         <TextView
-            android:id="@+id/titleTrackingDelivery"
+            android:id="@+id/titleTrackingName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tracking"
-            android:textColor="@color/lupeon_primary"
-            android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="35dp"
+            android:text="@{viewModel.titleName}"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            tools:text="Olá, Júlia" />
 
-        <LinearLayout
-            android:id="@+id/line"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/titleTrackingDelivery"
-            android:layout_marginHorizontal="12dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginEnd="13dp"
-            android:background="#C4C4C4"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/titleTrackingDelivery" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/progressTrackingBar"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_below="@id/line"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginEnd="17dp"
-            android:background="@drawable/bg_tracking_bar_delivery"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/line">
-
-            <ImageView
-                android:id="@+id/imageProgressNF"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginBottom="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageProgressTrace1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_tracking_nf" />
-
-
-            <ImageView
-                android:id="@+id/imageProgressTrace1"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageProgressTransporter"
-                app:layout_constraintStart_toEndOf="@+id/imageProgressNF"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/ic_tracking_trace" />
-
-            <ImageView
-                android:id="@+id/imageProgressTransporter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginBottom="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageProgressTrace2"
-                app:layout_constraintStart_toEndOf="@+id/imageProgressTrace1"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_tracking_transporter" />
-
-            <ImageView
-                android:id="@+id/imageProgressTrace2"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageProgressDelivery"
-                app:layout_constraintStart_toEndOf="@+id/imageProgressTransporter"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_tracking_trace" />
-
-
-            <ImageView
-                android:id="@+id/imageProgressDelivery"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginBottom="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageProgressTrace3"
-                app:layout_constraintStart_toEndOf="@+id/imageProgressTrace2"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_tracking_delivery" />
-
-            <ImageView
-                android:id="@+id/imageProgressTrace3"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageProgressPackage"
-                app:layout_constraintStart_toEndOf="@+id/imageProgressDelivery"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_tracking_trace" />
-
-            <ImageView
-                android:id="@+id/imageProgressPackage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/imageProgressTrace3"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_tracking_package" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/textNf"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/progressTrackingBar"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="6dp"
-            android:gravity="center_horizontal"
-            android:text="NFe \nemitida"
-            android:textColor="@color/lupeon_primary"
-            android:textSize="9sp"
-            app:layout_constraintEnd_toStartOf="@+id/textTransporter"
-            app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintStart_toStartOf="@+id/progressTrackingBar"
-            app:layout_constraintTop_toBottomOf="@+id/progressTrackingBar" />
-
-        <TextView
-            android:id="@+id/textTransporter"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/progressTrackingBar"
-            android:layout_toEndOf="@+id/textNf"
-            android:gravity="center_horizontal"
-            android:text="Cte \nemitido"
-            android:textColor="@color/lupeon_primary"
-            android:textSize="9sp"
-            app:layout_constraintEnd_toStartOf="@+id/textDelivery"
-            app:layout_constraintStart_toEndOf="@+id/textNf"
-            app:layout_constraintTop_toTopOf="@+id/textNf" />
-
-        <TextView
-            android:id="@+id/textDelivery"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/progressTrackingBar"
-            android:layout_marginEnd="2dp"
-            android:layout_toEndOf="@+id/textNf"
-            android:gravity="center_horizontal"
-            android:text="Aguardando \nentrega"
-            android:textColor="@color/lupeon_primary"
-            android:textSize="9sp"
-            app:layout_constraintEnd_toStartOf="@+id/textPackage"
-            app:layout_constraintStart_toEndOf="@+id/textTransporter"
-            app:layout_constraintTop_toTopOf="@+id/textTransporter" />
-
-        <TextView
-            android:id="@+id/textPackage"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/progressTrackingBar"
-            android:layout_marginStart="2dp"
-            android:layout_toEndOf="@+id/textNf"
-            android:gravity="center_horizontal"
-            android:text="Entregue"
-            android:textColor="@color/lupeon_primary"
-            android:textSize="9sp"
-            app:layout_constraintEnd_toEndOf="@+id/progressTrackingBar"
-            app:layout_constraintStart_toEndOf="@+id/textDelivery"
-            app:layout_constraintTop_toTopOf="@+id/textDelivery" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="27dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/titleTrackingName"
+            android:layout_alignParentBottom="true"
             android:layout_marginTop="20dp"
-            android:text="Nota"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textNf" />
+            android:layout_marginBottom="-5dp"
+            android:background="@drawable/bg_bottom_gray">
+
+            <TextView
+                android:id="@+id/titleTrackingDelivery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tracking"
+                android:textColor="@color/lupeon_primary"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/titleTrackingDelivery"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="13dp"
+                android:background="#C4C4C4"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleTrackingDelivery" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/progressTrackingBar"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:layout_below="@id/line"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginEnd="17dp"
+                android:background="@drawable/bg_tracking_bar_delivery"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line">
+
+                <ImageView
+                    android:id="@+id/imageProgressNF"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageProgressTrace1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_tracking_nf" />
 
 
-        <ImageView
-            android:id="@+id/buttonMenuBottomShow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_home" />
+                <ImageView
+                    android:id="@+id/imageProgressTrace1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageProgressTransporter"
+                    app:layout_constraintStart_toEndOf="@+id/imageProgressNF"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/ic_tracking_trace" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/menuBottom"
-            android:layout_width="0dp"
-            android:layout_height="96dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/bg_bottom_white"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+                <ImageView
+                    android:id="@+id/imageProgressTransporter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageProgressTrace2"
+                    app:layout_constraintStart_toEndOf="@+id/imageProgressTrace1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_tracking_transporter" />
 
+                <ImageView
+                    android:id="@+id/imageProgressTrace2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageProgressDelivery"
+                    app:layout_constraintStart_toEndOf="@+id/imageProgressTransporter"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_tracking_trace" />
+
+
+                <ImageView
+                    android:id="@+id/imageProgressDelivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageProgressTrace3"
+                    app:layout_constraintStart_toEndOf="@+id/imageProgressTrace2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_tracking_delivery" />
+
+                <ImageView
+                    android:id="@+id/imageProgressTrace3"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageProgressPackage"
+                    app:layout_constraintStart_toEndOf="@+id/imageProgressDelivery"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_tracking_trace" />
+
+                <ImageView
+                    android:id="@+id/imageProgressPackage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imageProgressTrace3"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_tracking_package" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textNf"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progressTrackingBar"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="6dp"
+                android:gravity="center_horizontal"
+                android:text="NFe \nemitida"
+                android:textColor="@color/lupeon_primary"
+                android:textSize="9sp"
+                app:layout_constraintEnd_toStartOf="@+id/textTransporter"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="@+id/progressTrackingBar"
+                app:layout_constraintTop_toBottomOf="@+id/progressTrackingBar" />
+
+            <TextView
+                android:id="@+id/textTransporter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progressTrackingBar"
+                android:layout_toEndOf="@+id/textNf"
+                android:gravity="center_horizontal"
+                android:text="Cte \nemitido"
+                android:textColor="@color/lupeon_primary"
+                android:textSize="9sp"
+                app:layout_constraintEnd_toStartOf="@+id/textDelivery"
+                app:layout_constraintStart_toEndOf="@+id/textNf"
+                app:layout_constraintTop_toTopOf="@+id/textNf" />
+
+            <TextView
+                android:id="@+id/textDelivery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progressTrackingBar"
+                android:layout_marginEnd="2dp"
+                android:layout_toEndOf="@+id/textNf"
+                android:gravity="center_horizontal"
+                android:text="Aguardando \nentrega"
+                android:textColor="@color/lupeon_primary"
+                android:textSize="9sp"
+                app:layout_constraintEnd_toStartOf="@+id/textPackage"
+                app:layout_constraintStart_toEndOf="@+id/textTransporter"
+                app:layout_constraintTop_toTopOf="@+id/textTransporter" />
+
+            <TextView
+                android:id="@+id/textPackage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progressTrackingBar"
+                android:layout_marginStart="2dp"
+                android:layout_toEndOf="@+id/textNf"
+                android:gravity="center_horizontal"
+                android:text="Entregue"
+                android:textColor="@color/lupeon_primary"
+                android:textSize="9sp"
+                app:layout_constraintEnd_toEndOf="@+id/progressTrackingBar"
+                app:layout_constraintStart_toEndOf="@+id/textDelivery"
+                app:layout_constraintTop_toTopOf="@+id/textDelivery" />
+
+            <TextView
+                android:id="@+id/titleTrackingNumberInvoice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/Invoice"
+                android:textColor="@color/gray_600"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textNf" />
+
+            <TextView
+                android:id="@+id/textTrackingNumberInvoice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@{viewModel.numberInvoice}"
+                android:textColor="@color/gray_600"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/titleTrackingNumberInvoice"
+                app:layout_constraintTop_toBottomOf="@+id/titleTrackingNumberInvoice"
+                tools:text="0000012345" />
+
+            <TextView
+                android:id="@+id/titleTrackingRecipient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="18dp"
+                android:text="@string/Recipient"
+                android:textColor="@color/gray_600"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textTrackingNumberInvoice" />
+
+            <TextView
+                android:id="@+id/textTrackingRecipient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@{viewModel.recipient}"
+                android:textColor="@color/gray_600"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/titleTrackingRecipient"
+                app:layout_constraintTop_toBottomOf="@+id/titleTrackingRecipient"
+                tools:text="B R Samor Logística Express" />
+
+            <TextView
+                android:id="@+id/titleTrackingIssuanceDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="18dp"
+                android:text="@string/IssuanceDate"
+                android:textColor="@color/gray_600"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textTrackingRecipient" />
+
+            <TextView
+                android:id="@+id/textTrackingIssuanceDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@{viewModel.issuanceDate}"
+                android:textColor="@color/gray_600"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/titleTrackingIssuanceDate"
+                app:layout_constraintTop_toBottomOf="@+id/titleTrackingIssuanceDate"
+                tools:text="21/12/20" />
+
+            <TextView
+                android:id="@+id/titleTrackingExpirationDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="18dp"
+                android:text="@string/ExpirationDate"
+                android:textColor="@color/gray_600"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/titleTrackingIssuanceDate"
+                app:layout_constraintTop_toBottomOf="@id/textTrackingRecipient" />
+
+            <TextView
+                android:id="@+id/textTrackingExpirationDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@{viewModel.expirationDate}"
+                android:textColor="@color/gray_600"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/titleTrackingExpirationDate"
+                app:layout_constraintTop_toBottomOf="@+id/titleTrackingExpirationDate"
+                tools:text="21/12/20" />
+
+            <TextView
+                android:id="@+id/titleTrackingInvoiceAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="18dp"
+                android:text="@string/InvoiceAmount"
+                android:textColor="@color/gray_600"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textTrackingIssuanceDate" />
+
+            <TextView
+                android:id="@+id/textTrackingInvoiceAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@{viewModel.invoiceAmount}"
+                android:textColor="@color/gray_600"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/titleTrackingInvoiceAmount"
+                app:layout_constraintTop_toBottomOf="@+id/titleTrackingInvoiceAmount"
+                tools:text="R$ 241.252,23" />
+
+            <TextView
+                android:id="@+id/titleTrackingReconciledValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/ReconciledValue"
+                android:textColor="@color/gray_600"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/titleTrackingExpirationDate"
+                app:layout_constraintTop_toBottomOf="@id/textTrackingIssuanceDate" />
+
+            <TextView
+                android:id="@+id/textTrackingReconciledValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@{viewModel.reconciledValue}"
+                android:textColor="@color/gray_600"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/titleTrackingReconciledValue"
+                app:layout_constraintTop_toBottomOf="@+id/titleTrackingReconciledValue"
+                tools:text="R$ 241.252,23" />
+
+            <TextView
+                android:id="@+id/titleTrackingErrorValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="18dp"
+                android:text="@string/ErrorValue"
+                android:textColor="@color/gray_600"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textTrackingInvoiceAmount" />
+
+            <TextView
+                android:id="@+id/textTrackingErrorValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@{viewModel.errorValue}"
+                android:textColor="@color/gray_600"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/titleTrackingErrorValue"
+                app:layout_constraintTop_toBottomOf="@+id/titleTrackingErrorValue"
+                tools:text="R$ 241.252,23" />
+
+            <TextView
+                android:id="@+id/titleTrackingDiscountValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/DiscountValue"
+                android:textColor="@color/gray_600"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/textTrackingReconciledValue"
+                app:layout_constraintTop_toBottomOf="@+id/textTrackingInvoiceAmount" />
+
+            <TextView
+                android:id="@+id/textTrackingDiscountValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@{viewModel.discountValue}"
+                android:textColor="@color/gray_600"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/titleTrackingDiscountValue"
+                app:layout_constraintTop_toBottomOf="@+id/titleTrackingDiscountValue"
+                tools:text="R$ 241.252,23" />
 
             <ImageView
-                android:id="@+id/buttonMenuBottomHide"
+                android:id="@+id/buttonMenuBottomShow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -269,36 +422,86 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@drawable/ic_home" />
 
-            <ImageView
-                android:id="@+id/imageIndicatorArrowLetf"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginStart="34dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:rotation="-180"
-                app:layout_constraintBottom_toTopOf="@+id/buttonMenuBottomHide"
-                app:layout_constraintEnd_toStartOf="@+id/buttonMenuIndicator"
-                app:layout_constraintHorizontal_bias="0.0"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/menuBottom"
+                android:layout_width="0dp"
+                android:layout_height="96dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_bottom_white"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+
+                <ImageView
+                    android:id="@+id/buttonMenuBottomHide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/ic_home" />
+
+                <ImageView
+                    android:id="@+id/imageIndicatorArrowLetf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="34dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:rotation="-180"
+                    app:layout_constraintBottom_toTopOf="@+id/buttonMenuBottomHide"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonMenuIndicator"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_right_arrow" />
+
+                <TextView
+                    android:id="@+id/buttonMenuIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="@string/menu"
+                    android:textColor="#616161"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@+id/buttonMenuBottomHide"
+                    app:layout_constraintStart_toEndOf="@+id/imageIndicatorArrowLetf"
+                    app:layout_constraintTop_toTopOf="@+id/imageIndicatorArrowLetf" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/buttonTrackingOccurrences"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="39dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/background_button_round_bordeless"
+                android:text="@string/occurrences"
+                android:textColor="@color/lupeon_secondary"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_right_arrow" />
+                app:layout_constraintTop_toBottomOf="@+id/textTrackingErrorValue" />
 
-            <TextView
-                android:id="@+id/buttonMenuIndicator"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/buttonTrackingReceipt"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
-                android:fontFamily="@font/montserrat_regular"
-                android:text="@string/menu"
-                android:textColor="#616161"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/buttonMenuBottomHide"
-                app:layout_constraintStart_toEndOf="@+id/imageIndicatorArrowLetf"
-                app:layout_constraintTop_toTopOf="@+id/imageIndicatorArrowLetf" />
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/background_button_round"
+                android:text="@string/receipt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonTrackingOccurrences" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</RelativeLayout>
+    </RelativeLayout>
+</layout>

@@ -55,7 +55,7 @@
         <entry key="app/src/main/res/layout/fragment_allowance.xml" value="0.3038949275362319" />
         <entry key="app/src/main/res/layout/fragment_indicators.xml" value="0.28370786516853935" />
         <entry key="app/src/main/res/layout/fragment_invoices.xml" value="0.3038949275362319" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.296195652173913" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.23735408560311283" />
         <entry key="app/src/main/res/layout/fragment_losspassword.xml" value="0.17509727626459143" />
         <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.20018115942028986" />
         <entry key="app/src/main/res/layout/fragment_newpassword.xml" value="0.25" />
@@ -64,7 +64,7 @@
         <entry key="app/src/main/res/layout/fragment_simulation.xml" value="0.30337078651685395" />
         <entry key="app/src/main/res/layout/fragment_token.xml" value="0.3038949275362319" />
         <entry key="app/src/main/res/layout/fragment_tracking.xml" value="0.2865853658536585" />
-        <entry key="app/src/main/res/layout/fragment_tracking_delivery.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_tracking_delivery.xml" value="0.5" />
         <entry key="app/src/main/res/layout/spinner_text_item.xml" value="0.29347826086956524" />
         <entry key="app/src/main/res/layout/view_alert.xml" value="0.378125" />
         <entry key="app/src/main/res/layout/view_indicador_filter.xml" value="0.29347826086956524" />
