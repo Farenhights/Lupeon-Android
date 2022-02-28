@@ -13,7 +13,9 @@ object AppModules {
                 IndicatorsModule.get(),
                 SimulationModule.get(),
                 TrackingModule.get(),
-                MenuModule.get()
+                DeliveryModule.get(),
+                OccurrenceModule.get(),
+                MenuModule.get(),
             )
         )
     }

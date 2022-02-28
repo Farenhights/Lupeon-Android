@@ -80,11 +80,35 @@
     </fragment>
     <fragment
         android:id="@+id/trackingFragment"
-        android:name="br.com.henriktech.lupeon.ui.tracking.TrackingFragment"
+        android:name="br.com.henriktech.lupeon.ui.tracking.home.TrackingFragment"
         android:label="TrackingFragment"
         tools:layout="@layout/fragment_tracking">
         <action
             android:id="@+id/action_trackingFragment_to_loginActivity"
             app:destination="@id/loginActivity" />
+        <action
+            android:id="@+id/action_trackingFragment_to_deliveryFragment"
+            app:destination="@id/deliveryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/deliveryFragment"
+        android:name="br.com.henriktech.lupeon.ui.tracking.delivery.DeliveryFragment"
+        android:label="DeliveryFragment"
+        tools:layout="@layout/fragment_tracking_delivery">
+        <action
+            android:id="@+id/action_deliveryFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/action_deliveryFragment_to_ocorrencyFragment"
+            app:destination="@id/ocorrencyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ocorrencyFragment"
+        android:name="br.com.henriktech.lupeon.ui.tracking.occurrence.OcorrencyFragment"
+        android:label="fragment_tracking_occurrence"
+        tools:layout="@layout/fragment_tracking_occurrence" >
+        <action
+            android:id="@+id/action_ocorrencyFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
     </fragment>
 </navigation>

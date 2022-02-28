@@ -1,4 +1,4 @@
-package br.com.henriktech.lupeon.ui.tracking
+package br.com.henriktech.lupeon.ui.tracking.home
 
 import android.os.Bundle
 import android.view.View
@@ -27,8 +27,20 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
     }
 
     private fun startView(binding: FragmentTrackingBinding) {
-        binding.imageViewLogoutTracking.setOnClickListener {
+        binding.buttonTrackingLogout.setOnClickListener {
             viewModel.logout()
+        }
+        binding.imageTrackingArrowLetf.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+        binding.buttonMenuBottomShow.setOnClickListener {
+            binding.menuBottom.visibility = View.VISIBLE
+        }
+        binding.buttonMenuBottomHide.setOnClickListener {
+            binding.menuBottom.visibility = View.GONE
+        }
+        binding.trackingSearchButton.setOnClickListener {
+            findNavController().navigate(R.id.action_trackingFragment_to_deliveryFragment)
         }
     }
 
