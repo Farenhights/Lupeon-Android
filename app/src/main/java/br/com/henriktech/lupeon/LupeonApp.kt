@@ -16,7 +16,6 @@ class LupeonApp : Application() {
         startKoin {
             androidLogger()
             androidContext(this@LupeonApp)
-            modules()
         }
         AnalyticsModules.loadModule()
         ApiModules.loadModule()

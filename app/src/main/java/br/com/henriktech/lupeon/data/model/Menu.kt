@@ -12,7 +12,7 @@ fun br.com.henriktech.lupeon.api.model.response.Menu.toMenuEntity(id: Int): Menu
         MenuEntity(
             userId = id,
             option = this.option,
-            visible = this.visible
+            visible = true
         )
     }
 }

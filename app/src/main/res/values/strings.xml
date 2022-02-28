@@ -53,4 +53,5 @@
     <string name="ExpirationDate">Data Vencimento</string>
     <string name="ReconciledValue">Valor Conciliado</string>
     <string name="DiscountValue">Valor Desconto</string>
+    <string name="selected_filial">Selecione uma filial</string>
 </resources>

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.data.model.Indicator
 import br.com.henriktech.lupeon.databinding.FragmentIndicatorsBinding
+import br.com.henriktech.lupeon.ui.base.IndicatorAdapter
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

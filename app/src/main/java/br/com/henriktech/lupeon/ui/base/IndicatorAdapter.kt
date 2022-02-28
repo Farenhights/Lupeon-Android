@@ -1,4 +1,4 @@
-package br.com.henriktech.lupeon.ui.indicators
+package br.com.henriktech.lupeon.ui.base
 
 import android.view.LayoutInflater
 import android.view.View
