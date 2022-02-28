@@ -2,10 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-
         <variable
             name="viewModel"
-            type="br.com.henriktech.lupeon.ui.tracking.TrackingViewModel" />
+            type="br.com.henriktech.lupeon.ui.tracking.home.TrackingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,86 +13,121 @@
         android:background="@color/lupeon_primary">
 
         <TextView
-            android:id="@+id/titleIndicator"
+            android:id="@+id/titleTracking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="34dp"
+            android:layout_marginTop="35dp"
             android:fontFamily="@font/montserrat_regular"
             android:text="@string/tracking"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/recycleTrackingView"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewLogoutTracking"
+            app:layout_constraintEnd_toStartOf="@+id/buttonTrackingLogout"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-            android:id="@+id/imageViewLogoutTracking"
+            android:id="@+id/buttonTrackingLogout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/titleIndicator"
+            app:layout_constraintBottom_toBottomOf="@+id/titleTracking"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/titleIndicator"
-            app:layout_constraintTop_toTopOf="@+id/titleIndicator"
+            app:layout_constraintStart_toEndOf="@+id/titleTracking"
+            app:layout_constraintTop_toTopOf="@+id/titleTracking"
             app:srcCompat="@drawable/ic_logout" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleTrackingView"
             android:layout_width="340dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintBottom_toTopOf="@+id/titleInvoice"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/titleIndicator"
+            app:layout_constraintTop_toBottomOf="@id/titleTracking"
             app:layout_constraintVertical_chainStyle="spread_inside"
             app:spanCount="6" />
+
+        <TextView
+            android:id="@+id/titleInvoice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/digite_number_invoice"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/textNumberInvoice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleInvoice" />
+
+        <EditText
+            android:id="@+id/textNumberInvoice"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/back_rectangle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleInvoice" />
 
         <Button
             android:id="@+id/trackingSearchButton"
             android:layout_width="0dp"
-            android:layout_height="64dp"
+            android:layout_height="56dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginBottom="64dp"
             android:backgroundTint="@color/lupeon_secondary"
             android:text="@string/search"
             android:textColor="@color/white"
             app:cornerRadius="50dp"
-            app:layout_constraintBottom_toTopOf="@+id/menuBottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+            app:layout_constraintTop_toBottomOf="@+id/textNumberInvoice" />
+
+        <ImageView
+            android:id="@+id/buttonMenuBottomShow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_home_light" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/menuBottom"
             android:layout_width="0dp"
             android:layout_height="96dp"
-            android:background="@drawable/bg_bottom_white"
+            android:background="@drawable/bg_bottom_gray"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
 
             <ImageView
-                android:id="@+id/imageBottomBarTracking"
+                android:id="@+id/buttonMenuBottomHide"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/TrackingsMenuTextView"
                 app:srcCompat="@drawable/ic_home" />
 
             <ImageView
@@ -104,15 +138,15 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:rotation="-180"
-                app:layout_constraintBottom_toTopOf="@+id/imageBottomBarTracking"
-                app:layout_constraintEnd_toStartOf="@+id/TrackingsMenuTextView"
+                app:layout_constraintBottom_toTopOf="@+id/buttonMenuBottomHide"
+                app:layout_constraintEnd_toStartOf="@+id/buttonMenuTracking"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_right_arrow" />
 
             <TextView
-                android:id="@+id/TrackingsMenuTextView"
+                android:id="@+id/buttonMenuTracking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -121,43 +155,9 @@
                 android:text="@string/menu"
                 android:textColor="#616161"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/imageBottomBarTracking"
+                app:layout_constraintBottom_toTopOf="@+id/buttonMenuBottomHide"
                 app:layout_constraintStart_toEndOf="@+id/imageTrackingArrowLetf"
                 app:layout_constraintTop_toTopOf="@+id/imageTrackingArrowLetf" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="0dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/back_rectangle"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/trackingSearchButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/montserrat_regular"
-            android:text="Digite o número da nota"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycleTrackingView" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

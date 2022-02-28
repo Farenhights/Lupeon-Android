@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lupeon_primary">
+
+    <TextView
+        android:id="@+id/titleTrackingName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="35dp"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        tools:text="Olá, Júlia" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/titleTrackingName"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_bottom_gray">
+
+        <TextView
+            android:id="@+id/titleTrackingDelivery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tracking"
+            android:textColor="@color/lupeon_primary"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/titleTrackingDelivery"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="13dp"
+            android:background="#C4C4C4"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleTrackingDelivery" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/progressTrackingBar"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/line"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="17dp"
+            android:background="@drawable/bg_tracking_bar_delivery"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line">
+
+            <ImageView
+                android:id="@+id/imageProgressNF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageProgressTrace1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_tracking_nf" />
+
+
+            <ImageView
+                android:id="@+id/imageProgressTrace1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageProgressTransporter"
+                app:layout_constraintStart_toEndOf="@+id/imageProgressNF"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/ic_tracking_trace" />
+
+            <ImageView
+                android:id="@+id/imageProgressTransporter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageProgressTrace2"
+                app:layout_constraintStart_toEndOf="@+id/imageProgressTrace1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_tracking_transporter" />
+
+            <ImageView
+                android:id="@+id/imageProgressTrace2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageProgressDelivery"
+                app:layout_constraintStart_toEndOf="@+id/imageProgressTransporter"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_tracking_trace" />
+
+
+            <ImageView
+                android:id="@+id/imageProgressDelivery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageProgressTrace3"
+                app:layout_constraintStart_toEndOf="@+id/imageProgressTrace2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_tracking_delivery" />
+
+            <ImageView
+                android:id="@+id/imageProgressTrace3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageProgressPackage"
+                app:layout_constraintStart_toEndOf="@+id/imageProgressDelivery"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_tracking_trace" />
+
+            <ImageView
+                android:id="@+id/imageProgressPackage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageProgressTrace3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_tracking_package" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textNf"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progressTrackingBar"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="6dp"
+            android:gravity="center_horizontal"
+            android:text="NFe \nemitida"
+            android:textColor="@color/lupeon_primary"
+            android:textSize="9sp"
+            app:layout_constraintEnd_toStartOf="@+id/textTransporter"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="@+id/progressTrackingBar"
+            app:layout_constraintTop_toBottomOf="@+id/progressTrackingBar" />
+
+        <TextView
+            android:id="@+id/textTransporter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progressTrackingBar"
+            android:layout_toEndOf="@+id/textNf"
+            android:gravity="center_horizontal"
+            android:text="Cte \nemitido"
+            android:textColor="@color/lupeon_primary"
+            android:textSize="9sp"
+            app:layout_constraintEnd_toStartOf="@+id/textDelivery"
+            app:layout_constraintStart_toEndOf="@+id/textNf"
+            app:layout_constraintTop_toTopOf="@+id/textNf" />
+
+        <TextView
+            android:id="@+id/textDelivery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progressTrackingBar"
+            android:layout_marginEnd="2dp"
+            android:layout_toEndOf="@+id/textNf"
+            android:gravity="center_horizontal"
+            android:text="Aguardando \nentrega"
+            android:textColor="@color/lupeon_primary"
+            android:textSize="9sp"
+            app:layout_constraintEnd_toStartOf="@+id/textPackage"
+            app:layout_constraintStart_toEndOf="@+id/textTransporter"
+            app:layout_constraintTop_toTopOf="@+id/textTransporter" />
+
+        <TextView
+            android:id="@+id/textPackage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progressTrackingBar"
+            android:layout_marginStart="2dp"
+            android:layout_toEndOf="@+id/textNf"
+            android:gravity="center_horizontal"
+            android:text="Entregue"
+            android:textColor="@color/lupeon_primary"
+            android:textSize="9sp"
+            app:layout_constraintEnd_toEndOf="@+id/progressTrackingBar"
+            app:layout_constraintStart_toEndOf="@+id/textDelivery"
+            app:layout_constraintTop_toTopOf="@+id/textDelivery" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="20dp"
+            android:text="Nota"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textNf" />
+
+
+        <ImageView
+            android:id="@+id/buttonMenuBottomShow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_home" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/menuBottom"
+            android:layout_width="0dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_bottom_white"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <ImageView
+                android:id="@+id/buttonMenuBottomHide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_home" />
+
+            <ImageView
+                android:id="@+id/imageIndicatorArrowLetf"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="34dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:rotation="-180"
+                app:layout_constraintBottom_toTopOf="@+id/buttonMenuBottomHide"
+                app:layout_constraintEnd_toStartOf="@+id/buttonMenuIndicator"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_right_arrow" />
+
+            <TextView
+                android:id="@+id/buttonMenuIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/menu"
+                android:textColor="#616161"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/buttonMenuBottomHide"
+                app:layout_constraintStart_toEndOf="@+id/imageIndicatorArrowLetf"
+                app:layout_constraintTop_toTopOf="@+id/imageIndicatorArrowLetf" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
