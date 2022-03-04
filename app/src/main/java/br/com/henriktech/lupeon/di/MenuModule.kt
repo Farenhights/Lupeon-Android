@@ -1,5 +1,6 @@
 package br.com.henriktech.lupeon.di
 
+import br.com.henriktech.lupeon.data.service.FilterService
 import br.com.henriktech.lupeon.data.service.IndicatorsService
 import br.com.henriktech.lupeon.ui.menu.MenuAnalytics
 import br.com.henriktech.lupeon.ui.menu.MenuViewModel
@@ -12,6 +13,7 @@ object MenuModule {
     private fun profileMenuModule() = module {
         single { MenuAnalytics(get()) }
         single { IndicatorsService(get()) }
+        single { FilterService(get()) }
         viewModel { MenuViewModel(get(), get(), get(), get()) }
     }
 

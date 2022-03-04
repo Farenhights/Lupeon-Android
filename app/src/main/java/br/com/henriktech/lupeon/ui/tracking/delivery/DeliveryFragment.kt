@@ -25,8 +25,18 @@ class DeliveryFragment : Fragment(R.layout.fragment_tracking_delivery) {
     }
 
     private fun startView(binding: FragmentTrackingDeliveryBinding) {
+        binding.imageDeliveryArrowLetf.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+        binding.buttonMenuBottomShow.setOnClickListener {
+            binding.menuBottom.visibility = View.VISIBLE
+        }
+        binding.buttonMenuBottomHide.setOnClickListener {
+            binding.menuBottom.visibility = View.GONE
+        }
     }
 
     private fun startViewModel() {
+        viewModel.getUser()
     }
 }

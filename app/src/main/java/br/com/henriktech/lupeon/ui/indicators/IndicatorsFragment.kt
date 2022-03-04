@@ -40,7 +40,6 @@ class IndicatorsFragment : Fragment(R.layout.fragment_indicators) {
             recycleIndicator.adapter = adapter
         }
 
-        binding.spinnerTransporterFilter.adapter
 
         viewModel.user.observe(viewLifecycleOwner) { user ->
             if (user == null)

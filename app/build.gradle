@@ -5,7 +5,6 @@ plugins {
 
 android {
     compileSdkVersion compile_version
-    buildToolsVersion build_version
 
     defaultConfig {
         applicationId package_name

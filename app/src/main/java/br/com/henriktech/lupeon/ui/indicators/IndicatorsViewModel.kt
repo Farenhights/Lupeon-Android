@@ -10,6 +10,7 @@ import br.com.henriktech.lupeon.data.model.Indicator
 import br.com.henriktech.lupeon.data.model.User
 import br.com.henriktech.lupeon.data.model.toIndicatorList
 import br.com.henriktech.lupeon.data.model.toUser
+import br.com.henriktech.lupeon.data.service.FilterService
 import br.com.henriktech.lupeon.data.service.IndicatorsService
 import br.com.henriktech.lupeon.database.repository.UserRepository
 import kotlinx.coroutines.launch
@@ -18,6 +19,7 @@ import java.util.*
 class IndicatorsViewModel(
     private val userRepository: UserRepository,
     private val indicatorsService: IndicatorsService,
+    private val filterService: FilterService,
 ) : ViewModel() {
 
     private val _user = MutableLiveData<User?>()
@@ -90,7 +92,7 @@ class IndicatorsViewModel(
 
     fun getTransportersFilters(token: String, companyId: Int) {
         viewModelScope.launch {
-            when (val response = indicatorsService.getTransportersFilter(token, companyId)) {
+            when (val response = filterService.getTransportersFilter(token, companyId)) {
                 is ApiResult.Success<*> -> {
                     val transporterFilterList = response.data!! as TransporterFilterList
                     _transporters.postValue(transporterFilterList.toArrylistNames())
@@ -104,7 +106,7 @@ class IndicatorsViewModel(
 
     fun getPeriodsFilters(token: String, companyId: Int) {
         viewModelScope.launch {
-            when (val response = indicatorsService.getPeriodsFilter(token, companyId)) {
+            when (val response = filterService.getPeriodsFilter(token, companyId)) {
                 is ApiResult.Success<*> -> {
                     val periodFilterList = response.data!! as PeriodFilterList
                     _periods.postValue(periodFilterList.toArrylistDescriptions())

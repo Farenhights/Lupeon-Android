@@ -445,7 +445,7 @@
                     app:srcCompat="@drawable/ic_home" />
 
                 <ImageView
-                    android:id="@+id/imageIndicatorArrowLetf"
+                    android:id="@+id/imageDeliveryArrowLetf"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_marginStart="34dp"
@@ -470,8 +470,8 @@
                     android:textColor="#616161"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toTopOf="@+id/buttonMenuBottomHide"
-                    app:layout_constraintStart_toEndOf="@+id/imageIndicatorArrowLetf"
-                    app:layout_constraintTop_toTopOf="@+id/imageIndicatorArrowLetf" />
+                    app:layout_constraintStart_toEndOf="@+id/imageDeliveryArrowLetf"
+                    app:layout_constraintTop_toTopOf="@+id/imageDeliveryArrowLetf" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button

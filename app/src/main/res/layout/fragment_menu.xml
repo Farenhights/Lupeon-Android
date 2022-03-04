@@ -30,14 +30,11 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycleMenuView"
                 android:layout_width="336dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toTopOf="@+id/recycleAlertView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
                 app:layout_constraintVertical_chainStyle="spread"
                 app:spanCount="6" />
 
@@ -46,6 +43,7 @@
                 android:layout_width="336dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/imageBottomTraceView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recycleMenuView"
@@ -55,13 +53,11 @@
                 android:id="@+id/imageBottomTraceView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="38dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="4dp"
                 android:contentDescription="@string/app_name"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView7"
                 app:srcCompat="@drawable/ic_home" />
 
 
@@ -70,14 +66,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="30dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="37dp"
+                android:layout_marginBottom="44dp"
                 android:background="@drawable/back_rectangle_color"
                 app:layout_constraintBottom_toTopOf="@+id/imageBottomTraceView"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recycleAlertView">
+                app:layout_constraintStart_toStartOf="parent">
 
                 <ImageView
                     android:id="@+id/imagePhoneSponsor"

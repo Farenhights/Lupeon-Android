@@ -17,10 +17,4 @@ class IndicatorsService(private val lupeonRepository: LupeonRepository) {
 
     suspend fun getDriverIndicators(token: String, driverId: Int, companyId: Int, periodId: Int) =
         lupeonRepository.indicatorsDriver(token, driverId, companyId, periodId)
-
-    suspend fun getTransportersFilter(token: String, companyId: Int) =
-        lupeonRepository.getTransportersFilter(token, companyId)
-
-    suspend fun getPeriodsFilter(token: String, companyId: Int) =
-        lupeonRepository.getPeriodsFilter(token, companyId)
 }

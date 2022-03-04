@@ -75,4 +75,11 @@ interface LupeonApi {
         @Header("CompanyId") companyId: Int
     ): Response<PeriodFilterList>
 
+    @Headers("Content-Type: application/json")
+    @GET("/Filtro/Filial")
+    suspend fun getFiltroFilial(
+        @Header("Authorization") token: String,
+        @Header("CompanyId") companyId: Int
+    ): Response<FilialFilterList>
+
 }

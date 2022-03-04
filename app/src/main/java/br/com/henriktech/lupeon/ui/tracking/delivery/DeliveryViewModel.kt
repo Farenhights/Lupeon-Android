@@ -2,8 +2,11 @@ package br.com.henriktech.lupeon.ui.tracking.delivery
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import br.com.henriktech.lupeon.data.model.User
+import br.com.henriktech.lupeon.data.model.toUser
 import br.com.henriktech.lupeon.database.repository.UserRepository
+import kotlinx.coroutines.launch
 
 class DeliveryViewModel(private val userRepository: UserRepository) : ViewModel() {
 
@@ -36,4 +39,21 @@ class DeliveryViewModel(private val userRepository: UserRepository) : ViewModel(
 
     private val _discountValue = MutableLiveData<String>()
     val discountValue: MutableLiveData<String> = _discountValue
+
+    private val _progressNF = MutableLiveData<Boolean>()
+    val progressNF: MutableLiveData<Boolean> = _progressNF
+
+    init {
+        _user.observeForever { user ->
+
+        }
+    }
+
+    fun getUser() {
+        viewModelScope.launch {
+            userRepository.getUser().let {
+                _user.postValue(it.toUser())
+            }
+        }
+    }
 }

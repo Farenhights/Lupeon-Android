@@ -77,4 +77,9 @@ class LupeonRepository(val context: Context, private val lupeonApi: LupeonApi) :
         safeCallApi {
             lupeonApi.getFiltroPeriodo(token, companyId)
         }
+
+    suspend fun getFilialFilter(token: String, companyId: Int) =
+        safeCallApi {
+            lupeonApi.getFiltroFilial(token, companyId)
+        }
 }

@@ -2,6 +2,7 @@ package br.com.henriktech.lupeon.ui.tracking.home
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -59,6 +60,14 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             recycleIndicator.layoutManager = GridLayoutManager(context, numberOfColumns)
             val adapter = IndicatorAdapter(indicators as ArrayList<Indicator>)
             recycleIndicator.adapter = adapter
+        }
+        viewModel.filials.observe(viewLifecycleOwner) {
+            val filtersAdapter = ArrayAdapter(
+                requireContext(),
+                R.layout.spinner_text_item,
+                it,
+            )
+            binding.spinnerFilial.adapter = filtersAdapter
         }
         viewModel.getUser()
     }
