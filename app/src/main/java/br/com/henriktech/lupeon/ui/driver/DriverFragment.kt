@@ -39,10 +39,17 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
 
     override fun onMenuClicked(menu: Menu) {
         analytics.clickMenu(menu.option)
-        when (menu.option) {
-            "Indicadores" -> findNavController().navigate(R.id.action_driverFragment_to_indicatorsFragment)
-            "Tracking" -> findNavController().navigate(R.id.action_driverFragment_to_trackingFragment)
-            else -> findNavController().navigate(R.id.action_driverFragment_to_loginActivity)
+        val expression =
+            if (menu.option.contains("corrência") || menu.option.contains("correncia"))
+                "Ocorrencia"
+            else if (menu.option.contains("Notas") || menu.option.contains("notas"))
+                "Notas"
+            else
+                menu.option
+        return when (expression) {
+            "Ocorrencia" -> findNavController().navigate(R.id.action_driverFragment_to_loginActivity)
+            "Notas" -> findNavController().navigate(R.id.action_driverFragment_to_loginActivity)
+            else -> {}
         }
     }
 

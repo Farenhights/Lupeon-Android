@@ -122,11 +122,5 @@
         <action
             android:id="@+id/action_driverFragment_to_loginActivity"
             app:destination="@id/loginActivity" />
-        <action
-            android:id="@+id/action_driverFragment_to_trackingFragment"
-            app:destination="@id/trackingFragment" />
-        <action
-            android:id="@+id/action_driverFragment_to_indicatorsFragment"
-            app:destination="@id/indicatorsFragment" />
     </fragment>
 </navigation>

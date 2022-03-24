@@ -1,5 +1,6 @@
 package br.com.henriktech.lupeon.ui.driver
 
+import android.text.Html
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,9 +33,13 @@ class DriverViewModel(
         _user.observeForever { user ->
             if (user != null) {
                 viewModelScope.launch {
-                    menuRepository.loadMenus(user.userId).let {
-                        _menus.postValue(it.toListMenu())
-                    }
+                    val ocorrencia = Html.fromHtml("Nova<br/>Ocorrência", 0).toString()
+                    val notas = Html.fromHtml("Notas em<br/>trânsito", 0).toString()
+                    val menus = arrayListOf<Menu>()
+                    menus.add(Menu(option = ocorrencia,
+                        true))
+                    menus.add(Menu(option = notas, true))
+                    _menus.postValue(menus as List<Menu>)
                 }
                 viewModelScope.launch {
                     when (val response =
