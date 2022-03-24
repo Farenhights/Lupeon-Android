@@ -45,13 +45,7 @@ interface LupeonApi {
         @Body body: Filial
     ): Response<Simulacao>
 
-    @Headers("Content-Type: application/json")
-    @POST("/Transportador/Indicadores")
-    suspend fun postTransportadorIndicadores(
-        @Header("Authorization") token: String,
-        @Header("CompanyId") companyId: Int,
-        @Body body: TransporterRequest
-    ): Response<Indicadores>
+    // Driver API
 
     @Headers("Content-Type: application/json")
     @POST("/Motorista/Indicadores")
@@ -60,6 +54,16 @@ interface LupeonApi {
         @Header("CompanyId") companyId: Int,
         @Body body: DriverRequest
     ): Response<Indicadores>
+
+    @Headers("Content-Type: application/json")
+    @POST("/Transportador/Indicadores")
+    suspend fun postTransportadorIndicadores(
+        @Header("Authorization") token: String,
+        @Header("CompanyId") companyId: Int,
+        @Body body: TransporterRequest
+    ): Response<Indicadores>
+
+    // Filter API
 
     @Headers("Content-Type: application/json")
     @GET("/Filtro/Transportadoras")

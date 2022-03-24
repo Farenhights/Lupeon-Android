@@ -58,6 +58,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             val recycleIndicator: RecyclerView = binding.recycleTrackingView
             val numberOfColumns = 2
             recycleIndicator.layoutManager = GridLayoutManager(context, numberOfColumns)
+            recycleIndicator.setHasFixedSize(true)
             val adapter = IndicatorAdapter(indicators as ArrayList<Indicator>)
             recycleIndicator.adapter = adapter
         }
