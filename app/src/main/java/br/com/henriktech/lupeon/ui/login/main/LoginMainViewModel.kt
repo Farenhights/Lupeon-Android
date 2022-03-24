@@ -1,5 +1,6 @@
 package br.com.henriktech.lupeon.ui.login.main
 
+import android.content.Context
 import android.text.Html
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -16,6 +17,7 @@ import br.com.henriktech.lupeon.database.db.MenuEntity
 import br.com.henriktech.lupeon.database.repository.AlertRepository
 import br.com.henriktech.lupeon.database.repository.MenuRepository
 import br.com.henriktech.lupeon.database.repository.UserRepository
+import br.com.henriktech.lupeon.util.InternetUtil
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -34,7 +36,7 @@ class LoginMainViewModel(
         "Houve um problema na sua solicitação.<br>Caso o problema persista contate o Atendimento Lupeon",
         0,
     ).toString()
-
+    private val noInternet = "Sem conexão com a internet"
 
     private val _perfil = MutableLiveData<String>()
     val perfil: LiveData<String> get() = _perfil
@@ -42,21 +44,25 @@ class LoginMainViewModel(
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
 
-    fun validateLogin(user: String, password: String) {
+    fun validateLogin(user: String, password: String, context: Context) {
         if (user.isNotEmpty() && password.isNotEmpty()) {
             viewModelScope.launch {
-                withContext(coroutineDispatcher) {
-                    when (val response = authenticationService.validateLogin(user, password)) {
-                        is ApiResult.Success<*> -> {
-                            saveUser(response.data!! as Login)
-                        }
-                        is ApiResult.Error -> {
-                            var message = response.message.uppercase(Locale.ROOT)
-                            if (message.contains("SERVER ERROR"))
-                                message = messgeError
-                            _errorMessage.postValue(message)
+                if (InternetUtil.isConnection(context)) {
+                    withContext(coroutineDispatcher) {
+                        when (val response = authenticationService.validateLogin(user, password)) {
+                            is ApiResult.Success<*> -> {
+                                saveUser(response.data!! as Login)
+                            }
+                            is ApiResult.Error -> {
+                                var message = response.message.uppercase(Locale.ROOT)
+                                if (message.contains("ERROR"))
+                                    message = messgeError
+                                _errorMessage.postValue(message)
+                            }
                         }
                     }
+                } else {
+                    _errorMessage.postValue(noInternet)
                 }
             }
         } else {

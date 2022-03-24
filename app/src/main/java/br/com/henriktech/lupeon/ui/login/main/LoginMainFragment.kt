@@ -38,7 +38,8 @@ class LoginMainFragment : Fragment(R.layout.fragment_login) {
             binding.loginProgressBar.visibility = View.VISIBLE
             viewModel.validateLogin(
                 binding.textUserLoginView.text.toString(),
-                binding.textPasswordLoginView.text.toString()
+                binding.textPasswordLoginView.text.toString(),
+                requireContext(),
             )
         }
         startViewModel()

@@ -118,5 +118,9 @@
         android:id="@+id/driverFragment"
         android:name="br.com.henriktech.lupeon.ui.driver.DriverFragment"
         android:label="DriverFragment"
-        tools:layout="@layout/fragment_driver_menu" />
+        tools:layout="@layout/fragment_driver_menu" >
+        <action
+            android:id="@+id/action_driverFragment_to_loginActivity"
+            app:destination="@id/loginActivity" />
+    </fragment>
 </navigation>
