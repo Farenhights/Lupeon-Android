@@ -113,6 +113,7 @@
             android:layout_marginBottom="24dp"
             android:background="@drawable/back_rectangle"
             android:textColor="@color/black"
+            android:inputType="number"
             app:layout_constraintBottom_toTopOf="@+id/trackingSearchButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

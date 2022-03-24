@@ -3,12 +3,17 @@ package br.com.henriktech.lupeon.ui.tracking.delivery
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.henriktech.lupeon.api.network.ApiResult
 import br.com.henriktech.lupeon.data.model.User
 import br.com.henriktech.lupeon.data.model.toUser
+import br.com.henriktech.lupeon.data.service.TrackingService
 import br.com.henriktech.lupeon.database.repository.UserRepository
 import kotlinx.coroutines.launch
 
-class DeliveryViewModel(private val userRepository: UserRepository) : ViewModel() {
+class DeliveryViewModel(
+    private val userRepository: UserRepository,
+    private val service: TrackingService,
+) : ViewModel() {
 
     private val _user = MutableLiveData<User?>()
     val user: MutableLiveData<User?> = _user
@@ -43,13 +48,34 @@ class DeliveryViewModel(private val userRepository: UserRepository) : ViewModel(
     private val _progressNF = MutableLiveData<Boolean>()
     val progressNF: MutableLiveData<Boolean> = _progressNF
 
+    private val _errorMessage = MutableLiveData<String>()
+
+    private val _numeroNota = MutableLiveData<Int>()
+    private val _cnpj = MutableLiveData<String>()
+
     init {
         _user.observeForever { user ->
-
+            viewModelScope.launch {
+                val token = user!!.tokenType
+                val companyId = Integer.parseInt(user.companyId)
+                val numberInvoice = _numeroNota.value!!
+                val cnpj = _cnpj.value!!
+                when (val response = service.getInvoice(token, companyId, numberInvoice, cnpj)) {
+                    is ApiResult.Success<*> -> {
+                        val invoice = response.data!!
+                        print(invoice.toString())
+                    }
+                    is ApiResult.Error -> {
+                        _errorMessage.postValue(response.message)
+                    }
+                }
+            }
         }
     }
 
-    fun getUser() {
+    fun getUser(numberInvoice: Int, cpnj: String) {
+        _numeroNota.postValue(numberInvoice)
+        _cnpj.postValue(cpnj)
         viewModelScope.launch {
             userRepository.getUser().let {
                 _user.postValue(it.toUser())

@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.henriktech.lupeon.api.model.response.FilialFilter
 import br.com.henriktech.lupeon.api.model.response.FilialFilterList
 import br.com.henriktech.lupeon.api.model.response.Indicadores
-import br.com.henriktech.lupeon.api.model.response.TransporterFilterList
 import br.com.henriktech.lupeon.api.model.response.toArrylistNames
 import br.com.henriktech.lupeon.api.network.ApiResult
 import br.com.henriktech.lupeon.data.model.Indicator
@@ -30,6 +30,8 @@ class TrackingViewModel(
 
     private val _indicators = MutableLiveData<List<Indicator>>()
     val indicators: LiveData<List<Indicator>> = _indicators
+
+    private val _companies = MutableLiveData<List<FilialFilter>>()
 
     private val _filials = MutableLiveData<ArrayList<String>>()
     val filials: LiveData<ArrayList<String>> = _filials
@@ -97,11 +99,16 @@ class TrackingViewModel(
                 is ApiResult.Success<*> -> {
                     val filialFilterList = response.data!! as FilialFilterList
                     _filials.postValue(filialFilterList.toArrylistNames())
+                    _companies.postValue(filialFilterList.filialFilterList)
                 }
                 is ApiResult.Error -> {
                     _errorMessage.postValue(response.message.uppercase(Locale.ROOT))
                 }
             }
         }
+    }
+
+    fun getCNPJ(selectedItemPosition: Int): String? {
+        return _companies.value!!.get(selectedItemPosition).cnpj
     }
 }

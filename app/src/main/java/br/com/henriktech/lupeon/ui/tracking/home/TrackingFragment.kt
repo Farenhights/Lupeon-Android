@@ -1,5 +1,6 @@
 package br.com.henriktech.lupeon.ui.tracking.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -19,16 +20,14 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
     private val analytics: TrackingAnalytics by inject()
     private val viewModel: TrackingViewModel by viewModel()
 
-    private lateinit var binding: FragmentTrackingBinding
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         analytics.trackScreen(requireActivity())
-        binding = FragmentTrackingBinding.bind(view)
+        val binding = FragmentTrackingBinding.bind(view)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         startView(binding)
-        startViewModel()
+        startViewModel(binding)
     }
 
     private fun startView(binding: FragmentTrackingBinding) {
@@ -45,11 +44,14 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             binding.menuBottom.visibility = View.GONE
         }
         binding.trackingSearchButton.setOnClickListener {
+            val invoice = Integer.parseInt(binding.textNumberInvoice.text.toString())
+            saveInvoice(invoice, binding.spinnerFilial.selectedItemPosition)
             findNavController().navigate(R.id.action_trackingFragment_to_deliveryFragment)
         }
+
     }
 
-    private fun startViewModel() {
+    private fun startViewModel(binding: FragmentTrackingBinding) {
         viewModel.user.observe(viewLifecycleOwner) { user ->
             if (user == null)
                 findNavController().navigate(R.id.action_trackingFragment_to_loginActivity)
@@ -71,5 +73,14 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             binding.spinnerFilial.adapter = filtersAdapter
         }
         viewModel.getUser()
+    }
+
+    private fun saveInvoice(invoice: Int, selectedItemPosition: Int) {
+        val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            putInt("INVOICE", invoice)
+            putString("CNPJ", viewModel.getCNPJ(selectedItemPosition))
+            apply()
+        }
     }
 }

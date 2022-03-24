@@ -1,10 +1,13 @@
 package br.com.henriktech.lupeon.ui.tracking.delivery
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.databinding.FragmentTrackingDeliveryBinding
+import kotlinx.coroutines.flow.DEFAULT_CONCURRENCY
+import kotlinx.coroutines.flow.DEFAULT_CONCURRENCY_PROPERTY_NAME
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -37,6 +40,10 @@ class DeliveryFragment : Fragment(R.layout.fragment_tracking_delivery) {
     }
 
     private fun startViewModel() {
-        viewModel.getUser()
+        val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        val invoice = sharedPref.getInt("INVOICE", 0)
+        val cnpj = sharedPref.getString("CNPJ", "").toString()
+
+        viewModel.getUser(invoice, cnpj)
     }
 }
