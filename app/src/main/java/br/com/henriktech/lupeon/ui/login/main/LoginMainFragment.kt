@@ -52,7 +52,11 @@ class LoginMainFragment : Fragment(R.layout.fragment_login) {
     private fun startViewModel() {
         viewModel.perfil.observe(viewLifecycleOwner) {
             analytics.typeLogin(it)
-            findNavController().navigate(R.id.action_mainFragment_to_profileMenuFragment)
+            if (it.equals("M")) {
+                findNavController().navigate(R.id.action_mainFragment_to_driverFragment)
+            } else {
+                findNavController().navigate(R.id.action_mainFragment_to_profileMenuFragment)
+            }
         }
 
         viewModel.errorMessage.observe(viewLifecycleOwner) {

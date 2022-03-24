@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.data.model.Menu
+import br.com.henriktech.lupeon.ui.base.OnMenuClickListener
 
 class MenuAdapter(
     private val menuList: List<Menu>,
@@ -63,9 +64,5 @@ class MenuAdapter(
                 else -> R.drawable.ic_token
             }
         }
-    }
-
-    interface OnMenuClickListener {
-        fun onMenuClicked(menu: Menu)
     }
 }

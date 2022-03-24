@@ -16,6 +16,7 @@ object AppModules {
                 DeliveryModule.get(),
                 OccurrenceModule.get(),
                 MenuModule.get(),
+                DriverModule.get(),
             )
         )
     }

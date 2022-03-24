@@ -18,12 +18,13 @@ import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.data.model.Alert
 import br.com.henriktech.lupeon.data.model.Menu
 import br.com.henriktech.lupeon.databinding.FragmentMenuBinding
-import br.com.henriktech.lupeon.ui.IOnBackPressed
+import br.com.henriktech.lupeon.ui.base.IOnBackPressed
+import br.com.henriktech.lupeon.ui.base.OnMenuClickListener
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MenuFragment : Fragment(R.layout.fragment_menu), IOnBackPressed,
-    AlertAdapter.OnAlertClickListener, MenuAdapter.OnMenuClickListener {
+    AlertAdapter.OnAlertClickListener, OnMenuClickListener {
     private val analytics: MenuAnalytics by inject()
     private val viewModel: MenuViewModel by viewModel()
     private lateinit var webView: WebView

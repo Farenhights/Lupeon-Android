@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_mainFragment_to_loginActivity"
             app:destination="@id/loginActivity" />
+        <action
+            android:id="@+id/action_mainFragment_to_driverFragment"
+            app:destination="@id/driverFragment" />
     </fragment>
     <fragment
         android:id="@+id/lossPasswordFragment"
@@ -106,9 +109,14 @@
         android:id="@+id/ocorrencyFragment"
         android:name="br.com.henriktech.lupeon.ui.tracking.occurrence.OcorrencyFragment"
         android:label="fragment_tracking_occurrence"
-        tools:layout="@layout/fragment_tracking_occurrence" >
+        tools:layout="@layout/fragment_tracking_occurrence">
         <action
             android:id="@+id/action_ocorrencyFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/driverFragment"
+        android:name="br.com.henriktech.lupeon.ui.driver.DriverFragment"
+        android:label="DriverFragment"
+        tools:layout="@layout/fragment_driver_menu" />
 </navigation>

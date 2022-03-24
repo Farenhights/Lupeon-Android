@@ -26,7 +26,3 @@ class LupeonActivity : AppCompatActivity() {
         }
     }
 }
-
-interface IOnBackPressed {
-    fun onBackPressed(): Boolean
-}
