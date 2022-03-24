@@ -56,7 +56,7 @@ interface LupeonApi {
     ): Response<Indicadores>
 
     @Headers("Content-Type: application/json")
-    @POST("/Transportador/Indicadores")
+    @POST("/Transportadora/Indicadores")
     suspend fun postTransportadorIndicadores(
         @Header("Authorization") token: String,
         @Header("CompanyId") companyId: Int,

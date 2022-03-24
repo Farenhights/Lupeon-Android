@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="viewModel"
             type="br.com.henriktech.lupeon.ui.driver.DriverViewModel" />
@@ -49,10 +48,55 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:src="@drawable/header_driver"
+            app:layout_constraintBottom_toTopOf="@+id/recycleDriverMenuView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textNameProfileMenu" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleDriverMenuView"
+            android:layout_width="340dp"
+            android:layout_height="110dp"
+            android:layout_margin="8dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/recycleDriverIndicatorView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.478"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerDriver"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            app:spanCount="6" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleDriverIndicatorView"
+            android:layout_width="340dp"
+            android:layout_height="230dp"
+            android:layout_margin="8dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonMenuBottomShow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.478"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycleDriverMenuView"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            app:spanCount="6" />
+
+        <ImageView
+            android:id="@+id/buttonMenuBottomShow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_home_light" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

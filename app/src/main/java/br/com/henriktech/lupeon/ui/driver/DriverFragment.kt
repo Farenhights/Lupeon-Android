@@ -5,10 +5,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
+import br.com.henriktech.lupeon.data.model.Indicator
 import br.com.henriktech.lupeon.data.model.Menu
 import br.com.henriktech.lupeon.databinding.FragmentDriverMenuBinding
 import br.com.henriktech.lupeon.ui.base.IOnBackPressed
+import br.com.henriktech.lupeon.ui.base.IndicatorAdapter
+import br.com.henriktech.lupeon.ui.base.MenuAdapter
 import br.com.henriktech.lupeon.ui.base.OnMenuClickListener
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -33,7 +38,12 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
     }
 
     override fun onMenuClicked(menu: Menu) {
-        // TODO("Not yet implemented")
+        analytics.clickMenu(menu.option)
+        when (menu.option) {
+            "Indicadores" -> findNavController().navigate(R.id.action_driverFragment_to_indicatorsFragment)
+            "Tracking" -> findNavController().navigate(R.id.action_driverFragment_to_trackingFragment)
+            else -> findNavController().navigate(R.id.action_driverFragment_to_loginActivity)
+        }
     }
 
     private fun startView(binding: FragmentDriverMenuBinding) {
@@ -50,9 +60,21 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
             } else {
                 findNavController().navigate(R.id.action_driverFragment_to_loginActivity)
             }
-
+        }
+        viewModel.menus.observe(viewLifecycleOwner) { menus ->
+            val recycleMenu: RecyclerView = binding.recycleDriverMenuView
+            val numberOfColumns = 2
+            recycleMenu.layoutManager = GridLayoutManager(context, numberOfColumns)
+            val adapter = MenuAdapter(menus, this)
+            recycleMenu.adapter = adapter
+        }
+        viewModel.indicators.observe(viewLifecycleOwner) { indicators ->
+            val recycleIndicator: RecyclerView = binding.recycleDriverIndicatorView
+            val numberOfColumns = 2
+            recycleIndicator.layoutManager = GridLayoutManager(context, numberOfColumns)
+            val adapter = IndicatorAdapter(indicators as ArrayList<Indicator>)
+            recycleIndicator.adapter = adapter
         }
         viewModel.getUser()
     }
-
 }

@@ -11,10 +11,6 @@ class MenuAnalytics(private val analytics: Analytics) {
         )
     }
 
-    fun clickEnterButton() {
-        trackEvent("${FRAG_PRESENTATION}_Clique_Botao_Entrar")
-    }
-
     private fun trackEvent(eventName: String) {
         analytics.trackEvent(eventName)
     }

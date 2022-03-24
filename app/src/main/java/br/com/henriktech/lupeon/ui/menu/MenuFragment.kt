@@ -19,6 +19,7 @@ import br.com.henriktech.lupeon.data.model.Alert
 import br.com.henriktech.lupeon.data.model.Menu
 import br.com.henriktech.lupeon.databinding.FragmentMenuBinding
 import br.com.henriktech.lupeon.ui.base.IOnBackPressed
+import br.com.henriktech.lupeon.ui.base.MenuAdapter
 import br.com.henriktech.lupeon.ui.base.OnMenuClickListener
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel

@@ -10,7 +10,7 @@ object DriverModule {
 
     private val driverModule = module {
         single { DriverAnalytics(get()) }
-        viewModel { DriverViewModel(get(), get()) }
+        viewModel { DriverViewModel(get(), get(), get()) }
     }
 
     fun get(): Module {

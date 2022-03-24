@@ -1,4 +1,4 @@
-package br.com.henriktech.lupeon.ui.menu
+package br.com.henriktech.lupeon.ui.base
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,11 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.data.model.Menu
-import br.com.henriktech.lupeon.ui.base.OnMenuClickListener
 
 class MenuAdapter(
     private val menuList: List<Menu>,
-    private val itemClickListener: OnMenuClickListener
+    private val itemClickListener: OnMenuClickListener,
 ) :
     RecyclerView.Adapter<MenuAdapter.ProfileMenuViewHolder>() {
 
@@ -55,12 +54,21 @@ class MenuAdapter(
         }
 
         private fun setIcon(option: String): Int {
-            return when (option) {
+            val expression =
+                if (option.contains("corrência") || option.contains("correncia"))
+                    "Ocorrencia"
+                else if (option.contains("Notas") || option.contains("notas"))
+                    "Notas"
+                else
+                    option
+            return when (expression) {
                 "Indicadores" -> R.drawable.ic_indicadores
                 "Simulacao" -> R.drawable.ic_simulacao
                 "Tracking" -> R.drawable.ic_tracking
                 "Faturas" -> R.drawable.ic_fatura
                 "Abono" -> R.drawable.ic_abono
+                "Ocorrencia" -> R.drawable.ic_truck
+                "Notas" -> R.drawable.ic_notas
                 else -> R.drawable.ic_token
             }
         }

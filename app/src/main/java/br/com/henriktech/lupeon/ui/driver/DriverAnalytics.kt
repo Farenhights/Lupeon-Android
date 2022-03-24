@@ -2,6 +2,7 @@ package br.com.henriktech.lupeon.ui.driver
 
 import android.app.Activity
 import br.com.henriktech.lupeon.analytics.Analytics
+import br.com.henriktech.lupeon.ui.menu.MenuAnalytics
 
 class DriverAnalytics(private val analytics: Analytics) {
     fun trackScreen(activity: Activity) {
@@ -11,8 +12,8 @@ class DriverAnalytics(private val analytics: Analytics) {
         )
     }
 
-    fun clickEnterButton() {
-        trackEvent("${FRAG_PRESENTATION}_Clique_Botao_Entrar")
+    fun clickMenu(option: String) {
+        trackEvent("${MenuAnalytics.FRAG_PRESENTATION}_Clique_Menu_$option")
     }
 
     private fun trackEvent(eventName: String) {
