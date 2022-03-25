@@ -49,13 +49,14 @@
         <entry key="app/src/main/res/drawable/layout_bg_white.xml" value="0.36822916666666666" />
         <entry key="app/src/main/res/drawable/loading_background.xml" value="0.3703125" />
         <entry key="app/src/main/res/drawable/logo_white.xml" value="0.3703125" />
+        <entry key="app/src/main/res/drawable/round_green.xml" value="0.31" />
         <entry key="app/src/main/res/layout/activity_driver.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.3650137741046832" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/dialog_alert.xml" value="0.378125" />
         <entry key="app/src/main/res/layout/fragment_allowance.xml" value="0.3038949275362319" />
-        <entry key="app/src/main/res/layout/fragment_driver_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_driver_menu.xml" value="0.3038949275362319" />
         <entry key="app/src/main/res/layout/fragment_indicators.xml" value="0.28370786516853935" />
         <entry key="app/src/main/res/layout/fragment_invoices.xml" value="0.3038949275362319" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.23735408560311283" />
@@ -75,6 +76,7 @@
         <entry key="app/src/main/res/layout/view_indicator.xml" value="0.33" />
         <entry key="app/src/main/res/layout/view_indicator_filter.xml" value="0.34270833333333334" />
         <entry key="app/src/main/res/layout/view_indicator_item.xml" value="0.30570652173913043" />
+        <entry key="app/src/main/res/layout/view_itemlist.xml" value="0.33" />
         <entry key="app/src/main/res/layout/view_menu.xml" value="0.9" />
         <entry key="app/src/main/res/layout/view_sponsor.xml" value="0.30932971014492755" />
         <entry key="app/src/main/res/menu/menu_indicator_filter.xml" value="0.1" />
