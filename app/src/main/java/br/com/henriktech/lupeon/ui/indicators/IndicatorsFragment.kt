@@ -2,6 +2,7 @@ package br.com.henriktech.lupeon.ui.indicators
 
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -19,25 +20,27 @@ class IndicatorsFragment : Fragment(R.layout.fragment_indicators) {
     private val analytics: IndicatorsAnalytics by inject()
     private val viewModel: IndicatorsViewModel by viewModel()
 
-    private lateinit var binding: FragmentIndicatorsBinding
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         analytics.trackScreen(requireActivity())
-        binding = FragmentIndicatorsBinding.bind(view)
+        val binding = FragmentIndicatorsBinding.bind(view)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         startView(binding)
-        startViewModel()
+        startViewModel(binding)
     }
 
-    private fun startViewModel() {
+    private fun startViewModel(binding: FragmentIndicatorsBinding) {
         viewModel.indicators.observe(viewLifecycleOwner) { indicators ->
-            val recycleIndicator: RecyclerView = binding.recycleIndicatorView
-            val numberOfColumns = 2
-            recycleIndicator.layoutManager = GridLayoutManager(context, numberOfColumns)
-            val adapter = IndicatorAdapter(indicators as ArrayList<Indicator>)
-            recycleIndicator.adapter = adapter
+            binding.recycleIndicatorView.visibility = View.INVISIBLE
+            if (indicators.isNotEmpty()) {
+                binding.recycleIndicatorView.visibility = View.VISIBLE
+                val recycleIndicator: RecyclerView = binding.recycleIndicatorView
+                val numberOfColumns = 2
+                recycleIndicator.layoutManager = GridLayoutManager(context, numberOfColumns)
+                val adapter = IndicatorAdapter(indicators as ArrayList<Indicator>)
+                recycleIndicator.adapter = adapter
+            }
         }
 
 
@@ -52,7 +55,11 @@ class IndicatorsFragment : Fragment(R.layout.fragment_indicators) {
                 R.layout.spinner_text_item,
                 it,
             )
-            binding.spinnerTransporterFilter.adapter = filtersAdapter
+            binding.spinnerTransporterFilter.apply {
+                adapter = filtersAdapter
+                viewModel.setTransportersFilter(selectedItemPosition)
+            }
+
         }
 
         viewModel.periods.observe(viewLifecycleOwner) {
@@ -61,7 +68,10 @@ class IndicatorsFragment : Fragment(R.layout.fragment_indicators) {
                 R.layout.spinner_text_item,
                 it,
             )
-            binding.spinnerPeriodFilter.adapter = filtersAdapter
+            binding.spinnerPeriodFilter.apply {
+                adapter = filtersAdapter
+                viewModel.setPeriodsFilters(selectedItemPosition)
+            }
         }
 
         viewModel.getUser()
@@ -89,15 +99,43 @@ class IndicatorsFragment : Fragment(R.layout.fragment_indicators) {
         }
         binding.buttonCleanFilter.setOnClickListener {
             binding.menuFilterIndicator.visibility = View.GONE
+            viewModel.toClear()
         }
         binding.buttonApplyFilter.setOnClickListener {
             binding.menuFilterIndicator.visibility = View.GONE
+            viewModel.toApply()
         }
         binding.buttonMenuBottomShow.setOnClickListener {
             binding.menuBottom.visibility = View.VISIBLE
         }
         binding.buttonMenuBottomHide.setOnClickListener {
             binding.menuBottom.visibility = View.GONE
+        }
+        binding.spinnerTransporterFilter.onItemSelectedListener = object :
+            AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long,
+            ) {
+                viewModel.setTransportersFilter(position)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+        binding.spinnerPeriodFilter.onItemSelectedListener = object :
+            AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long,
+            ) {
+                viewModel.setPeriodsFilters(position)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
         }
     }
 

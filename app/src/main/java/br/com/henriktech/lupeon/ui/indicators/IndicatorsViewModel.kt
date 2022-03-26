@@ -34,43 +34,19 @@ class IndicatorsViewModel(
     private val _periods = MutableLiveData<ArrayList<String>>()
     val periods: LiveData<ArrayList<String>> = _periods
 
+    private val _indicatorsClearFilters = MutableLiveData<List<Indicator>>()
+
+    private val _transportersList = MutableLiveData<List<TransporterFilter>>()
+    private val _transporterSelectedPosition = MutableLiveData<Int>()
+    private val _periodsList = MutableLiveData<List<PeriodFilter>>()
+    private val _periodSelectedPosition = MutableLiveData<Int>()
+
     private val _errorMessage = MutableLiveData<String>()
 
     init {
         _user.observeForever { user ->
             if (user != null) {
-                viewModelScope.launch {
-                    when (val response =
-                        when (user.userType) {
-                            "E" -> indicatorsService.getShipperIndicators(
-                                user.tokenType,
-                                user.userId,
-                                user.companyId.toInt(),
-                                0
-                            )
-                            "T" -> indicatorsService.getTransporterIndicators(
-                                user.tokenType,
-                                user.userId,
-                                user.companyId.toInt(),
-                                0
-                            )
-                            else -> indicatorsService.getDriverIndicators(
-                                user.tokenType,
-                                user.userId,
-                                user.companyId.toInt(),
-                                0
-                            )
-                        }
-                    ) {
-                        is ApiResult.Success<*> -> {
-                            val indicators = response.data!! as Indicadores
-                            _indicators.postValue(indicators.indicadores.toIndicatorList())
-                        }
-                        is ApiResult.Error -> {
-                            _errorMessage.postValue(response.message)
-                        }
-                    }
-                }
+                consultIndicator(0, 0)
             }
         }
     }
@@ -96,6 +72,7 @@ class IndicatorsViewModel(
                 is ApiResult.Success<*> -> {
                     val transporterFilterList = response.data!! as TransporterFilterList
                     _transporters.postValue(transporterFilterList.toArrylistNames())
+                    _transportersList.postValue(transporterFilterList.transporterFilterList)
                 }
                 is ApiResult.Error -> {
                     _errorMessage.postValue(response.message.uppercase(Locale.ROOT))
@@ -104,15 +81,73 @@ class IndicatorsViewModel(
         }
     }
 
+    fun setTransportersFilter(selectedPosition: Int) {
+        _transporterSelectedPosition.postValue(selectedPosition)
+    }
+
     fun getPeriodsFilters(token: String, companyId: Int) {
         viewModelScope.launch {
             when (val response = filterService.getPeriodsFilter(token, companyId)) {
                 is ApiResult.Success<*> -> {
                     val periodFilterList = response.data!! as PeriodFilterList
                     _periods.postValue(periodFilterList.toArrylistDescriptions())
+                    _periodsList.postValue(periodFilterList.periodFilterList)
                 }
                 is ApiResult.Error -> {
                     _errorMessage.postValue(response.message.uppercase(Locale.ROOT))
+                }
+            }
+        }
+    }
+
+    fun setPeriodsFilters(selectedPosition: Int) {
+        _periodSelectedPosition.postValue(selectedPosition)
+    }
+
+    fun toClear() {
+        val indicators = _indicatorsClearFilters.value
+        _indicators.postValue(indicators!!)
+    }
+
+    fun toApply() {
+        val shipper = _transportersList.value!![_transporterSelectedPosition.value!!]
+        val period = _periodsList.value!![_periodSelectedPosition.value!!]
+        _indicators.postValue(listOf())
+        consultIndicator(shipper.id, period.periodId)
+    }
+
+    private fun consultIndicator(shipperId: Int, periodId: Int) {
+        val user = _user.value!!
+        viewModelScope.launch {
+            when (val response =
+                when (user.userType) {
+                    "E" -> indicatorsService.getShipperIndicators(
+                        user.tokenType,
+                        shipperId,
+                        user.companyId.toInt(),
+                        periodId
+                    )
+                    "T" -> indicatorsService.getTransporterIndicators(
+                        user.tokenType,
+                        shipperId,
+                        user.companyId.toInt(),
+                        periodId
+                    )
+                    else -> indicatorsService.getDriverIndicators(
+                        user.tokenType,
+                        shipperId,
+                        user.companyId.toInt(),
+                        periodId
+                    )
+                }
+            ) {
+                is ApiResult.Success<*> -> {
+                    val indicators = response.data!! as Indicadores
+                    _indicators.postValue(indicators.indicadores.toIndicatorList())
+                    _indicatorsClearFilters.postValue(indicators.indicadores.toIndicatorList())
+                }
+                is ApiResult.Error -> {
+                    _errorMessage.postValue(response.message)
                 }
             }
         }
