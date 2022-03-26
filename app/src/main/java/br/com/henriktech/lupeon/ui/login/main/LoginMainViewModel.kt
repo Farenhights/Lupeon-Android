@@ -28,7 +28,7 @@ class LoginMainViewModel(
     private val userRepository: UserRepository,
     private val menuRepository: MenuRepository,
     private val alertRepository: AlertRepository,
-    private val authenticationService: AuthenticationService
+    private val authenticationService: AuthenticationService,
 ) : ViewModel() {
 
     private val coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO
@@ -43,6 +43,12 @@ class LoginMainViewModel(
 
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
+
+    init {
+        viewModelScope.launch {
+            userRepository.delete()
+        }
+    }
 
     fun validateLogin(user: String, password: String, context: Context) {
         if (user.isNotEmpty() && password.isNotEmpty()) {

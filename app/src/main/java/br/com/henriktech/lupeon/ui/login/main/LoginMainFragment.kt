@@ -14,15 +14,18 @@ class LoginMainFragment : Fragment(R.layout.fragment_login) {
     private val analytics: LoginMainAnalytics by inject()
     private val viewModel: LoginMainViewModel by viewModel()
 
-    private lateinit var binding: FragmentLoginBinding
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         analytics.trackScreen(requireActivity())
-        binding = FragmentLoginBinding.bind(view)
+        val binding = FragmentLoginBinding.bind(view)
         binding.viewModelLogin = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        startView(binding)
+        startViewModel(binding)
+    }
 
+    private fun startView(binding: FragmentLoginBinding) {
+        binding.loginProgressBar.visibility = View.GONE
         binding.leftArrowView.setOnClickListener {
             analytics.clickBackButton()
             findNavController().navigate(R.id.action_mainFragment_to_loginActivity)
@@ -42,15 +45,9 @@ class LoginMainFragment : Fragment(R.layout.fragment_login) {
                 requireContext(),
             )
         }
-        startViewModel()
     }
 
-    override fun onStart() {
-        super.onStart()
-        binding.loginProgressBar.visibility = View.GONE
-    }
-
-    private fun startViewModel() {
+    private fun startViewModel(binding: FragmentLoginBinding) {
         viewModel.perfil.observe(viewLifecycleOwner) {
             analytics.typeLogin(it)
             if (it.equals("M")) {

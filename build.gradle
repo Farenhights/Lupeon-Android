@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        version_code = 12
+        version_code = 13
         version_name = '2022.1'
 
         compile_version = 31
