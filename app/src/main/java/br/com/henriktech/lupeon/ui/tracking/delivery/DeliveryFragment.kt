@@ -43,6 +43,10 @@ class DeliveryFragment : Fragment(R.layout.fragment_tracking_delivery) {
         val invoice = sharedPref.getInt("INVOICE", 0)
         val cnpj = sharedPref.getString("CNPJ", "").toString()
 
+        viewModel.user.observe(viewLifecycleOwner) { user ->
+            binding.titleTrackingName.text = "${getString(R.string.hello)}, ${user!!.name}"
+        }
+
         viewModel.invoice.observe(viewLifecycleOwner) {
             binding.trackingProgressBar.visibility = View.GONE
             binding.buttonTrackingOccurrences.visibility =
@@ -71,6 +75,6 @@ class DeliveryFragment : Fragment(R.layout.fragment_tracking_delivery) {
             binding.textErrorMessage.text = it
         }
 
-        viewModel.getUser(invoice, cnpj)
+        viewModel.getInvoice(invoice, cnpj)
     }
 }

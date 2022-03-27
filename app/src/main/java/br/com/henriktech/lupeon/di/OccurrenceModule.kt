@@ -10,7 +10,7 @@ import org.koin.dsl.module
 object OccurrenceModule {
     private val occurrenceModule = module {
         single { OccurrenceAnalytics(get()) }
-        viewModel { OccurrenceViewModel(get()) }
+        viewModel { OccurrenceViewModel(get(), get()) }
     }
 
     fun get(): Module {

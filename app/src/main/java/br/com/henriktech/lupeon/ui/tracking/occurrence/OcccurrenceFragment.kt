@@ -1,5 +1,6 @@
 package br.com.henriktech.lupeon.ui.tracking.occurrence
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -22,8 +23,26 @@ class OcorrencyFragment : Fragment(R.layout.fragment_tracking_occurrence) {
     }
 
     private fun startView(binding: FragmentTrackingOccurrenceBinding) {
+        binding.imageDeliveryArrowLetf.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+        binding.buttonMenuBottomShow.setOnClickListener {
+            binding.menuBottom.visibility = View.VISIBLE
+        }
+        binding.buttonMenuBottomHide.setOnClickListener {
+            binding.menuBottom.visibility = View.GONE
+        }
     }
 
     private fun startViewModel(binding: FragmentTrackingOccurrenceBinding) {
+        val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        val invoice = sharedPref.getInt("INVOICE", 0)
+        val cnpj = sharedPref.getString("CNPJ", "").toString()
+
+        viewModel.user.observe(viewLifecycleOwner) { user ->
+            binding.titleOccurenceName.text = "${getString(R.string.hello)}, ${user!!.name}"
+        }
+
+        viewModel.getInvoice(invoice, cnpj)
     }
 }

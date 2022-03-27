@@ -20,9 +20,6 @@ class DeliveryViewModel(
     private val _user = MutableLiveData<User?>()
     val user: MutableLiveData<User?> = _user
 
-    private val _titleName = MutableLiveData<String>()
-    val titleName: MutableLiveData<String> = _titleName
-
     private val _invoice = MutableLiveData<NFe>()
     val invoice: MutableLiveData<NFe> = _invoice
 
@@ -62,7 +59,7 @@ class DeliveryViewModel(
         }
     }
 
-    fun getUser(numberInvoice: Int, cpnj: String) {
+    fun getInvoice(numberInvoice: Int, cpnj: String) {
         _numeroNota.postValue(numberInvoice)
         _cnpj.postValue(cpnj)
         viewModelScope.launch {
