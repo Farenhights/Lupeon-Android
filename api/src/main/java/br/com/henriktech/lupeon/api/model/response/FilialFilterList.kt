@@ -12,7 +12,7 @@ data class FilialFilterList(
     val status: String,
 ) : Parcelable
 
-fun FilialFilterList.toArrylistNames(): ArrayList<String> {
+fun FilialFilterList.toArraylistNames(): ArrayList<String> {
     val arrayList = arrayListOf<String>()
     filialFilterList.forEach {
         arrayList.add(it.name.uppercase(Locale.ROOT))

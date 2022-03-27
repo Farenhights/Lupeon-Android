@@ -35,7 +35,7 @@ interface LupeonApi {
         @Header("Authorization") token: String,
         @Header("CompanyId") companyId: Int,
         @Body body: TrackingRequest
-    ): Response<List<NFe>>
+    ): Response<NFeList>
 
     @Headers("Content-Type: application/json")
     @POST("/Embarcador/SimulacaoOnline")

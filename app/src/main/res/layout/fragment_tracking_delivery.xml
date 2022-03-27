@@ -3,13 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="viewModel"
-            type="br.com.henriktech.lupeon.ui.tracking.delivery.DeliveryViewModel" />
-    </data>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,7 +16,6 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="16dp"
             android:layout_marginTop="35dp"
-            android:text="@{viewModel.titleName}"
             android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -238,7 +230,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="@{viewModel.numberInvoice}"
                 android:textColor="@color/gray_600"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/titleTrackingNumberInvoice"
@@ -262,7 +253,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="@{viewModel.recipient}"
                 android:textColor="@color/gray_600"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/titleTrackingRecipient"
@@ -270,147 +260,124 @@
                 tools:text="B R Samor Logística Express" />
 
             <TextView
-                android:id="@+id/titleTrackingIssuanceDate"
+                android:id="@+id/titleTrackingOrigemCity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="27dp"
                 android:layout_marginTop="18dp"
-                android:text="@string/IssuanceDate"
+                android:text="@string/origem"
                 android:textColor="@color/gray_600"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textTrackingRecipient" />
 
             <TextView
-                android:id="@+id/textTrackingIssuanceDate"
+                android:id="@+id/textTrackingOrigemCity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="@{viewModel.issuanceDate}"
                 android:textColor="@color/gray_600"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/titleTrackingIssuanceDate"
-                app:layout_constraintTop_toBottomOf="@+id/titleTrackingIssuanceDate"
-                tools:text="21/12/20" />
+                app:layout_constraintStart_toStartOf="@+id/titleTrackingOrigemCity"
+                app:layout_constraintTop_toBottomOf="@+id/titleTrackingOrigemCity"
+                tools:text="Sao Paulo / SP" />
 
             <TextView
-                android:id="@+id/titleTrackingExpirationDate"
+                android:id="@+id/titleTrackingDestinyCity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="70dp"
+                android:layout_marginStart="90dp"
                 android:layout_marginTop="18dp"
-                android:text="@string/ExpirationDate"
+                android:text="@string/Destiny"
                 android:textColor="@color/gray_600"
                 android:textSize="12sp"
-                app:layout_constraintStart_toEndOf="@id/titleTrackingIssuanceDate"
+                app:layout_constraintStart_toEndOf="@id/titleTrackingOrigemCity"
                 app:layout_constraintTop_toBottomOf="@id/textTrackingRecipient" />
 
             <TextView
-                android:id="@+id/textTrackingExpirationDate"
+                android:id="@+id/textTrackingDestinyCity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="@{viewModel.expirationDate}"
                 android:textColor="@color/gray_600"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/titleTrackingExpirationDate"
-                app:layout_constraintTop_toBottomOf="@+id/titleTrackingExpirationDate"
-                tools:text="21/12/20" />
+                app:layout_constraintStart_toStartOf="@+id/titleTrackingDestinyCity"
+                app:layout_constraintTop_toBottomOf="@+id/titleTrackingDestinyCity"
+                tools:text="Matao / SP" />
 
             <TextView
-                android:id="@+id/titleTrackingInvoiceAmount"
+                android:id="@+id/titleTrackingDeadline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="27dp"
                 android:layout_marginTop="18dp"
-                android:text="@string/InvoiceAmount"
+                android:text="@string/Deadline"
                 android:textColor="@color/gray_600"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textTrackingIssuanceDate" />
+                app:layout_constraintTop_toBottomOf="@id/textTrackingOrigemCity" />
 
             <TextView
-                android:id="@+id/textTrackingInvoiceAmount"
+                android:id="@+id/textTrackingDeadline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="@{viewModel.invoiceAmount}"
                 android:textColor="@color/gray_600"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/titleTrackingInvoiceAmount"
-                app:layout_constraintTop_toBottomOf="@+id/titleTrackingInvoiceAmount"
-                tools:text="R$ 241.252,23" />
+                app:layout_constraintStart_toStartOf="@+id/titleTrackingDeadline"
+                app:layout_constraintTop_toBottomOf="@+id/titleTrackingDeadline"
+                tools:text="9 dias" />
 
             <TextView
-                android:id="@+id/titleTrackingReconciledValue"
+                android:id="@+id/titleTrackingDeliveryForecast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:text="@string/ReconciledValue"
+                android:text="@string/DeliveryForecast"
                 android:textColor="@color/gray_600"
                 android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/titleTrackingExpirationDate"
-                app:layout_constraintTop_toBottomOf="@id/textTrackingIssuanceDate" />
+                app:layout_constraintStart_toStartOf="@+id/titleTrackingDestinyCity"
+                app:layout_constraintTop_toBottomOf="@id/textTrackingOrigemCity" />
 
             <TextView
-                android:id="@+id/textTrackingReconciledValue"
+                android:id="@+id/textTrackingDeliveryForecast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="@{viewModel.reconciledValue}"
                 android:textColor="@color/gray_600"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/titleTrackingReconciledValue"
-                app:layout_constraintTop_toBottomOf="@+id/titleTrackingReconciledValue"
-                tools:text="R$ 241.252,23" />
+                app:layout_constraintStart_toStartOf="@+id/titleTrackingDeliveryForecast"
+                app:layout_constraintTop_toBottomOf="@+id/titleTrackingDeliveryForecast"
+                tools:text="06/09/2021" />
 
-            <TextView
-                android:id="@+id/titleTrackingErrorValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="27dp"
-                android:layout_marginTop="18dp"
-                android:text="@string/ErrorValue"
-                android:textColor="@color/gray_600"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textTrackingInvoiceAmount" />
+            <Button
+                android:id="@+id/buttonTrackingOccurrences"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/background_button_round_bordeless"
+                android:text="@string/occurrences"
+                android:textColor="@color/lupeon_secondary"
+                app:layout_constraintBottom_toTopOf="@+id/buttonTrackingReceipt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/textTrackingErrorValue"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/buttonTrackingReceipt"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="@{viewModel.errorValue}"
-                android:textColor="@color/gray_600"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/titleTrackingErrorValue"
-                app:layout_constraintTop_toBottomOf="@+id/titleTrackingErrorValue"
-                tools:text="R$ 241.252,23" />
-
-            <TextView
-                android:id="@+id/titleTrackingDiscountValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="@string/DiscountValue"
-                android:textColor="@color/gray_600"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/textTrackingReconciledValue"
-                app:layout_constraintTop_toBottomOf="@+id/textTrackingInvoiceAmount" />
-
-            <TextView
-                android:id="@+id/textTrackingDiscountValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="@{viewModel.discountValue}"
-                android:textColor="@color/gray_600"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/titleTrackingDiscountValue"
-                app:layout_constraintTop_toBottomOf="@+id/titleTrackingDiscountValue"
-                tools:text="R$ 241.252,23" />
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="54dp"
+                android:background="@drawable/background_button_round"
+                android:text="@string/receipt"
+                app:layout_constraintBottom_toTopOf="@+id/buttonMenuBottomShow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <ImageView
                 android:id="@+id/buttonMenuBottomShow"
@@ -421,6 +388,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@drawable/ic_home" />
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/menuBottom"
@@ -474,34 +442,47 @@
                     app:layout_constraintTop_toTopOf="@+id/imageDeliveryArrowLetf" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <Button
-                android:id="@+id/buttonTrackingOccurrences"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="39dp"
-                android:layout_marginEnd="24dp"
-                android:background="@drawable/background_button_round_bordeless"
-                android:text="@string/occurrences"
-                android:textColor="@color/lupeon_secondary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textTrackingErrorValue" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <Button
-                android:id="@+id/buttonTrackingReceipt"
-                android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/trackingNoFe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#99FFFFFF"
+            android:visibility="gone"
+            tools:visibility="gone">
+
+            <TextView
+                android:id="@+id/textErrorMessage"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="24dp"
-                android:background="@drawable/background_button_round"
-                android:text="@string/receipt"
+                android:text="Nota fical não encontrada!"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buttonTrackingOccurrences" />
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/trackingProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/loading_background"
+            android:visibility="visible"
+            tools:visibility="gone">
+
+            <ProgressBar
+                style="?android:attr/progressBarStyle"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
 </layout>

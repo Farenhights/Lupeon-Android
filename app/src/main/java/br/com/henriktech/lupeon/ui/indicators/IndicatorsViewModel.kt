@@ -71,7 +71,7 @@ class IndicatorsViewModel(
             when (val response = filterService.getTransportersFilter(token, companyId)) {
                 is ApiResult.Success<*> -> {
                     val transporterFilterList = response.data!! as TransporterFilterList
-                    _transporters.postValue(transporterFilterList.toArrylistNames())
+                    _transporters.postValue(transporterFilterList.toArraylistNames())
                     _transportersList.postValue(transporterFilterList.transporterFilterList)
                 }
                 is ApiResult.Error -> {

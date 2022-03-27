@@ -51,7 +51,11 @@
     <string name="occurrences">Ocorrencias</string>
     <string name="receipt">Comprovante</string>
     <string name="ExpirationDate">Data Vencimento</string>
-    <string name="ReconciledValue">Valor Conciliado</string>
+    <string name="DeliveryForecast">Previsão de Entrega</string>
     <string name="DiscountValue">Valor Desconto</string>
     <string name="selected_filial">Selecione uma filial</string>
+    <string name="origem">Origem</string>
+    <string name="Destiny">Destino</string>
+    <string name="Deadline">Prazo de Entrega</string>
+    <string name="Occurence">Ocorrências</string>
 </resources>

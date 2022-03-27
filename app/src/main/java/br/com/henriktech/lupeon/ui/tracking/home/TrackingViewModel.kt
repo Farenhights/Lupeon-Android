@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import br.com.henriktech.lupeon.api.model.response.FilialFilter
 import br.com.henriktech.lupeon.api.model.response.FilialFilterList
 import br.com.henriktech.lupeon.api.model.response.Indicadores
-import br.com.henriktech.lupeon.api.model.response.toArrylistNames
+import br.com.henriktech.lupeon.api.model.response.toArraylistNames
 import br.com.henriktech.lupeon.api.network.ApiResult
 import br.com.henriktech.lupeon.data.model.Indicator
 import br.com.henriktech.lupeon.data.model.User
@@ -98,7 +98,7 @@ class TrackingViewModel(
             when (val response = filterService.getFilialFilter(token, companyId)) {
                 is ApiResult.Success<*> -> {
                     val filialFilterList = response.data!! as FilialFilterList
-                    _filials.postValue(filialFilterList.toArrylistNames())
+                    _filials.postValue(filialFilterList.toArraylistNames())
                     _companies.postValue(filialFilterList.filialFilterList)
                 }
                 is ApiResult.Error -> {

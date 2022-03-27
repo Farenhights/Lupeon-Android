@@ -12,7 +12,7 @@ data class TransporterFilterList(
     val status: String,
 ) : Parcelable
 
-fun TransporterFilterList.toArrylistNames(): ArrayList<String> {
+fun TransporterFilterList.toArraylistNames(): ArrayList<String> {
     val arrayList = arrayListOf<String>()
     transporterFilterList.forEach {
         arrayList.add(it.name.uppercase(Locale.ROOT))

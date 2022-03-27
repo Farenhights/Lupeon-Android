@@ -16,7 +16,6 @@ class OcorrencyFragment : Fragment(R.layout.fragment_tracking_occurrence) {
         super.onViewCreated(view, savedInstanceState)
         analytics.trackScreen(requireActivity())
         val binding = FragmentTrackingOccurrenceBinding.bind(view)
-        binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         startView(binding)
         startViewModel(binding)

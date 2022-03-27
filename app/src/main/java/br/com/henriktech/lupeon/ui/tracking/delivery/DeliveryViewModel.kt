@@ -3,6 +3,8 @@ package br.com.henriktech.lupeon.ui.tracking.delivery
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.henriktech.lupeon.api.model.response.NFe
+import br.com.henriktech.lupeon.api.model.response.NFeList
 import br.com.henriktech.lupeon.api.network.ApiResult
 import br.com.henriktech.lupeon.data.model.User
 import br.com.henriktech.lupeon.data.model.toUser
@@ -21,37 +23,17 @@ class DeliveryViewModel(
     private val _titleName = MutableLiveData<String>()
     val titleName: MutableLiveData<String> = _titleName
 
-    private val _numberInvoice = MutableLiveData<String>()
-    val numberInvoice: MutableLiveData<String> = _numberInvoice
-
-    private val _recipient = MutableLiveData<String>()
-    val recipient: MutableLiveData<String> = _recipient
-
-    private val _issuanceDate = MutableLiveData<String>()
-    val issuanceDate: MutableLiveData<String> = _issuanceDate
-
-    private val _expirationDate = MutableLiveData<String>()
-    val expirationDate: MutableLiveData<String> = _expirationDate
-
-    private val _invoiceAmount = MutableLiveData<String>()
-    val invoiceAmount: MutableLiveData<String> = _invoiceAmount
-
-    private val _reconciledValue = MutableLiveData<String>()
-    val reconciledValue: MutableLiveData<String> = _reconciledValue
-
-    private val _errorValue = MutableLiveData<String>()
-    val errorValue: MutableLiveData<String> = _errorValue
-
-    private val _discountValue = MutableLiveData<String>()
-    val discountValue: MutableLiveData<String> = _discountValue
-
-    private val _progressNF = MutableLiveData<Boolean>()
-    val progressNF: MutableLiveData<Boolean> = _progressNF
+    private val _invoice = MutableLiveData<NFe>()
+    val invoice: MutableLiveData<NFe> = _invoice
 
     private val _errorMessage = MutableLiveData<String>()
+    val errorMessage: MutableLiveData<String> = _errorMessage
 
     private val _numeroNota = MutableLiveData<Int>()
+
     private val _cnpj = MutableLiveData<String>()
+
+    private val _searchFinish = MutableLiveData<Boolean>()
 
     init {
         _user.observeForever { user ->
@@ -62,11 +44,18 @@ class DeliveryViewModel(
                 val cnpj = _cnpj.value!!
                 when (val response = service.getInvoice(token, companyId, numberInvoice, cnpj)) {
                     is ApiResult.Success<*> -> {
-                        val invoice = response.data!!
-                        print(invoice.toString())
+                        val invoiceList = response.data!! as NFeList
+                        if(invoiceList.nFesList.isNotEmpty()) {
+                            _invoice.postValue(invoiceList.nFesList.first())
+                            _searchFinish.postValue(true)
+                        } else {
+                            _searchFinish.postValue(true)
+                            _errorMessage.postValue("Nota fical não encontrada!")
+                        }
                     }
                     is ApiResult.Error -> {
                         _errorMessage.postValue(response.message)
+                        _searchFinish.postValue(true)
                     }
                 }
             }
