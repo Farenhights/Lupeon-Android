@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemList"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
 
     <TextView
         android:id="@+id/textLeftTop"
@@ -13,6 +13,7 @@
         android:layout_marginStart="14dp"
         android:layout_marginTop="8dp"
         android:textSize="12sp"
+        android:textColor="@color/lupeon_primary"
         app:layout_constraintStart_toEndOf="@+id/imageStatusRoundView"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="0000012365" />
@@ -24,6 +25,7 @@
         android:layout_marginBottom="8dp"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="@color/lupeon_primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textLeftTop"
         app:layout_constraintTop_toBottomOf="@+id/textLeftTop"
@@ -36,6 +38,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="14dp"
         android:textSize="12sp"
+        android:textColor="@color/lupeon_primary"
         tools:text="Emissão 05/04/21"
         app:layout_constraintEnd_toStartOf="@+id/imageArrowRightView"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,6 +52,7 @@
         android:layout_marginBottom="8dp"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="@color/lupeon_primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageArrowRightView"
         app:layout_constraintTop_toBottomOf="@+id/textRightTop"

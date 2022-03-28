@@ -3,8 +3,8 @@ package br.com.henriktech.lupeon.ui.tracking.occurrence
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.henriktech.lupeon.api.model.response.NFe
 import br.com.henriktech.lupeon.api.model.response.NFeList
+import br.com.henriktech.lupeon.api.model.response.Ocorrencia
 import br.com.henriktech.lupeon.api.network.ApiResult
 import br.com.henriktech.lupeon.data.model.User
 import br.com.henriktech.lupeon.data.model.toUser
@@ -20,8 +20,8 @@ class OccurrenceViewModel(
     private val _user = MutableLiveData<User?>()
     val user: MutableLiveData<User?> = _user
 
-    private val _invoice = MutableLiveData<NFe>()
-    val invoice: MutableLiveData<NFe> = _invoice
+    private val _occurrenceList = MutableLiveData<ArrayList<Ocorrencia>>()
+    val occurrenceList: MutableLiveData<ArrayList<Ocorrencia>> = _occurrenceList
 
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: MutableLiveData<String> = _errorMessage
@@ -41,7 +41,7 @@ class OccurrenceViewModel(
                     is ApiResult.Success<*> -> {
                         val invoiceList = response.data!! as NFeList
                         if (invoiceList.nFesList.isNotEmpty()) {
-                            _invoice.postValue(invoiceList.nFesList.first())
+                            _occurrenceList.postValue(invoiceList.nFesList.first().Ocorrencias as ArrayList<Ocorrencia>)
                         } else {
                             _errorMessage.postValue("Nota fical não encontrada!")
                         }

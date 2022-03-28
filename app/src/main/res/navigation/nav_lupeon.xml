@@ -107,7 +107,7 @@
     </fragment>
     <fragment
         android:id="@+id/ocorrencyFragment"
-        android:name="br.com.henriktech.lupeon.ui.tracking.occurrence.OcorrencyFragment"
+        android:name="br.com.henriktech.lupeon.ui.tracking.occurrence.OccurrenceFragment"
         android:label="fragment_tracking_occurrence"
         tools:layout="@layout/fragment_tracking_occurrence">
         <action
