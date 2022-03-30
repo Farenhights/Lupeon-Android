@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.henriktech.lupeon">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
     <application
         android:name=".LupeonApp"
         android:allowBackup="true"
@@ -12,8 +18,8 @@
         android:theme="@style/Theme.Lupeon"
         android:usesCleartextTraffic="true">
         <activity
-            android:exported="true"
             android:name=".ui.LupeonActivity"
+            android:exported="true"
             android:theme="@style/Theme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

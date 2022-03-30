@@ -58,4 +58,17 @@
     <string name="Destiny">Destino</string>
     <string name="Deadline">Prazo de Entrega</string>
     <string name="Occurence">Ocorrências</string>
+    <string name="new_occurrence_content">Você precisa fazer\n a leitura do código de\n barra da sua nota ou CTE.</string>
+    <string name="identification">Identificação</string>
+    <string name="to_close">fechar</string>
+    <string name="read_invoice">LER NOTA</string>
+    <string name="read_cte">LER CTE</string>
+    <string name="identification_voice">Identificamos sua nota.</string>
+    <string name="content_identification_invoice">O que aconteceu com\n essa entrega?</string>
+    <string name="delivered">ENTREGUEI</string>
+    <string name="other_occurrences">OUTRAS\n OCORRECIAS</string>
+    <string name="content_delivered">"Para confirmar sua\n entrega, precisamos de\n uma foto do\n comprovante."</string>
+    <string name="take_photo">TIRAR FOTO</string>
+    <string name="okay">OK</string>
+    <string name="content_type">Qual tipo de ocorrência?</string>
 </resources>

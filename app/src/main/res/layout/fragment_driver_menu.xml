@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="br.com.henriktech.lupeon.ui.driver.DriverViewModel" />
@@ -96,6 +96,330 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/ic_home_light" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dialogOccurrence"
+            android:layout_width="310dp"
+            android:layout_height="299dp"
+            android:background="@drawable/bg_white_round"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="19dp"
+                android:text="@string/identification"
+                android:textColor="@color/gray_600"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/buttonDialogClose"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/to_close"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_close" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/new_occurrence_content"
+                android:textAlignment="center"
+                android:textColor="@color/gray_600"
+                app:layout_constraintBottom_toTopOf="@+id/buttonInvoiceRead"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonInvoiceRead"
+                style="@style/Theme.Lupeon.Button"
+                android:layout_width="212dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="49dp"
+                android:layout_marginBottom="11dp"
+                android:text="@string/read_invoice"
+                app:layout_constraintBottom_toTopOf="@+id/buttonCTERead"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.504"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonCTERead"
+                style="@style/Theme.Lupeon.Button"
+                android:layout_width="212dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="49dp"
+                android:layout_marginBottom="22dp"
+                android:text="@string/read_cte"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dialogInvoice"
+            android:layout_width="310dp"
+            android:layout_height="299dp"
+            android:background="@drawable/bg_white_round"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/titleIdentificationInvoice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="19dp"
+                android:text="@string/identification_voice"
+                android:textColor="@color/gray_600"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/buttonDialogIdentificationInvoiceClose"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/to_close"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_close" />
+
+            <TextView
+                android:id="@+id/contentIdentificationInvoice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/content_identification_invoice"
+                android:textAlignment="center"
+                android:textColor="@color/gray_600"
+                app:layout_constraintBottom_toTopOf="@+id/buttonDelivered"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleIdentificationInvoice" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonDelivered"
+                style="@style/Theme.Lupeon.Button"
+                android:layout_width="212dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="49dp"
+                android:layout_marginBottom="11dp"
+                android:text="@string/delivered"
+                app:layout_constraintBottom_toTopOf="@+id/buttonOtherOccurrences"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.504"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonOtherOccurrences"
+                style="@style/Theme.Lupeon.Button"
+                android:layout_width="212dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="49dp"
+                android:layout_marginBottom="22dp"
+                android:text="@string/other_occurrences"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dialogDelivered"
+            android:layout_width="310dp"
+            android:layout_height="256dp"
+            android:background="@drawable/bg_white_round"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/buttonDialogDeliveredClose"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/to_close"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_close" />
+
+            <TextView
+                android:id="@+id/contentDelivered"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="43dp"
+                android:text="@string/content_delivered"
+                android:textAlignment="center"
+                android:textColor="@color/gray_600"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonTakePhoto"
+                style="@style/Theme.Lupeon.Button"
+                android:layout_width="212dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="49dp"
+                android:layout_marginBottom="22dp"
+                android:text="@string/take_photo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dialogConfirmed"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_round"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonConfirmedOkay"
+                style="@style/Theme.Lupeon.Button"
+                android:layout_width="212dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="49dp"
+                android:layout_marginBottom="18dp"
+                android:text="@string/okay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textConfirmedMessage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="31dp"
+                android:layout_marginEnd="33dp"
+                android:layout_marginBottom="24dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/buttonConfirmedOkay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageOval"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="40dp"
+                app:layout_constraintBottom_toTopOf="@+id/textConfirmedMessage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_oval_confirmed" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="52dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="38dp"
+                android:layout_marginTop="43dp"
+                android:layout_marginEnd="38dp"
+                android:layout_marginBottom="43dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageOval"
+                app:layout_constraintEnd_toEndOf="@+id/imageOval"
+                app:layout_constraintStart_toStartOf="@+id/imageOval"
+                app:layout_constraintTop_toTopOf="@+id/imageOval"
+                app:srcCompat="@drawable/ic_done_confirmed" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dialogType"
+            android:layout_width="310dp"
+            android:layout_height="256dp"
+            android:background="@drawable/bg_white_round"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/buttonDialogTypeClose"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/to_close"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_close" />
+
+            <TextView
+                android:id="@+id/contentType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="43dp"
+                android:layout_marginBottom="18dp"
+                android:text="@string/content_type"
+                android:textAlignment="center"
+                android:textColor="@color/gray_600"
+                app:layout_constraintBottom_toTopOf="@+id/spinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonTypeConfirmed"
+                style="@style/Theme.Lupeon.Button"
+                android:layout_width="212dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="49dp"
+                android:layout_marginBottom="22dp"
+                android:text="@string/confirm"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="46dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="49dp"
+                android:layout_marginBottom="22dp"
+                app:layout_constraintBottom_toTopOf="@+id/buttonTypeConfirmed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contentType" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,7 +1,11 @@
 package br.com.henriktech.lupeon.ui.driver
 
 import android.annotation.SuppressLint
+import android.app.Activity.RESULT_OK
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -47,15 +51,58 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
             else
                 menu.option
         return when (expression) {
-            "Ocorrencia" -> findNavController().navigate(R.id.action_driverFragment_to_loginActivity)
+            "Ocorrencia" -> viewModel.dialogClick(DialogClick.OCCURRENCE_OPEN)
             "Notas" -> findNavController().navigate(R.id.action_driverFragment_to_loginActivity)
             else -> {}
         }
     }
 
+    override fun onStop() {
+        super.onStop()
+        viewModel.dialogClick(DialogClick.OCCURRENCE_CLOSE)
+        viewModel.dialogClick(DialogClick.DELIVERED_CLOSE)
+    }
     private fun startView(binding: FragmentDriverMenuBinding) {
         binding.imageViewLogoutMenu.setOnClickListener {
             viewModel.logout()
+        }
+        binding.buttonDialogClose.setOnClickListener {
+            viewModel.dialogClick(DialogClick.OCCURRENCE_CLOSE)
+        }
+        binding.buttonDialogIdentificationInvoiceClose.setOnClickListener {
+            viewModel.dialogClick(DialogClick.INVOICE_CLOSE)
+        }
+        binding.buttonDialogDeliveredClose.setOnClickListener {
+            viewModel.dialogClick(DialogClick.DELIVERED_CLOSE)
+        }
+        binding.buttonDialogTypeClose.setOnClickListener {
+            viewModel.dialogClick(DialogClick.TYPE_CLOSE)
+        }
+        binding.buttonInvoiceRead.setOnClickListener {
+            dispatchTakePictureIntent(DialogClick.INVOICE_OPEN)
+        }
+        binding.buttonCTERead.setOnClickListener {
+            dispatchTakePictureIntent(DialogClick.INVOICE_OPEN)
+        }
+        binding.buttonDelivered.setOnClickListener {
+            viewModel.dialogClick(DialogClick.INVOICE_CLOSE)
+            viewModel.dialogClick(DialogClick.DELIVERED_OPEN)
+        }
+        binding.buttonOtherOccurrences.setOnClickListener {
+            viewModel.dialogClick(DialogClick.INVOICE_CLOSE)
+            viewModel.dialogClick(DialogClick.TYPE_OPEN)
+        }
+        binding.buttonTakePhoto.setOnClickListener {
+            dispatchTakePictureIntent(DialogClick.CONFIRMED_OPEN)
+            viewModel.setConfirmedMessage("Entrega comprovada!")
+        }
+        binding.buttonTypeConfirmed.setOnClickListener {
+            viewModel.setConfirmedMessage("Ocorrência enviada!")
+            viewModel.dialogClick(DialogClick.TYPE_CLOSE)
+            viewModel.dialogClick(DialogClick.CONFIRMED_OPEN)
+        }
+        binding.buttonConfirmedOkay.setOnClickListener {
+            viewModel.dialogClick(DialogClick.CONFIRMED_CLOSE)
         }
     }
 
@@ -82,6 +129,43 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
             val adapter = IndicatorAdapter(indicators as ArrayList<Indicator>)
             recycleIndicator.adapter = adapter
         }
+        viewModel.dialogOccurrence.observe(viewLifecycleOwner) {
+            binding.dialogOccurrence.visibility = it
+        }
+        viewModel.dialogInvoice.observe(viewLifecycleOwner) {
+            binding.dialogInvoice.visibility = it
+        }
+        viewModel.dialogDelivered.observe(viewLifecycleOwner) {
+            binding.dialogDelivered.visibility = it
+        }
+        viewModel.dialogConfirmed.observe(viewLifecycleOwner) {
+            binding.dialogConfirmed.visibility = it
+        }
+        viewModel.dialogType.observe(viewLifecycleOwner) {
+            binding.dialogType.visibility = it
+        }
+        viewModel.confirmedMessage.observe(viewLifecycleOwner) {
+            binding.textConfirmedMessage.text = it
+        }
         viewModel.getUser()
+    }
+
+    private val REQUEST_IMAGE_CAPTURE = 1
+    private lateinit var nextDialog: DialogClick
+
+    private fun dispatchTakePictureIntent(nextDialog: DialogClick) {
+        this.nextDialog = nextDialog
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            takePictureIntent.resolveActivity(requireActivity().packageManager)?.also {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            viewModel.setPicture(data!!.extras!!.get("data") as Bitmap)
+            viewModel.dialogClick(nextDialog)
+        }
     }
 }
