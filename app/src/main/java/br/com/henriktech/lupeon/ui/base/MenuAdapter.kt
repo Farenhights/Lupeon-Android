@@ -69,6 +69,7 @@ class MenuAdapter(
                 "Abono" -> R.drawable.ic_abono
                 "Ocorrencia" -> R.drawable.ic_truck
                 "Notas" -> R.drawable.ic_notas
+                "Comprovante" -> R.drawable.ic_notas
                 else -> R.drawable.ic_token
             }
         }

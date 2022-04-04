@@ -1,6 +1,7 @@
 package br.com.henriktech.lupeon.di
 
 import br.com.henriktech.lupeon.data.service.FilterService
+import br.com.henriktech.lupeon.data.service.InvoiceService
 import br.com.henriktech.lupeon.ui.indicators.IndicatorsAnalytics
 import br.com.henriktech.lupeon.ui.indicators.IndicatorsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel

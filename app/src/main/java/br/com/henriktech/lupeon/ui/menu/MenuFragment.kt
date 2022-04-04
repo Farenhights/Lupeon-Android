@@ -1,8 +1,12 @@
 package br.com.henriktech.lupeon.ui.menu
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.Dialog
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Html
 import android.view.View
 import android.view.Window
@@ -21,6 +25,7 @@ import br.com.henriktech.lupeon.databinding.FragmentMenuBinding
 import br.com.henriktech.lupeon.ui.base.IOnBackPressed
 import br.com.henriktech.lupeon.ui.base.MenuAdapter
 import br.com.henriktech.lupeon.ui.base.OnMenuClickListener
+import br.com.henriktech.lupeon.ui.driver.DialogClick
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -29,16 +34,15 @@ class MenuFragment : Fragment(R.layout.fragment_menu), IOnBackPressed,
     private val analytics: MenuAnalytics by inject()
     private val viewModel: MenuViewModel by viewModel()
     private lateinit var webView: WebView
-    private lateinit var binding: FragmentMenuBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         analytics.trackScreen(requireActivity())
-        binding = FragmentMenuBinding.bind(view)
+        val binding = FragmentMenuBinding.bind(view)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         startView(binding)
-        startViewModel()
+        startViewModel(binding)
     }
 
     override fun onMenuClicked(menu: Menu) {
@@ -49,6 +53,7 @@ class MenuFragment : Fragment(R.layout.fragment_menu), IOnBackPressed,
             "Indicadores" -> findNavController().navigate(R.id.action_menuFragment_to_indicatorsFragment)
             "Simulacao" -> findNavController().navigate(R.id.action_menuFragment_to_simulationFragment)
             "Tracking" -> findNavController().navigate(R.id.action_menuFragment_to_trackingFragment)
+            "Comprovante" -> viewModel.dialogClick(DialogClick.OCCURRENCE_OPEN)
             else -> findNavController().navigate(R.id.action_menuFragment_to_loginActivity)
         }
     }
@@ -62,14 +67,58 @@ class MenuFragment : Fragment(R.layout.fragment_menu), IOnBackPressed,
         return false
     }
 
+    override fun onStop() {
+        super.onStop()
+        viewModel.dialogClick(DialogClick.OCCURRENCE_CLOSE)
+        viewModel.dialogClick(DialogClick.DELIVERED_CLOSE)
+    }
+
     private fun startView(binding: FragmentMenuBinding) {
         binding.imageViewLogoutMenu.setOnClickListener {
             viewModel.logout()
         }
+        binding.buttonDialogClose.setOnClickListener {
+            viewModel.dialogClick(DialogClick.OCCURRENCE_CLOSE)
+        }
+        binding.buttonDialogIdentificationInvoiceClose.setOnClickListener {
+            viewModel.dialogClick(DialogClick.INVOICE_CLOSE)
+        }
+        binding.buttonDialogDeliveredClose.setOnClickListener {
+            viewModel.dialogClick(DialogClick.DELIVERED_CLOSE)
+        }
+        binding.buttonDialogTypeClose.setOnClickListener {
+            viewModel.dialogClick(DialogClick.TYPE_CLOSE)
+        }
+        binding.buttonInvoiceRead.setOnClickListener {
+            dispatchTakePictureIntent(DialogClick.INVOICE_OPEN)
+        }
+        binding.buttonCTERead.setOnClickListener {
+            dispatchTakePictureIntent(DialogClick.INVOICE_OPEN)
+        }
+        binding.buttonDelivered.setOnClickListener {
+            viewModel.dialogClick(DialogClick.INVOICE_CLOSE)
+            viewModel.dialogClick(DialogClick.DELIVERED_OPEN)
+        }
+        binding.buttonOtherOccurrences.setOnClickListener {
+            viewModel.dialogClick(DialogClick.INVOICE_CLOSE)
+            viewModel.dialogClick(DialogClick.TYPE_OPEN)
+        }
+        binding.buttonTakePhoto.setOnClickListener {
+            dispatchTakePictureIntent(DialogClick.CONFIRMED_OPEN)
+            viewModel.setConfirmedMessage("Entrega comprovada!")
+        }
+        binding.buttonTypeConfirmed.setOnClickListener {
+            viewModel.setConfirmedMessage("Ocorrência enviada!")
+            viewModel.dialogClick(DialogClick.TYPE_CLOSE)
+            viewModel.dialogClick(DialogClick.CONFIRMED_OPEN)
+        }
+        binding.buttonConfirmedOkay.setOnClickListener {
+            viewModel.dialogClick(DialogClick.CONFIRMED_CLOSE)
+        }
     }
 
     @SuppressLint("SetTextI18n")
-    private fun startViewModel() {
+    private fun startViewModel(binding: FragmentMenuBinding) {
         viewModel.menus.observe(viewLifecycleOwner) { menus ->
             val recycleMenu: RecyclerView = binding.recycleMenuView
             val numberOfColumns = 2
@@ -98,6 +147,24 @@ class MenuFragment : Fragment(R.layout.fragment_menu), IOnBackPressed,
                 findNavController().navigate(R.id.action_menuFragment_to_loginActivity)
             }
 
+        }
+        viewModel.dialogOccurrence.observe(viewLifecycleOwner) {
+            binding.dialogOccurrence.visibility = it
+        }
+        viewModel.dialogInvoice.observe(viewLifecycleOwner) {
+            binding.dialogInvoice.visibility = it
+        }
+        viewModel.dialogDelivered.observe(viewLifecycleOwner) {
+            binding.dialogDelivered.visibility = it
+        }
+        viewModel.dialogConfirmed.observe(viewLifecycleOwner) {
+            binding.dialogConfirmed.visibility = it
+        }
+        viewModel.dialogType.observe(viewLifecycleOwner) {
+            binding.dialogType.visibility = it
+        }
+        viewModel.confirmedMessage.observe(viewLifecycleOwner) {
+            binding.textConfirmedMessage.text = it
         }
         viewModel.getUser()
     }
@@ -132,5 +199,24 @@ class MenuFragment : Fragment(R.layout.fragment_menu), IOnBackPressed,
             webView.loadUrl(alert.link)
         }
         dialog.show()
+    }
+
+    private val REQUEST_IMAGE_CAPTURE = 2
+    private lateinit var nextDialog: DialogClick
+
+    private fun dispatchTakePictureIntent(nextDialog: DialogClick) {
+        this.nextDialog = nextDialog
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            takePictureIntent.resolveActivity(requireActivity().packageManager)?.also {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
+            viewModel.setPicture(data!!.extras!!.get("data") as Bitmap)
+            viewModel.dialogClick(nextDialog)
+        }
     }
 }

@@ -60,11 +60,12 @@
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/dialog_alert.xml" value="0.378125" />
         <entry key="app/src/main/res/layout/dialog_new_occurrence.xml" value="0.24166666666666667" />
-        <entry key="app/src/main/res/layout/dialog_occurrence.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/dialog_occurrence.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_allowance.xml" value="0.3038949275362319" />
         <entry key="app/src/main/res/layout/fragment_camera.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/fragment_driver_menu.xml" value="0.3038949275362319" />
         <entry key="app/src/main/res/layout/fragment_indicators.xml" value="0.28370786516853935" />
+        <entry key="app/src/main/res/layout/fragment_invoice.xml" value="0.2758152173913043" />
         <entry key="app/src/main/res/layout/fragment_invoices.xml" value="0.3038949275362319" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.23735408560311283" />
         <entry key="app/src/main/res/layout/fragment_losspassword.xml" value="0.17509727626459143" />
@@ -103,7 +104,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.3038949275362319" />
+        <option name="scale" value="0.22" />
       </ProjectState>
     </option>
   </component>
