@@ -26,6 +26,7 @@ class InvoiceFragment : Fragment(R.layout.fragment_invoice) {
         viewModel.user.observe(viewLifecycleOwner) { user ->
             binding.titleInvoiceName.text = "${getString(R.string.hello)}, ${user!!.name}"
         }
+        viewModel.getUser()
     }
 
     private fun startView(binding: FragmentInvoiceBinding) {

@@ -1,6 +1,7 @@
 package br.com.henriktech.lupeon.di
 
 import br.com.henriktech.lupeon.data.service.AuthenticationService
+import br.com.henriktech.lupeon.data.service.FilterService
 import br.com.henriktech.lupeon.ui.login.main.LoginMainAnalytics
 import br.com.henriktech.lupeon.ui.login.main.LoginMainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -12,6 +13,7 @@ object LoginMainModule {
     private fun loginMainModule() = module {
         single { LoginMainAnalytics(get()) }
         single { AuthenticationService(get()) }
+        single { FilterService(get()) }
         viewModel { LoginMainViewModel(get(), get(), get(), get()) }
     }
 

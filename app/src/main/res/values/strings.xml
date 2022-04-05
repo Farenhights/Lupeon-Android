@@ -71,4 +71,5 @@
     <string name="take_photo">TIRAR FOTO</string>
     <string name="okay">OK</string>
     <string name="content_type">Qual tipo de ocorrência?</string>
+    <string name="InvoiceInTransit">Notas em Trânsito</string>
 </resources>

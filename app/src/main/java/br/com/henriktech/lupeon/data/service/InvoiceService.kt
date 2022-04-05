@@ -1,7 +1,22 @@
 package br.com.henriktech.lupeon.data.service
 
-class InvoiceService {
-    fun getInvoice(token: String, companyId: Int): Any {
-        return 0
-    }
+import br.com.henriktech.lupeon.api.repository.LupeonRepository
+
+class InvoiceService(private val lupeonRepository: LupeonRepository) {
+    suspend fun getInvoice(
+        token: String,
+        companyId: Int,
+        dataInicio: String,
+        dataFim: String,
+        destinatarioId: Int,
+        periodoId: Int,
+        status: Int
+    ) = lupeonRepository.getInvoicesInTransit(
+        token,
+        companyId,
+        dataInicio,
+        dataFim,
+        destinatarioId,
+        periodoId,
+        status)
 }

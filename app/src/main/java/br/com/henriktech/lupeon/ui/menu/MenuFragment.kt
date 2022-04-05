@@ -12,6 +12,7 @@ import android.view.View
 import android.view.Window
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -102,6 +103,7 @@ class MenuFragment : Fragment(R.layout.fragment_menu), IOnBackPressed,
         binding.buttonOtherOccurrences.setOnClickListener {
             viewModel.dialogClick(DialogClick.INVOICE_CLOSE)
             viewModel.dialogClick(DialogClick.TYPE_OPEN)
+            viewModel.showOccurrences()
         }
         binding.buttonTakePhoto.setOnClickListener {
             dispatchTakePictureIntent(DialogClick.CONFIRMED_OPEN)
@@ -165,6 +167,16 @@ class MenuFragment : Fragment(R.layout.fragment_menu), IOnBackPressed,
         }
         viewModel.confirmedMessage.observe(viewLifecycleOwner) {
             binding.textConfirmedMessage.text = it
+        }
+        viewModel.occurrenceList.observe(viewLifecycleOwner) {
+            val filtersAdapter = ArrayAdapter(
+                requireContext(),
+                R.layout.spinner_text_item,
+                it,
+            )
+            binding.spinner.apply {
+                adapter = filtersAdapter
+            }
         }
         viewModel.getUser()
     }

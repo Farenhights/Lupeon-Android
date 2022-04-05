@@ -82,4 +82,21 @@ class LupeonRepository(val context: Context, private val lupeonApi: LupeonApi) :
         safeCallApi {
             lupeonApi.getFiltroFilial(token, companyId)
         }
+
+    suspend fun getInvoicesInTransit(
+        token: String, companyId: Int, dataFim: String,
+        dataInicio: String, destinatarioId: Int, periodoId: Int, status: Int
+    ) =
+        safeCallApi {
+            lupeonApi.postTransportadorNotasEmTransito(
+                token,
+                companyId,
+                InvoiceRequest(dataFim, dataInicio, destinatarioId, periodoId, status)
+            )
+        }
+
+    suspend fun getOccurrenceFilter(token: String) =
+        safeCallApi {
+            lupeonApi.getFiltroOcorrencias(token)
+        }
 }

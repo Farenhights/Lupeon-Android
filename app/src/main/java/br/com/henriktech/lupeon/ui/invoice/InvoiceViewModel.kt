@@ -3,9 +3,11 @@ package br.com.henriktech.lupeon.ui.invoice
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.henriktech.lupeon.api.model.response.NFeList
+import br.com.henriktech.lupeon.api.model.response.Invoice
+import br.com.henriktech.lupeon.api.model.response.InvoiceList
 import br.com.henriktech.lupeon.api.network.ApiResult
 import br.com.henriktech.lupeon.data.model.User
+import br.com.henriktech.lupeon.data.model.toUser
 import br.com.henriktech.lupeon.data.service.InvoiceService
 import br.com.henriktech.lupeon.database.repository.UserRepository
 import kotlinx.coroutines.launch
@@ -18,6 +20,9 @@ class InvoiceViewModel(
     private val _user = MutableLiveData<User?>()
     val user: MutableLiveData<User?> = _user
 
+    private val _invoiceList = MutableLiveData<ArrayList<Invoice>>()
+    val invoiceList: MutableLiveData<ArrayList<Invoice>> = _invoiceList
+
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: MutableLiveData<String> = _errorMessage
 
@@ -26,19 +31,31 @@ class InvoiceViewModel(
             viewModelScope.launch {
                 val token = user!!.tokenType
                 val companyId = Integer.parseInt(user.companyId)
-                when (val response = service.getInvoice(token, companyId)) {
+                val dataInicio = "2021-10-10 00:00"
+                val dataFim = "2021-10-14 00:00"
+                val destinatarioId = 0
+                val periodoId = 0
+                val status = 1
+                when (val response = service.getInvoice(
+                    token, companyId, dataInicio, dataFim,
+                    destinatarioId, periodoId, status
+                )) {
                     is ApiResult.Success<*> -> {
-                        val invoiceList = response.data!! as NFeList
-                        if (invoiceList.nFesList.isNotEmpty()) {
-                            //  _occurrenceList.postValue(invoiceList.nFesList.first().Ocorrencias as ArrayList<Ocorrencia>)
-                        } else {
-                            _errorMessage.postValue("Nota fical não encontrada!")
-                        }
+                        val invoiceData = response.data!! as InvoiceList
+                        _invoiceList.postValue(invoiceData.invoiceList as ArrayList<Invoice>)
                     }
                     is ApiResult.Error -> {
                         _errorMessage.postValue(response.message)
                     }
                 }
+            }
+        }
+    }
+
+    fun getUser() {
+        viewModelScope.launch {
+            userRepository.getUser().let {
+                _user.postValue(it.toUser())
             }
         }
     }

@@ -8,17 +8,26 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.henriktech.lupeon.api.model.response.Indicadores
+import br.com.henriktech.lupeon.api.model.response.OccurrenceFilterList
+import br.com.henriktech.lupeon.api.model.response.toArraylistNames
 import br.com.henriktech.lupeon.api.network.ApiResult
 import br.com.henriktech.lupeon.data.model.*
+import br.com.henriktech.lupeon.data.service.FilterService
 import br.com.henriktech.lupeon.data.service.IndicatorsService
 import br.com.henriktech.lupeon.database.repository.UserRepository
 import br.com.henriktech.lupeon.ui.driver.DialogClick.*
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DriverViewModel(
     private val userRepository: UserRepository,
     private val indicatorsService: IndicatorsService,
+    private val filterService: FilterService,
 ) : ViewModel() {
+    private val coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO
+
     private val _user = MutableLiveData<User?>()
     val user: MutableLiveData<User?> = _user
 
@@ -47,6 +56,9 @@ class DriverViewModel(
 
     private val _confirmedMessage = MutableLiveData<String>()
     val confirmedMessage: LiveData<String> = _confirmedMessage
+
+    private val _occurrenceList = MutableLiveData<ArrayList<String>>()
+    val occurrenceList: LiveData<ArrayList<String>> = _occurrenceList
 
     private val _errorMessage = MutableLiveData<String>()
 
@@ -129,5 +141,19 @@ class DriverViewModel(
 
     fun setConfirmedMessage(message: String) {
         _confirmedMessage.postValue(message)
+    }
+
+    fun showOccurrences() {
+        viewModelScope.launch {
+            withContext(coroutineDispatcher) {
+                when (val response = filterService.getOccurrences(_user.value!!.tokenType)) {
+                    is ApiResult.Success<*> -> {
+                        val occurences = response.data!! as OccurrenceFilterList
+                        _occurrenceList.postValue(occurences.toArraylistNames())
+                    }
+                    is ApiResult.Error -> _errorMessage.postValue(response.message)
+                }
+            }
+        }
     }
 }

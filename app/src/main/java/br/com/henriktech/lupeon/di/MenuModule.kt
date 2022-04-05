@@ -13,8 +13,7 @@ object MenuModule {
     private fun profileMenuModule() = module {
         single { MenuAnalytics(get()) }
         single { IndicatorsService(get()) }
-        single { FilterService(get()) }
-        viewModel { MenuViewModel(get(), get(), get(), get()) }
+        viewModel { MenuViewModel(get(), get(), get(), get(), get()) }
     }
 
     fun get(): Module {

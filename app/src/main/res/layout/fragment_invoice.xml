@@ -34,7 +34,7 @@
                 android:id="@+id/titleInvoiceDelivery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Invoice"
+                android:text="@string/InvoiceInTransit"
                 android:textColor="@color/lupeon_primary"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +56,7 @@
                 app:layout_constraintTop_toBottomOf="@id/titleInvoiceDelivery" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycleOccurrenceView"
+                android:id="@+id/recycleInvoiceView"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="12dp"

@@ -63,6 +63,14 @@ interface LupeonApi {
         @Body body: TransporterRequest
     ): Response<Indicadores>
 
+    @Headers("Content-Type: application/json")
+    @POST("/Transportadora/NotasEmTransito")
+    suspend fun postTransportadorNotasEmTransito(
+        @Header("Authorization") token: String,
+        @Header("CompanyId") companyId: Int,
+        @Body body: InvoiceRequest
+    ): Response<InvoiceList>
+
     // Filter API
 
     @Headers("Content-Type: application/json")
@@ -85,5 +93,11 @@ interface LupeonApi {
         @Header("Authorization") token: String,
         @Header("CompanyId") companyId: Int
     ): Response<FilialFilterList>
+
+    @Headers("Content-Type: application/json")
+    @GET("/Filtro/Ocorrencias")
+    suspend fun getFiltroOcorrencias(
+        @Header("Authorization") token: String
+    ): Response<OccurrenceFilterList>
 
 }

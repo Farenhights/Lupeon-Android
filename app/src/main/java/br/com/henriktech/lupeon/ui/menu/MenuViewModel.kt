@@ -7,20 +7,30 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.henriktech.lupeon.api.model.response.OccurrenceFilterList
+import br.com.henriktech.lupeon.api.model.response.toArraylistNames
+import br.com.henriktech.lupeon.api.network.ApiResult
 import br.com.henriktech.lupeon.data.model.*
 import br.com.henriktech.lupeon.data.service.AppInfoService
+import br.com.henriktech.lupeon.data.service.FilterService
 import br.com.henriktech.lupeon.database.repository.AlertRepository
 import br.com.henriktech.lupeon.database.repository.MenuRepository
 import br.com.henriktech.lupeon.database.repository.UserRepository
 import br.com.henriktech.lupeon.ui.driver.DialogClick
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MenuViewModel(
     private val userRepository: UserRepository,
     private val menuRepository: MenuRepository,
     private val alertRepository: AlertRepository,
-    private val informationService: AppInfoService
+    private val informationService: AppInfoService,
+    private val filterService: FilterService,
 ) : ViewModel() {
+    private val coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO
+
     private val _user = MutableLiveData<User?>()
     val user: MutableLiveData<User?> = _user
 
@@ -45,7 +55,12 @@ class MenuViewModel(
     private val _dialogType = MutableLiveData<Int>()
     val dialogType: LiveData<Int> = _dialogType
 
+    private val _occurrenceList = MutableLiveData<ArrayList<String>>()
+    val occurrenceList: LiveData<ArrayList<String>> = _occurrenceList
+
     private val _picture = MutableLiveData<Bitmap>()
+
+    private val _errorMessage = MutableLiveData<String>()
 
     private val _confirmedMessage = MutableLiveData<String>()
     val confirmedMessage: LiveData<String> = _confirmedMessage
@@ -89,6 +104,7 @@ class MenuViewModel(
     fun setConfirmedMessage(message: String) {
         _confirmedMessage.postValue(message)
     }
+
     fun dialogClick(click: DialogClick) = when (click) {
         DialogClick.OCCURRENCE_OPEN -> _dialogOccurrence.postValue(View.VISIBLE)
         DialogClick.OCCURRENCE_CLOSE -> _dialogOccurrence.postValue(View.GONE)
@@ -100,6 +116,19 @@ class MenuViewModel(
         DialogClick.TYPE_CLOSE -> _dialogType.postValue(View.GONE)
         DialogClick.CONFIRMED_OPEN -> _dialogConfirmed.postValue(View.VISIBLE)
         DialogClick.CONFIRMED_CLOSE -> _dialogConfirmed.postValue(View.GONE)
-        else -> {}
+    }
+
+    fun showOccurrences() {
+        viewModelScope.launch {
+            withContext(coroutineDispatcher) {
+                when (val response = filterService.getOccurrences(_user.value!!.tokenType)) {
+                    is ApiResult.Success<*> -> {
+                        val occurences = response.data!! as OccurrenceFilterList
+                        _occurrenceList.postValue(occurences.toArraylistNames())
+                    }
+                    is ApiResult.Error -> _errorMessage.postValue(response.message)
+                }
+            }
+        }
     }
 }

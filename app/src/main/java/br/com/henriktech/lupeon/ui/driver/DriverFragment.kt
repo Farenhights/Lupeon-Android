@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -52,7 +53,7 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
                 menu.option
         return when (expression) {
             "Ocorrencia" -> viewModel.dialogClick(DialogClick.OCCURRENCE_OPEN)
-            "Notas" -> findNavController().navigate(R.id.action_driverFragment_to_loginActivity)
+            "Notas" -> findNavController().navigate(R.id.action_driverFragment_to_invoiceFragment)
             else -> {}
         }
     }
@@ -91,6 +92,7 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
         binding.buttonOtherOccurrences.setOnClickListener {
             viewModel.dialogClick(DialogClick.INVOICE_CLOSE)
             viewModel.dialogClick(DialogClick.TYPE_OPEN)
+            viewModel.showOccurrences()
         }
         binding.buttonTakePhoto.setOnClickListener {
             dispatchTakePictureIntent(DialogClick.CONFIRMED_OPEN)
@@ -146,6 +148,16 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
         }
         viewModel.confirmedMessage.observe(viewLifecycleOwner) {
             binding.textConfirmedMessage.text = it
+        }
+        viewModel.occurrenceList.observe(viewLifecycleOwner) {
+            val filtersAdapter = ArrayAdapter(
+                requireContext(),
+                R.layout.spinner_text_item,
+                it,
+            )
+            binding.spinner.apply {
+                adapter = filtersAdapter
+            }
         }
         viewModel.getUser()
     }

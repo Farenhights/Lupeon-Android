@@ -10,7 +10,7 @@ import org.koin.dsl.module
 object InvoiceModule {
     private val invoiceModule = module {
         single { InvoiceAnalytics(get()) }
-        single { InvoiceService() }
+        single { InvoiceService(get()) }
         viewModel { InvoiceViewModel(get(), get()) }
     }
 

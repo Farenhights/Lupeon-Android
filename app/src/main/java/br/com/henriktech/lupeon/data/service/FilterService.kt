@@ -11,4 +11,7 @@ class FilterService(private val lupeonRepository: LupeonRepository) {
 
     suspend fun getFilialFilter(token: String, companyId: Int) =
         lupeonRepository.getFilialFilter(token, companyId)
+
+    suspend fun getOccurrences(token: String) =
+        lupeonRepository.getOccurrenceFilter(token)
 }

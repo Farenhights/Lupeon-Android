@@ -122,5 +122,13 @@
         <action
             android:id="@+id/action_driverFragment_to_loginActivity"
             app:destination="@id/loginActivity" />
+        <action
+            android:id="@+id/action_driverFragment_to_invoiceFragment"
+            app:destination="@id/invoiceFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/invoiceFragment"
+        android:name="br.com.henriktech.lupeon.ui.invoice.InvoiceFragment"
+        android:label="InvoiceFragment"
+        tools:layout="@layout/fragment_invoice"/>
 </navigation>
