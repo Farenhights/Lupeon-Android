@@ -63,6 +63,25 @@ class LupeonRepository(val context: Context, private val lupeonApi: LupeonApi) :
             )
         }
 
+    suspend fun sendFileDriver(
+        token: String,
+        cnpj: String,
+        documentKey: String,
+        image: String,
+        invoiceNumber: String,
+        documentType: String
+    ) =
+        safeCallApi {
+            lupeonApi.postMotoristaEnviarComprovante(
+                token,
+                FileRequest(
+                    CNPJEmpresa = cnpj, ChaveDocumento = documentKey,
+                    Comprovante = image, NumeroNFe = invoiceNumber, TipoDocumento = documentType
+                )
+            )
+        }
+
+
     suspend fun trackingShipper(token: String, companyId: Int, cnpj: String, numberNFe: Int) =
         safeCallApi {
             lupeonApi.postEmbacadorTracking(token, companyId, TrackingRequest(cnpj, numberNFe))

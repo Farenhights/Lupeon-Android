@@ -56,6 +56,13 @@ interface LupeonApi {
     ): Response<Indicadores>
 
     @Headers("Content-Type: application/json")
+    @POST("/Motorista/EnviarComprovante")
+    suspend fun postMotoristaEnviarComprovante(
+        @Header("Authorization") token: String,
+        @Body body: FileRequest
+    ): Response<Indicadores>
+
+    @Headers("Content-Type: application/json")
     @POST("/Transportadora/Indicadores")
     suspend fun postTransportadorIndicadores(
         @Header("Authorization") token: String,

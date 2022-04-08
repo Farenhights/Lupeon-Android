@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Base64
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
@@ -22,6 +24,7 @@ import br.com.henriktech.lupeon.ui.base.MenuAdapter
 import br.com.henriktech.lupeon.ui.base.OnMenuClickListener
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.io.ByteArrayOutputStream
 
 class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
     OnMenuClickListener {
@@ -170,6 +173,9 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
             takePictureIntent.resolveActivity(requireActivity().packageManager)?.also {
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+                val imageBytes: ByteArray = takePictureIntent.getByteArrayExtra(it.shortClassName)!!
+                val imageString: String = Base64.encodeToString(imageBytes, Base64.DEFAULT)
+                viewModel.setImageString(imageString)
             }
         }
     }

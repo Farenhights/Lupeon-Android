@@ -156,4 +156,7 @@ class DriverViewModel(
             }
         }
     }
+
+    fun setImageString(imageString: String) {
+    }
 }
