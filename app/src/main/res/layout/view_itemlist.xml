@@ -20,13 +20,15 @@
 
     <TextView
         android:id="@+id/textLeftBottom"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:textColor="@color/lupeon_primary"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="@color/lupeon_primary"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textRightBottom"
         app:layout_constraintStart_toStartOf="@+id/textLeftTop"
         app:layout_constraintTop_toBottomOf="@+id/textLeftTop"
         tools:text="B R Samor" />
@@ -46,17 +48,19 @@
 
     <TextView
         android:id="@+id/textRightBottom"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="14dp"
         android:layout_marginBottom="8dp"
+        android:textColor="@color/lupeon_primary"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="@color/lupeon_primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageArrowRightView"
+        app:layout_constraintStart_toEndOf="@+id/textLeftBottom"
         app:layout_constraintTop_toBottomOf="@+id/textRightTop"
-        tools:text="R$ 241.252,23"  />
+        tools:text="R$ 241.252,23" />
 
     <ImageView
         android:id="@+id/imageStatusRoundView"

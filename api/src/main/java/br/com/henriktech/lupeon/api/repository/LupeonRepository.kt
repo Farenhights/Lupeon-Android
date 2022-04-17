@@ -118,4 +118,19 @@ class LupeonRepository(val context: Context, private val lupeonApi: LupeonApi) :
         safeCallApi {
             lupeonApi.getFiltroOcorrencias(token)
         }
+
+    suspend fun getInvoicesInTransitDriver(
+        token: String,
+        companyId: Int,
+        dataInicio: String,
+        dataFim: String,
+        destinatarioId: Int,
+        periodoId: Int,
+        statusId: Int,
+    ) =
+        safeCallApi {
+            val notasEmTransitoRequest =
+                NotasEmTransitoRequest(dataFim, dataInicio, destinatarioId, periodoId, statusId)
+            lupeonApi.postMotoristaNotasEmTransito(token, companyId, notasEmTransitoRequest)
+        }
 }

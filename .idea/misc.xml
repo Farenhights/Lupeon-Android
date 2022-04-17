@@ -69,7 +69,7 @@
         <entry key="app/src/main/res/layout/fragment_invoices.xml" value="0.3038949275362319" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.23735408560311283" />
         <entry key="app/src/main/res/layout/fragment_losspassword.xml" value="0.17509727626459143" />
-        <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.20018115942028986" />
+        <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_newpassword.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_presentation.xml" value="0.19293478260869565" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
@@ -85,7 +85,7 @@
         <entry key="app/src/main/res/layout/view_indicator.xml" value="0.33" />
         <entry key="app/src/main/res/layout/view_indicator_filter.xml" value="0.34270833333333334" />
         <entry key="app/src/main/res/layout/view_indicator_item.xml" value="0.30570652173913043" />
-        <entry key="app/src/main/res/layout/view_itemlist.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/view_itemlist.xml" value="0.5" />
         <entry key="app/src/main/res/layout/view_menu.xml" value="0.9" />
         <entry key="app/src/main/res/layout/view_sponsor.xml" value="0.30932971014492755" />
         <entry key="app/src/main/res/menu/menu_indicator_filter.xml" value="0.1" />

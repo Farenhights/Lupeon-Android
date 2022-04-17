@@ -18,5 +18,24 @@ class InvoiceService(private val lupeonRepository: LupeonRepository) {
         dataFim,
         destinatarioId,
         periodoId,
-        status)
+        status
+    )
+
+    suspend fun getInvoiceDriver(
+        token: String,
+        companyId: Int,
+        dataInicio: String,
+        dataFim: String,
+        destinatarioId: Int,
+        periodoId: Int,
+        status: Int
+    ) = lupeonRepository.getInvoicesInTransitDriver(
+        token,
+        companyId,
+        dataInicio,
+        dataFim,
+        destinatarioId,
+        periodoId,
+        status
+    )
 }

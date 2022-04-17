@@ -36,7 +36,7 @@ class InvoiceViewModel(
                 val destinatarioId = 0
                 val periodoId = 0
                 val status = 1
-                when (val response = service.getInvoice(
+                when (val response = service.getInvoiceDriver(
                     token, companyId, dataInicio, dataFim,
                     destinatarioId, periodoId, status
                 )) {
