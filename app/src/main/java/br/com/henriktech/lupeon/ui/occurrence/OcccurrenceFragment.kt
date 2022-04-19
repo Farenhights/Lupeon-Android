@@ -1,4 +1,4 @@
-package br.com.henriktech.lupeon.ui.tracking.occurrence
+package br.com.henriktech.lupeon.ui.occurrence
 
 import android.content.Context
 import android.os.Bundle

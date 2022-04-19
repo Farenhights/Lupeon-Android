@@ -83,19 +83,19 @@
     </fragment>
     <fragment
         android:id="@+id/trackingFragment"
-        android:name="br.com.henriktech.lupeon.ui.tracking.home.TrackingFragment"
+        android:name="br.com.henriktech.lupeon.ui.tracking.TrackingFragment"
         android:label="TrackingFragment"
         tools:layout="@layout/fragment_tracking">
         <action
             android:id="@+id/action_trackingFragment_to_loginActivity"
             app:destination="@id/loginActivity" />
         <action
-            android:id="@+id/action_trackingFragment_to_deliveryFragment"
-            app:destination="@id/deliveryFragment" />
+            android:id="@+id/action_trackingFragment_to_invoiceFragment"
+            app:destination="@id/invoiceFragment" />
     </fragment>
     <fragment
         android:id="@+id/deliveryFragment"
-        android:name="br.com.henriktech.lupeon.ui.tracking.delivery.DeliveryFragment"
+        android:name="br.com.henriktech.lupeon.ui.delivery.DeliveryFragment"
         android:label="DeliveryFragment"
         tools:layout="@layout/fragment_tracking_delivery">
         <action
@@ -107,7 +107,7 @@
     </fragment>
     <fragment
         android:id="@+id/ocorrencyFragment"
-        android:name="br.com.henriktech.lupeon.ui.tracking.occurrence.OccurrenceFragment"
+        android:name="br.com.henriktech.lupeon.ui.occurrence.OccurrenceFragment"
         android:label="fragment_tracking_occurrence"
         tools:layout="@layout/fragment_tracking_occurrence">
         <action
@@ -130,5 +130,9 @@
         android:id="@+id/invoiceFragment"
         android:name="br.com.henriktech.lupeon.ui.invoice.InvoiceFragment"
         android:label="InvoiceFragment"
-        tools:layout="@layout/fragment_invoice"/>
+        tools:layout="@layout/fragment_invoice">
+        <action
+            android:id="@+id/action_invoiceFragment_to_deliveryFragment"
+            app:destination="@id/deliveryFragment" />
+    </fragment>
 </navigation>

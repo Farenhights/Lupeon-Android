@@ -1,9 +1,9 @@
-package br.com.henriktech.lupeon.ui.tracking.occurrence
+package br.com.henriktech.lupeon.ui.delivery
 
 import android.app.Activity
 import br.com.henriktech.lupeon.analytics.Analytics
 
-class OccurrenceAnalytics(private val analytics: Analytics) {
+class DeliveryAnalytics(private val analytics: Analytics) {
     fun trackScreen(activity: Activity) {
         analytics.trackScreen(
             activity,
@@ -16,7 +16,7 @@ class OccurrenceAnalytics(private val analytics: Analytics) {
     }
 
     internal companion object {
-        private const val SCREEN_NAME = "Ocorrencias"
+        private const val SCREEN_NAME = "Delivery"
         internal const val FRAG_PRESENTATION = "${SCREEN_NAME}_Tracking"
         private const val EVENT_PRESENTATION = "${FRAG_PRESENTATION}_Tela_aberta"
     }

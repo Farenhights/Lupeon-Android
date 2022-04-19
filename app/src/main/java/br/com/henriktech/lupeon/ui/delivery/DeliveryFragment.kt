@@ -1,4 +1,4 @@
-package br.com.henriktech.lupeon.ui.tracking.delivery
+package br.com.henriktech.lupeon.ui.delivery
 
 import android.content.Context
 import android.os.Bundle

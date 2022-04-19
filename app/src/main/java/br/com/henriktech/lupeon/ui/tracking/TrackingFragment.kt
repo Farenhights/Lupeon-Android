@@ -1,4 +1,4 @@
-package br.com.henriktech.lupeon.ui.tracking.home
+package br.com.henriktech.lupeon.ui.tracking
 
 import android.content.Context
 import android.os.Bundle
@@ -46,7 +46,6 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
         binding.trackingSearchButton.setOnClickListener {
             val invoice = Integer.parseInt(binding.textNumberInvoice.text.toString())
             saveInvoice(invoice, binding.spinnerFilial.selectedItemPosition)
-            findNavController().navigate(R.id.action_trackingFragment_to_deliveryFragment)
         }
 
     }

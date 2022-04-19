@@ -1,4 +1,4 @@
-package br.com.henriktech.lupeon.ui.tracking.home
+package br.com.henriktech.lupeon.ui.tracking
 
 import android.app.Activity
 import br.com.henriktech.lupeon.analytics.Analytics

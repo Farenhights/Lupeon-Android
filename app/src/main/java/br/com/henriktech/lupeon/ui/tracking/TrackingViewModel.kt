@@ -1,4 +1,4 @@
-package br.com.henriktech.lupeon.ui.tracking.home
+package br.com.henriktech.lupeon.ui.tracking
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

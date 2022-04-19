@@ -1,5 +1,6 @@
 package br.com.henriktech.lupeon.ui.invoice
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -37,6 +38,7 @@ class InvoiceFragment : Fragment(R.layout.fragment_invoice) {
             recycleInvoice.adapter = adapter
         }
         viewModel.getUser()
+        startSearchInvoices()
     }
 
     private fun startView(binding: FragmentInvoiceBinding) {
@@ -48,6 +50,29 @@ class InvoiceFragment : Fragment(R.layout.fragment_invoice) {
         }
         binding.buttonMenuBottomHide.setOnClickListener {
             binding.menuBottom.visibility = View.GONE
+        }
+    }
+
+    private fun startSearchInvoices() {
+        val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        val token = sharedPref.getString("Token", "")
+        val companyId = sharedPref.getInt("CompanyId", 0)
+        val dataInicio = sharedPref.getString("DataInicio", "2021-11-01 00:00")
+        val dataFim = sharedPref.getString("DataFim", "2021-11-03 00:00")
+        val destinatarioId = sharedPref.getInt("DestinatarioId", 0)
+        val periodoId = sharedPref.getInt("PeriodoId", 0)
+        val statusId = sharedPref.getInt("StatusId", 1)
+
+        if (dataInicio != null && dataFim != null && token != null) {
+            viewModel.getInvoices(
+                token,
+                companyId,
+                dataInicio,
+                dataFim,
+                destinatarioId,
+                periodoId,
+                statusId
+            )
         }
     }
 }

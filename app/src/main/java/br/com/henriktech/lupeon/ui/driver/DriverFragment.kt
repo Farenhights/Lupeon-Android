@@ -2,9 +2,9 @@ package br.com.henriktech.lupeon.ui.driver
 
 import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
@@ -24,7 +24,6 @@ import br.com.henriktech.lupeon.ui.base.MenuAdapter
 import br.com.henriktech.lupeon.ui.base.OnMenuClickListener
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.io.ByteArrayOutputStream
 
 class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
     OnMenuClickListener {
@@ -66,6 +65,7 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
         viewModel.dialogClick(DialogClick.OCCURRENCE_CLOSE)
         viewModel.dialogClick(DialogClick.DELIVERED_CLOSE)
     }
+
     private fun startView(binding: FragmentDriverMenuBinding) {
         binding.imageViewLogoutMenu.setOnClickListener {
             viewModel.logout()
@@ -162,10 +162,19 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
                 adapter = filtersAdapter
             }
         }
+        viewModel.user.observe(viewLifecycleOwner) {
+            val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+            with(sharedPref.edit()) {
+                putString("Token", it!!.accessToken)
+                putInt("CompanyId", it.companyId.toInt())
+                apply()
+            }
+        }
         viewModel.getUser()
     }
 
     private val REQUEST_IMAGE_CAPTURE = 1
+
     private lateinit var nextDialog: DialogClick
 
     private fun dispatchTakePictureIntent(nextDialog: DialogClick) {

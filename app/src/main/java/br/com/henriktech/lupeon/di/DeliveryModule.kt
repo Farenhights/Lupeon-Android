@@ -1,8 +1,8 @@
 package br.com.henriktech.lupeon.di
 
 import br.com.henriktech.lupeon.data.service.TrackingService
-import br.com.henriktech.lupeon.ui.tracking.delivery.DeliveryAnalytics
-import br.com.henriktech.lupeon.ui.tracking.delivery.DeliveryViewModel
+import br.com.henriktech.lupeon.ui.delivery.DeliveryAnalytics
+import br.com.henriktech.lupeon.ui.delivery.DeliveryViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
