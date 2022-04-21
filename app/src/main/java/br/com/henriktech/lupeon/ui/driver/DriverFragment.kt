@@ -174,7 +174,6 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
     }
 
     private val REQUEST_IMAGE_CAPTURE = 1
-
     private lateinit var nextDialog: DialogClick
 
     private fun dispatchTakePictureIntent(nextDialog: DialogClick) {
