@@ -24,7 +24,7 @@ class DeliveryFragment : Fragment(R.layout.fragment_tracking_delivery) {
     }
 
     private fun startView(binding: FragmentTrackingDeliveryBinding) {
-        binding.imageDeliveryArrowLetf.setOnClickListener {
+        binding.imageDeliveryArrowLeft.setOnClickListener {
             requireActivity().onBackPressed()
         }
         binding.buttonMenuBottomShow.setOnClickListener {

@@ -36,24 +36,39 @@ class InvoiceFragment : Fragment(R.layout.fragment_invoice) {
             recycleInvoice.layoutManager = GridLayoutManager(context, numberOfColumns)
             val adapter = InvoiceAdapter(invoices)
             recycleInvoice.adapter = adapter
+            binding.invoiceProgressBar.visibility = View.GONE
+        }
+        viewModel.errorMessage.observe(viewLifecycleOwner) {
+            binding.invoiceProgressBar.visibility = View.GONE
+            binding.buttonReload.visibility = View.VISIBLE
         }
         viewModel.getUser()
         startSearchInvoices()
     }
 
     private fun startView(binding: FragmentInvoiceBinding) {
-        binding.imageDeliveryArrowLetf.setOnClickListener {
+        binding.imageDeliveryArrowLeft.setOnClickListener {
+            analytics.clickBack()
             requireActivity().onBackPressed()
         }
         binding.buttonMenuBottomShow.setOnClickListener {
+            analytics.clickBottomMenuShow()
             binding.menuBottom.visibility = View.VISIBLE
         }
         binding.buttonMenuBottomHide.setOnClickListener {
+            analytics.clickBottomMenuHide()
             binding.menuBottom.visibility = View.GONE
+        }
+        binding.buttonReload.setOnClickListener {
+            analytics.clickReload()
+            binding.invoiceProgressBar.visibility = View.VISIBLE
+            binding.buttonReload.visibility = View.GONE
+            startSearchInvoices()
         }
     }
 
     private fun startSearchInvoices() {
+
         val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
         val token = sharedPref.getString("Token", "")
         val companyId = sharedPref.getInt("CompanyId", 0)

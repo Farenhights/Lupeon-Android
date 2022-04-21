@@ -3,7 +3,7 @@ package br.com.henriktech.lupeon.ui.invoice
 import android.app.Activity
 import br.com.henriktech.lupeon.analytics.Analytics
 
-class InvoiceAnalytics (private val analytics: Analytics) {
+class InvoiceAnalytics(private val analytics: Analytics) {
     fun trackScreen(activity: Activity) {
         analytics.trackScreen(
             activity,
@@ -13,6 +13,22 @@ class InvoiceAnalytics (private val analytics: Analytics) {
 
     private fun trackEvent(eventName: String) {
         analytics.trackEvent(eventName)
+    }
+
+    fun clickBack() {
+        trackEvent("${FRAG_PRESENTATION}_click_voltar")
+    }
+
+    fun clickBottomMenuShow() {
+        trackEvent("${FRAG_PRESENTATION}_click_mostrar_menu")
+    }
+
+    fun clickBottomMenuHide() {
+        trackEvent("${FRAG_PRESENTATION}_click_esconder_menu")
+    }
+
+    fun clickReload() {
+        trackEvent("${FRAG_PRESENTATION}_click_recarregar")
     }
 
     internal companion object {

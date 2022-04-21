@@ -23,6 +23,7 @@ class InvoiceViewModel(
     val invoiceList: MutableLiveData<ArrayList<Invoice>> = _invoiceList
 
     private val _errorMessage = MutableLiveData<String>()
+    val errorMessage: MutableLiveData<String> = _errorMessage
 
     fun getUser() {
         viewModelScope.launch {

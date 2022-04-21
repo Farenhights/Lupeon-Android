@@ -35,7 +35,7 @@ class OccurrenceFragment : Fragment(R.layout.fragment_tracking_occurrence),
     }
 
     private fun startView(binding: FragmentTrackingOccurrenceBinding) {
-        binding.imageDeliveryArrowLetf.setOnClickListener {
+        binding.imageDeliveryArrowLeft.setOnClickListener {
             requireActivity().onBackPressed()
         }
         binding.buttonMenuBottomShow.setOnClickListener {
