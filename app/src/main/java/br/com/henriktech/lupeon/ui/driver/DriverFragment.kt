@@ -173,17 +173,18 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
         viewModel.getUser()
     }
 
-    private val REQUEST_IMAGE_CAPTURE = 1
+    private val REQUEST_IMAGE_CAPTURE = 2
     private lateinit var nextDialog: DialogClick
 
     private fun dispatchTakePictureIntent(nextDialog: DialogClick) {
         this.nextDialog = nextDialog
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            takePictureIntent.resolveActivity(requireActivity().packageManager)?.also {
+            takePictureIntent.resolveActivity(requireActivity().packageManager)?.also { it ->
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-                val imageBytes: ByteArray = takePictureIntent.getByteArrayExtra(it.shortClassName)!!
-                val imageString: String = Base64.encodeToString(imageBytes, Base64.DEFAULT)
-                viewModel.setImageString(imageString)
+                takePictureIntent.getByteArrayExtra(it.shortClassName).let { byteArray ->
+                    val imageString: String = Base64.encodeToString(byteArray!!, Base64.DEFAULT)
+                    viewModel.setImageString(imageString)
+                }
             }
         }
     }
