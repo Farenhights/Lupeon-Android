@@ -25,14 +25,6 @@ class InvoiceViewModel(
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: MutableLiveData<String> = _errorMessage
 
-    fun getUser() {
-        viewModelScope.launch {
-            userRepository.getUser().let {
-                _user.postValue(it.toUser())
-            }
-        }
-    }
-
     fun getInvoices(
         token: String,
         companyId: Int,
@@ -42,36 +34,44 @@ class InvoiceViewModel(
         periodoId: Int,
         status: Int,
     ) {
+        user.observeForever{
+            viewModelScope.launch {
+                when (
+                    val response = if (_user.value!!.userType == "M")
+                        service.getInvoiceDriver(
+                            token,
+                            companyId,
+                            dataInicio,
+                            dataFim,
+                            destinatarioId,
+                            periodoId,
+                            status
+                        )
+                    else
+                        service.getInvoice(
+                            token,
+                            companyId,
+                            dataInicio,
+                            dataFim,
+                            destinatarioId,
+                            periodoId,
+                            status
+                        )
+                ) {
+                    is ApiResult.Success<*> -> {
+                        val invoiceData = response.data!! as InvoiceList
+                        _invoiceList.postValue(invoiceData.invoiceList as ArrayList<Invoice>)
+                    }
+                    is ApiResult.Error -> {
+                        _errorMessage.postValue(response.message)
+                    }
+                }
+            }
+        }
+
         viewModelScope.launch {
-            when (
-                val response = if (_user.value!!.userType == "M")
-                    service.getInvoiceDriver(
-                        token,
-                        companyId,
-                        dataInicio,
-                        dataFim,
-                        destinatarioId,
-                        periodoId,
-                        status
-                    )
-                else
-                    service.getInvoice(
-                        token,
-                        companyId,
-                        dataInicio,
-                        dataFim,
-                        destinatarioId,
-                        periodoId,
-                        status
-                    )
-            ) {
-                is ApiResult.Success<*> -> {
-                    val invoiceData = response.data!! as InvoiceList
-                    _invoiceList.postValue(invoiceData.invoiceList as ArrayList<Invoice>)
-                }
-                is ApiResult.Error -> {
-                    _errorMessage.postValue(response.message)
-                }
+            userRepository.getUser().let {
+                _user.postValue(it.toUser())
             }
         }
     }

@@ -3,6 +3,7 @@ package br.com.henriktech.lupeon.ui.menu
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -148,6 +149,12 @@ class MenuFragment : Fragment(R.layout.fragment_menu), IOnBackPressed,
                     "GESTOR DA CONTA<br>${user.nameManager}" +
                             "<br>${user.contactsManager}", 0
                 ).toString()
+                val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+                with(sharedPref.edit()) {
+                    putString("Token", user.accessToken)
+                    putInt("CompanyId", Integer.parseInt(user.companyId))
+                    apply()
+                }
             } else {
                 findNavController().navigate(R.id.action_menuFragment_to_loginActivity)
             }

@@ -167,7 +167,7 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
             val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
             with(sharedPref.edit()) {
                 putString("Token", it!!.accessToken)
-                putInt("CompanyId", it.companyId.toInt())
+                putInt("CompanyId", Integer.parseInt(it.companyId))
                 apply()
             }
         }

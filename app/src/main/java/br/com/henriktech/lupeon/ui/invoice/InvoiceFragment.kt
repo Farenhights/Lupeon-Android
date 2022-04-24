@@ -45,7 +45,6 @@ class InvoiceFragment : Fragment(R.layout.fragment_invoice), OnInvoiceClickListe
             binding.invoiceProgressBar.visibility = View.GONE
             binding.buttonReload.visibility = View.VISIBLE
         }
-        viewModel.getUser()
         startSearchInvoices()
     }
 
