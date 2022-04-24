@@ -1,6 +1,7 @@
 package br.com.henriktech.lupeon.ui.login.presentention
 
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
@@ -43,9 +44,18 @@ open class LoginPresentationFragment : Fragment(R.layout.fragment_presentation) 
                 findNavController().navigate(R.id.action_loginActivity_to_mainFragment)
             }
         }
+        clearSharepreferences()
         checkPermissions()
     }
 
+    private fun clearSharepreferences() {
+        val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            clear()
+            apply()
+            commit()
+        }
+    }
 
     private fun checkPermissions() {
         val missingPermissions: MutableList<String> = ArrayList()

@@ -4,15 +4,18 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
+import br.com.henriktech.lupeon.api.model.response.Invoice
 import br.com.henriktech.lupeon.databinding.FragmentInvoiceBinding
 import br.com.henriktech.lupeon.ui.base.InvoiceAdapter
+import br.com.henriktech.lupeon.ui.base.OnInvoiceClickListener
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class InvoiceFragment : Fragment(R.layout.fragment_invoice) {
+class InvoiceFragment : Fragment(R.layout.fragment_invoice), OnInvoiceClickListener {
 
     private val analytics: InvoiceAnalytics by inject()
     private val viewModel: InvoiceViewModel by viewModel()
@@ -34,7 +37,7 @@ class InvoiceFragment : Fragment(R.layout.fragment_invoice) {
             val recycleInvoice: RecyclerView = binding.recycleInvoiceView
             val numberOfColumns = 1
             recycleInvoice.layoutManager = GridLayoutManager(context, numberOfColumns)
-            val adapter = InvoiceAdapter(invoices)
+            val adapter = InvoiceAdapter(invoices, this)
             recycleInvoice.adapter = adapter
             binding.invoiceProgressBar.visibility = View.GONE
         }
@@ -89,5 +92,18 @@ class InvoiceFragment : Fragment(R.layout.fragment_invoice) {
                 statusId
             )
         }
+    }
+
+    override fun onInvoiceClickListener(invoice: Invoice) {
+        val numberInvoice = Integer.parseInt(invoice.NumeroNfe)
+        val custonDestiny = invoice.Destinatario.splitToSequence(" - ")
+        val cnpj = custonDestiny.firstOrNull()
+        val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            putInt("INVOICE", numberInvoice)
+            putString("CNPJ", cnpj)
+            apply()
+        }
+        findNavController().navigate(R.id.action_invoiceFragment_to_deliveryFragment)
     }
 }

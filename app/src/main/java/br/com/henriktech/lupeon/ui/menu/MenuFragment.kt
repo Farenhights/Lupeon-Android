@@ -47,13 +47,16 @@ class MenuFragment : Fragment(R.layout.fragment_menu), IOnBackPressed,
     }
 
     override fun onMenuClicked(menu: Menu) {
-
         analytics.clickMenu(menu.option)
-
         when (menu.option) {
             "Indicadores" -> findNavController().navigate(R.id.action_menuFragment_to_indicatorsFragment)
             "Simulacao" -> findNavController().navigate(R.id.action_menuFragment_to_simulationFragment)
-            "Tracking" -> findNavController().navigate(R.id.action_menuFragment_to_trackingFragment)
+            "Tracking" -> {
+                if (viewModel.user.value!!.userType == "E")
+                    findNavController().navigate(R.id.action_menuFragment_to_trackingFragment)
+                else
+                    findNavController().navigate(R.id.action_menuFragment_to_invoiceFragment)
+            }
             "Comprovante" -> viewModel.dialogClick(DialogClick.OCCURRENCE_OPEN)
             else -> findNavController().navigate(R.id.action_menuFragment_to_loginActivity)
         }

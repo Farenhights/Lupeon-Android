@@ -7,13 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.henriktech.lupeon.R
 import br.com.henriktech.lupeon.api.model.response.Invoice
-import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
-import java.util.*
-import kotlin.collections.ArrayList
 
 class InvoiceAdapter(
-    private val invoiceList: ArrayList<Invoice>
+    private val invoiceList: ArrayList<Invoice>,
+    private val itemClickListener: OnInvoiceClickListener,
 ) : RecyclerView.Adapter<InvoiceAdapter.InvoiceViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InvoiceViewHolder {
@@ -24,7 +21,7 @@ class InvoiceAdapter(
 
     override fun onBindViewHolder(holder: InvoiceViewHolder, position: Int) {
         val invoice = invoiceList[position]
-        holder.bind(invoice)
+        holder.bind(invoice, itemClickListener)
     }
 
     override fun getItemCount(): Int = invoiceList.size
@@ -36,12 +33,16 @@ class InvoiceAdapter(
         private var textRightTop: TextView = itemView.findViewById(R.id.textRightTop)
         private var textRightBottom: TextView = itemView.findViewById(R.id.textRightBottom)
 
-        fun bind(invoice: Invoice) {
+        fun bind(invoice: Invoice, clickListener: OnInvoiceClickListener) {
             val custonDestiny = invoice.Destinatario.splitToSequence(" - ")
             textLeftTop = customText(custonDestiny.first(), textLeftTop)
             textLeftBottom = customText(custonDestiny.last(), textLeftBottom)
             textRightTop = customText(invoice.DataEmissaoNFe, textRightTop)
             textRightBottom = customText(invoice.NumeroNfe, textRightBottom)
+
+            itemView.setOnClickListener {
+                clickListener.onInvoiceClickListener(invoice)
+            }
         }
 
         private fun customText(text: String?, view: TextView): TextView {

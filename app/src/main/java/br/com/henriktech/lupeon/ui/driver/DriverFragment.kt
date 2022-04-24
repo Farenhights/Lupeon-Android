@@ -69,6 +69,7 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
     private fun startView(binding: FragmentDriverMenuBinding) {
         binding.imageViewLogoutMenu.setOnClickListener {
             viewModel.logout()
+            findNavController().navigate(R.id.action_driverFragment_to_loginActivity)
         }
         binding.buttonDialogClose.setOnClickListener {
             viewModel.dialogClick(DialogClick.OCCURRENCE_CLOSE)

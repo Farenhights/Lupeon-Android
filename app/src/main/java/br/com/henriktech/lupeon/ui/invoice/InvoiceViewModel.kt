@@ -43,10 +43,28 @@ class InvoiceViewModel(
         status: Int,
     ) {
         viewModelScope.launch {
-            when (val response = service.getInvoiceDriver(
-                token, companyId, dataInicio, dataFim,
-                destinatarioId, periodoId, status
-            )) {
+            when (
+                val response = if (_user.value!!.userType == "M")
+                    service.getInvoiceDriver(
+                        token,
+                        companyId,
+                        dataInicio,
+                        dataFim,
+                        destinatarioId,
+                        periodoId,
+                        status
+                    )
+                else
+                    service.getInvoice(
+                        token,
+                        companyId,
+                        dataInicio,
+                        dataFim,
+                        destinatarioId,
+                        periodoId,
+                        status
+                    )
+            ) {
                 is ApiResult.Success<*> -> {
                     val invoiceData = response.data!! as InvoiceList
                     _invoiceList.postValue(invoiceData.invoiceList as ArrayList<Invoice>)
