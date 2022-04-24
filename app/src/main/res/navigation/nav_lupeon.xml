@@ -93,8 +93,8 @@
             android:id="@+id/action_trackingFragment_to_loginActivity"
             app:destination="@id/loginActivity" />
         <action
-            android:id="@+id/action_trackingFragment_to_invoiceFragment"
-            app:destination="@id/invoiceFragment" />
+            android:id="@+id/action_trackingFragment_to_deliveryFragment"
+            app:destination="@id/deliveryFragment" />
     </fragment>
     <fragment
         android:id="@+id/deliveryFragment"
