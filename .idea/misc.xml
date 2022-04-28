@@ -58,6 +58,7 @@
         <entry key="app/src/main/res/layout/activity_driver.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.3650137741046832" />
+        <entry key="app/src/main/res/layout/activity_search_invoice.xml" value="0.271286231884058" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/dialog_alert.xml" value="0.378125" />
         <entry key="app/src/main/res/layout/dialog_new_occurrence.xml" value="0.24166666666666667" />
@@ -75,6 +76,9 @@
         <entry key="app/src/main/res/layout/fragment_presentation.xml" value="0.19293478260869565" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_receipt.xml" value="0.1518324607329843" />
+        <entry key="app/src/main/res/layout/fragment_receipt_first.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_receipt_second.xml" value="0.271286231884058" />
+        <entry key="app/src/main/res/layout/fragment_receipt_thirst.xml" value="0.271286231884058" />
         <entry key="app/src/main/res/layout/fragment_simulation.xml" value="0.30337078651685395" />
         <entry key="app/src/main/res/layout/fragment_token.xml" value="0.3038949275362319" />
         <entry key="app/src/main/res/layout/fragment_tracking.xml" value="0.25333333333333335" />

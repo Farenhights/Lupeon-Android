@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="br.com.henriktech.lupeon.ui.receipt.ReceiptViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/lupeon_primary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dialogInvoice"
+            android:layout_width="310dp"
+            android:layout_height="299dp"
+            android:background="@drawable/bg_white_round"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/titleIdentificationInvoice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="19dp"
+                android:text="@string/identification_voice"
+                android:textColor="@color/gray_600"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/buttonDialogIdentificationInvoiceClose"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/to_close"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_close" />
+
+            <TextView
+                android:id="@+id/contentIdentificationInvoice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/content_identification_invoice"
+                android:textAlignment="center"
+                android:textColor="@color/gray_600"
+                app:layout_constraintBottom_toTopOf="@+id/buttonDelivered"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleIdentificationInvoice" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonDelivered"
+                style="@style/Theme.Lupeon.Button"
+                android:layout_width="212dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="49dp"
+                android:layout_marginBottom="11dp"
+                android:text="@string/delivered"
+                app:layout_constraintBottom_toTopOf="@+id/buttonOtherOccurrences"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.504"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonOtherOccurrences"
+                style="@style/Theme.Lupeon.Button"
+                android:layout_width="212dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="49dp"
+                android:layout_marginEnd="49dp"
+                android:layout_marginBottom="22dp"
+                android:text="@string/other_occurrences"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

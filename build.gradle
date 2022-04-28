@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        version_code = 24
+        version_code = 25
         version_name = '2022.1'
 
         compile_version = 31
@@ -9,12 +9,12 @@ buildscript {
         target_version = 31
         package_name = 'br.com.henriktech.lupeon'
 
-        kotlin_version = '1.6.10'
+        kotlin_version = '1.6.21'
         corektx_version = '1.7.0'
         lifecycle_version = '2.4.1'
         appcompat_version = '1.4.1'
         nav_version = '2.4.2'
-        coroutines_version = '1.5.2-native-mt'
+        coroutines_version = '1.6.1-native-mt'
         retrofit_version = '2.9.0'
         koin_version = '3.1.5'
         timber_version = '5.0.1'

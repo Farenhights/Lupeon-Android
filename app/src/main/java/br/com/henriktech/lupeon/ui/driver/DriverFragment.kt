@@ -54,7 +54,7 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
             else
                 menu.option
         return when (expression) {
-            "Ocorrencia" -> viewModel.dialogClick(DialogClick.OCCURRENCE_OPEN)
+            "Ocorrencia" -> findNavController().navigate(R.id.action_driverFragment_to_receiptFirstFragment)
             "Notas" -> findNavController().navigate(R.id.action_driverFragment_to_invoiceFragment)
             else -> {}
         }
@@ -71,32 +71,13 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
             viewModel.logout()
             findNavController().navigate(R.id.action_driverFragment_to_loginActivity)
         }
-        binding.buttonDialogClose.setOnClickListener {
-            viewModel.dialogClick(DialogClick.OCCURRENCE_CLOSE)
-        }
-        binding.buttonDialogIdentificationInvoiceClose.setOnClickListener {
-            viewModel.dialogClick(DialogClick.INVOICE_CLOSE)
-        }
+
+
         binding.buttonDialogDeliveredClose.setOnClickListener {
             viewModel.dialogClick(DialogClick.DELIVERED_CLOSE)
         }
         binding.buttonDialogTypeClose.setOnClickListener {
             viewModel.dialogClick(DialogClick.TYPE_CLOSE)
-        }
-        binding.buttonInvoiceRead.setOnClickListener {
-            dispatchTakePictureIntent(DialogClick.INVOICE_OPEN)
-        }
-        binding.buttonCTERead.setOnClickListener {
-            dispatchTakePictureIntent(DialogClick.INVOICE_OPEN)
-        }
-        binding.buttonDelivered.setOnClickListener {
-            viewModel.dialogClick(DialogClick.INVOICE_CLOSE)
-            viewModel.dialogClick(DialogClick.DELIVERED_OPEN)
-        }
-        binding.buttonOtherOccurrences.setOnClickListener {
-            viewModel.dialogClick(DialogClick.INVOICE_CLOSE)
-            viewModel.dialogClick(DialogClick.TYPE_OPEN)
-            viewModel.showOccurrences()
         }
         binding.buttonTakePhoto.setOnClickListener {
             dispatchTakePictureIntent(DialogClick.CONFIRMED_OPEN)
@@ -135,12 +116,6 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
             val adapter = IndicatorAdapter(indicators as ArrayList<Indicator>)
             recycleIndicator.adapter = adapter
         }
-        viewModel.dialogOccurrence.observe(viewLifecycleOwner) {
-            binding.dialogOccurrence.visibility = it
-        }
-        viewModel.dialogInvoice.observe(viewLifecycleOwner) {
-            binding.dialogInvoice.visibility = it
-        }
         viewModel.dialogDelivered.observe(viewLifecycleOwner) {
             binding.dialogDelivered.visibility = it
         }
@@ -177,13 +152,14 @@ class DriverFragment : Fragment(R.layout.fragment_driver_menu), IOnBackPressed,
     private val REQUEST_IMAGE_CAPTURE = 2
     private lateinit var nextDialog: DialogClick
 
+    @Suppress("DEPRECATION")
     private fun dispatchTakePictureIntent(nextDialog: DialogClick) {
         this.nextDialog = nextDialog
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            takePictureIntent.resolveActivity(requireActivity().packageManager)?.also { it ->
+            takePictureIntent.resolveActivity(requireActivity().packageManager)?.also { component ->
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-                takePictureIntent.getByteArrayExtra(it.shortClassName).let { byteArray ->
-                    val imageString: String = Base64.encodeToString(byteArray!!, Base64.DEFAULT)
+                takePictureIntent.getByteArrayExtra(component.shortClassName).let {
+                    val imageString: String = Base64.encodeToString(it!!, Base64.DEFAULT)
                     viewModel.setImageString(imageString)
                 }
             }

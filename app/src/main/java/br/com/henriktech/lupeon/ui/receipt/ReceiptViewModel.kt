@@ -1,4 +1,6 @@
 package br.com.henriktech.lupeon.ui.receipt
 
-class ReceiptViewModel {
+import androidx.lifecycle.ViewModel
+
+class ReceiptViewModel: ViewModel() {
 }

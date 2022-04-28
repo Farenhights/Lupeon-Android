@@ -128,6 +128,9 @@
         <action
             android:id="@+id/action_driverFragment_to_invoiceFragment"
             app:destination="@id/invoiceFragment" />
+        <action
+            android:id="@+id/action_driverFragment_to_receiptFirstFragment"
+            app:destination="@id/receiptFirstFragment" />
     </fragment>
     <fragment
         android:id="@+id/invoiceFragment"
@@ -137,5 +140,50 @@
         <action
             android:id="@+id/action_invoiceFragment_to_deliveryFragment"
             app:destination="@id/deliveryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiptFirstFragment"
+        android:name="br.com.henriktech.lupeon.ui.receipt.ReceiptFirstFragment"
+        android:label="ReceiptFirstFragment"
+        tools:layout="@layout/fragment_receipt_first">
+        <action
+            android:id="@+id/action_receiptFirstFragment_to_receiptSecondFragment"
+            app:destination="@id/receiptSecondFragment" />
+        <action
+            android:id="@+id/action_receiptFirstFragment_to_driverFragment"
+            app:destination="@id/driverFragment" />
+        <action
+            android:id="@+id/action_receiptFirstFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiptSecondFragment"
+        android:name="br.com.henriktech.lupeon.ui.receipt.ReceiptSecondFragment"
+        android:label="ReceiptSecondFragment"
+        tools:layout="@layout/fragment_receipt_second">
+        <action
+            android:id="@+id/action_receiptSecondFragment_to_receiptThirstFragment"
+            app:destination="@id/receiptThirstFragment" />
+        <action
+            android:id="@+id/action_receiptSecondFragment_to_receiptFirstFragment"
+            app:destination="@id/receiptFirstFragment" />
+        <action
+            android:id="@+id/action_receiptSecondFragment_to_driverFragment"
+            app:destination="@id/driverFragment" />
+        <action
+            android:id="@+id/action_receiptSecondFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiptThirstFragment"
+        android:name="br.com.henriktech.lupeon.ui.receipt.ReceiptThirstFragment"
+        android:label="ReceiptThirstFragment"
+        tools:layout="@layout/fragment_receipt_third">
+        <action
+            android:id="@+id/action_receiptThirstFragment_to_driverFragment"
+            app:destination="@id/driverFragment" />
+        <action
+            android:id="@+id/action_receiptThirstFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
     </fragment>
 </navigation>
